@@ -39,12 +39,14 @@
             "id": "52b160d0fe36c471",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Online IDE python/online-ide-python.excalidraw"
+                "file": "Гайд на коннект с помощью гита/Гайд.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "online-ide-python"
+              "icon": "lucide-file",
+              "title": "Гайд"
             }
           }
         ],
@@ -195,11 +197,11 @@
   },
   "active": "52b160d0fe36c471",
   "lastOpenFiles": [
+    "Online IDE python/online-ide-python.excalidraw",
     "Гайд на коннект с помощью гита/Гайд.md",
     "Гайд на коннект с помощью гита",
     "Online IDE python/Tasks.md",
     "ХАЙ САЛАМ.md",
-    "Online IDE python/online-ide-python.excalidraw",
     "Atom 4.0/static/js/script.js",
     "Atom 4.0/static/css/style.css",
     "Atom 4.0/__pycache__/main.cpython-312.pyc",
