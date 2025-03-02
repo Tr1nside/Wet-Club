@@ -4106,9 +4106,15 @@
 		{
 			"id": "TsXvUzPP",
 			"type": "text",
+<<<<<<< HEAD
+			"x": 5966.355501984536,
+			"y": -397.103293679887,
+			"width": 999.683349609375,
+=======
 			"x": 6047.5603619119065,
 			"y": -335.6552923578888,
 			"width": 1108.3505859375,
+>>>>>>> 0f8271c4db7ce7cbca612fd6a8c059dcb395a0c9
 			"height": 231.59381197139157,
 			"angle": 0,
 			"strokeColor": "#1e1e1e",
@@ -4123,11 +4129,19 @@
 			"index": "b1I",
 			"roundness": null,
 			"seed": 1591492623,
+<<<<<<< HEAD
+			"version": 766,
+			"versionNonce": 1384807288,
+			"isDeleted": false,
+			"boundElements": [],
+			"updated": 1740930932481,
+=======
 			"version": 719,
 			"versionNonce": 1755040326,
 			"isDeleted": false,
 			"boundElements": [],
 			"updated": 1740930951791,
+>>>>>>> 0f8271c4db7ce7cbca612fd6a8c059dcb395a0c9
 			"link": null,
 			"locked": false,
 			"text": "3.: \n- Перенос файловой структуры в вид:\n",
@@ -4144,8 +4158,13 @@
 		{
 			"id": "fzck4Pu5Xx62jyi-19Z6a",
 			"type": "image",
+<<<<<<< HEAD
+			"x": 5976.158020046849,
+			"y": -214.17498382610643,
+=======
 			"x": 6057.362879974219,
 			"y": -152.72698250410826,
+>>>>>>> 0f8271c4db7ce7cbca612fd6a8c059dcb395a0c9
 			"width": 965.5998535156252,
 			"height": 746.7305533854169,
 			"angle": 0,
@@ -4163,11 +4182,19 @@
 				"type": 3
 			},
 			"seed": 1886285729,
+<<<<<<< HEAD
+			"version": 295,
+			"versionNonce": 1268534392,
+			"isDeleted": false,
+			"boundElements": [],
+			"updated": 1740930932481,
+=======
 			"version": 248,
 			"versionNonce": 813076870,
 			"isDeleted": false,
 			"boundElements": [],
 			"updated": 1740930951791,
+>>>>>>> 0f8271c4db7ce7cbca612fd6a8c059dcb395a0c9
 			"link": null,
 			"locked": false,
 			"status": "saved",
@@ -4181,9 +4208,15 @@
 		{
 			"id": "YLh8zcd8",
 			"type": "text",
+<<<<<<< HEAD
+			"x": 5972.5597809089395,
+			"y": 601.3497861965994,
+			"width": 1395.5902099609375,
+=======
 			"x": 6029.541815062012,
 			"y": 674.9092004057462,
 			"width": 1628.1342163085938,
+>>>>>>> 0f8271c4db7ce7cbca612fd6a8c059dcb395a0c9
 			"height": 385.98968661898596,
 			"angle": 0,
 			"strokeColor": "#1e1e1e",
@@ -4198,11 +4231,19 @@
 			"index": "b1K",
 			"roundness": null,
 			"seed": 2062716591,
+<<<<<<< HEAD
+			"version": 1301,
+			"versionNonce": 1476621688,
+			"isDeleted": false,
+			"boundElements": [],
+			"updated": 1740930935650,
+=======
 			"version": 1270,
 			"versionNonce": 402026694,
 			"isDeleted": false,
 			"boundElements": [],
 			"updated": 1740930951791,
+>>>>>>> 0f8271c4db7ce7cbca612fd6a8c059dcb395a0c9
 			"link": null,
 			"locked": false,
 			"text": "4.: \n- Коннект фронта и бэка\n    - проверка id, исправление ошибок и т.д.\n    - если будут вопросы с localhost - зовете Петю\n",
@@ -4219,9 +4260,15 @@
 		{
 			"id": "CtzdlyUf",
 			"type": "text",
+<<<<<<< HEAD
+			"x": 5952.727022309976,
+			"y": 1017.3497709378112,
+			"width": 739.722900390625,
+=======
 			"x": 6043.015441902708,
 			"y": 1054.5749464855112,
 			"width": 860.7948608398438,
+>>>>>>> 0f8271c4db7ce7cbca612fd6a8c059dcb395a0c9
 			"height": 154.39587464759438,
 			"angle": 0,
 			"strokeColor": "#1e1e1e",
@@ -4236,11 +4283,19 @@
 			"index": "b1L",
 			"roundness": null,
 			"seed": 1335069039,
+<<<<<<< HEAD
+			"version": 1494,
+			"versionNonce": 1882214776,
+			"isDeleted": false,
+			"boundElements": [],
+			"updated": 1740930937517,
+=======
 			"version": 1430,
 			"versionNonce": 448292870,
 			"isDeleted": false,
 			"boundElements": [],
 			"updated": 1740930951791,
+>>>>>>> 0f8271c4db7ce7cbca612fd6a8c059dcb395a0c9
 			"link": null,
 			"locked": false,
 			"text": "5.: \n- А вас это ебать не должно",
@@ -4271,8 +4326,13 @@
 		"currentItemStartArrowhead": null,
 		"currentItemEndArrowhead": "arrow",
 		"currentItemArrowType": "round",
+<<<<<<< HEAD
+		"scrollX": 1457.3493004242766,
+		"scrollY": 1751.7312061754785,
+=======
 		"scrollX": -1501.7509889043959,
 		"scrollY": 3364.496463494649,
+>>>>>>> 0f8271c4db7ce7cbca612fd6a8c059dcb395a0c9
 		"zoom": {
 			"value": 0.15
 		},
