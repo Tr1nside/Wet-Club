@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ХАЙ САЛАМ.md",
+                "file": "Online IDE python/Tasks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ХАЙ САЛАМ"
+              "title": "Tasks"
             }
           }
         ],
@@ -183,8 +183,8 @@
   },
   "active": "6cc1c62b1353cbea",
   "lastOpenFiles": [
-    "Online IDE python/Tasks.md",
     "ХАЙ САЛАМ.md",
+    "Online IDE python/Tasks.md",
     "Online IDE python/online-ide-python.excalidraw",
     "Atom 4.0/static/js/script.js",
     "Atom 4.0/static/css/style.css",
