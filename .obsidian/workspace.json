@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Online IDE python/Tasks.md",
+                "file": "Гайд на коннект гита.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tasks"
+              "title": "Гайд на коннект гита"
             }
           }
         ],
@@ -197,8 +197,8 @@
   },
   "active": "52b160d0fe36c471",
   "lastOpenFiles": [
-    "Гайд на коннект гита.md",
     "Online IDE python/Tasks.md",
+    "Гайд на коннект гита.md",
     "ХАЙ САЛАМ.md",
     "Online IDE python/online-ide-python.excalidraw",
     "Atom 4.0/static/js/script.js",
