@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Гайд на коннект с помощью гита/Гайд.md",
+                "file": "ХАЙ САЛАМ.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Гайд"
+              "title": "ХАЙ САЛАМ"
             }
           },
           {
@@ -178,22 +178,21 @@
       "obsidian-excalidraw-plugin:Создать новый чертеж": false
     }
   },
-  "active": "6cc1c62b1353cbea",
+  "active": "a05e1c48871892a0",
   "lastOpenFiles": [
+    "Гайд на коннект с помощью гита/Гайд.md",
     "Гайд на коннект с помощью гита/autopush.ps1",
     "Гайд на коннект с помощью гита/autopull.ps1",
     "Гайд на коннект с помощью гита/auto_push.bat",
     "Гайд на коннект с помощью гита/auto_pull.bat",
     "Online IDE python/Tasks.md",
     "Online IDE python/online-ide-python.excalidraw",
-    "Гайд на коннект с помощью гита/Гайд.md",
     "Гайд на коннект с помощью гита",
     "ХАЙ САЛАМ.md",
     "Atom 4.0/static/js/script.js",
     "Atom 4.0/static/css/style.css",
     "Atom 4.0/__pycache__/main.cpython-312.pyc",
     "Atom 4.0/templates/index.html",
-    "Atom 4.0/static/js",
     "Cалам.md",
     "PIZDEC NAHUI.md",
     "Pasted image 20250302222016.png",
