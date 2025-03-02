@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tasks.md",
+                "file": "Online IDE python/Tasks.md",
                 "mode": "source",
                 "source": false
               },
@@ -166,9 +166,9 @@
       "obsidian-excalidraw-plugin:Создать новый чертеж": false
     }
   },
-  "active": "5e5a52c9654efa99",
+  "active": "a05e1c48871892a0",
   "lastOpenFiles": [
-    "Tasks.md",
+    "Online IDE python/Tasks.md",
     "Online IDE python/online-ide-python.excalidraw",
     "Excalidraw/Drawing 2025-03-02 21.48.42.excalidraw.md",
     "Excalidraw",
