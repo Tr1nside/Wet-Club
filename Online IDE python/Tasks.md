@@ -2,4 +2,4 @@
 
 И так гайд.
 Мы используем 4 скрипта. С расширением .bat надо поместить в авто загрузки. Они находиться по пути C:\Users\user\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\ . 
-Надо создать 
+Надо создать папку где буд
