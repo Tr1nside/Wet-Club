@@ -19,11 +19,7 @@ addfile2.onclick = function() {
 }
 
 delfile2.onclick = function() {
-<<<<<<< HEAD
-    file2.hidden = false;
-=======
-    file2.hidden = 1;
->>>>>>> 08502b23572e08c9bffb91064b0374363831e27d
+    file2.hidden = true;
     count -= 1
     if (count == 1){
         addfile2.hidden = false;
