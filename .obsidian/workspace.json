@@ -8,34 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5e5a52c9654efa99",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Online IDE python/Tasks.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Tasks"
-            }
-          },
-          {
-            "id": "ff80c3bde67fcae2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Online IDE python/Tasks.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Tasks"
-            }
-          },
-          {
             "id": "7c1e00bac68f5c85",
             "type": "leaf",
             "state": {
@@ -49,8 +21,7 @@
               "title": "Tasks"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
