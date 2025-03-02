@@ -39,14 +39,10 @@
             "id": "7c1e00bac68f5c85",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PIZDEC NAHUI.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "PIZDEC NAHUI"
+              "title": "Новая вкладка"
             }
           }
         ],
