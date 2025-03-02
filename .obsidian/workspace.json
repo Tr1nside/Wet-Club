@@ -195,16 +195,24 @@
       "obsidian-excalidraw-plugin:Создать новый чертеж": false
     }
   },
-  "active": "a05e1c48871892a0",
+  "active": "7c1e00bac68f5c85",
   "lastOpenFiles": [
+    "Atom 4.0/static/js/script.js",
+    "Atom 4.0/static/css/style.css",
+    "Atom 4.0/__pycache__/main.cpython-312.pyc",
+    "Atom 4.0/templates/index.html",
+    "Atom 4.0/static/js",
+    "Atom 4.0/static/css",
+    "Atom 4.0/__pycache__",
+    "Atom 4.0/templates",
+    "Atom 4.0/static",
+    "Atom 4.0/main.py",
+    "Atom 4.0/app.py",
     "Cалам.md",
-    "Online IDE python/online-ide-python.excalidraw",
     "Online IDE python/Tasks.md",
     "PIZDEC NAHUI.md",
     "Pasted image 20250302222016.png",
     "3232323.md",
-    "Excalidraw/Drawing 2025-03-02 21.48.42.excalidraw.md",
-    "Excalidraw",
-    "Online IDE python"
+    "Excalidraw/Drawing 2025-03-02 21.48.42.excalidraw.md"
   ]
 }
