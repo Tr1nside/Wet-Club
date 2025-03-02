@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Валера.md",
+                "file": "Tasks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Валера"
+              "title": "Tasks"
             }
           }
         ]
@@ -168,7 +168,7 @@
   },
   "active": "5e5a52c9654efa99",
   "lastOpenFiles": [
-    "Валера.md",
+    "Tasks.md",
     "Online IDE python/online-ide-python.excalidraw",
     "Excalidraw/Drawing 2025-03-02 21.48.42.excalidraw.md",
     "Excalidraw",
