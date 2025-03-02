@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3232323.md",
+                "file": "Online IDE python/Tasks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3232323"
+              "title": "Tasks"
             }
           }
         ],
@@ -181,11 +181,11 @@
       "obsidian-excalidraw-plugin:Создать новый чертеж": false
     }
   },
-  "active": "a05e1c48871892a0",
+  "active": "ff80c3bde67fcae2",
   "lastOpenFiles": [
-    "Online IDE python/Tasks.md",
-    "3232323.md",
     "Online IDE python/online-ide-python.excalidraw",
+    "3232323.md",
+    "Online IDE python/Tasks.md",
     "Excalidraw/Drawing 2025-03-02 21.48.42.excalidraw.md",
     "Excalidraw",
     "Online IDE python"
