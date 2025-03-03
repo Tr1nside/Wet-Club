@@ -62,18 +62,41 @@ if (!localStorage.getItem("darkMod")) {
     }
 }
 
+// При загрузке страницы проверяем, сохранена ли тема в localStorage
+const storedTheme = localStorage.getItem('theme');
+if (storedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    nightModeButton.textContent = '☀️';
+    for (const tabId in codeMirrorInstances) {
+        const cm = codeMirrorInstances[tabId];
+        cm.setOption("theme", "dracula");
+    }
+} else {
+    body.classList.remove('dark-mode');
+    nightModeButton.textContent = '🌙';
+    for (const tabId in codeMirrorInstances) {
+        const cm = codeMirrorInstances[tabId];
+        cm.setOption("theme", "default");
+    }
+}
+
 nightModeButton.addEventListener('click', () => {
-    localStorage.setItem("darkMod", darkMode);
     body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
+    
     // Изменение значка луны на солнце и обратно
-    nightModeButton.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    nightModeButton.textContent = isDark ? '☀️' : '🌙';
+
+    // Сохранение выбранной темы в localStorage
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
     // Обновление темы CodeMirror при смене режима
     for (const tabId in codeMirrorInstances) {
         const cm = codeMirrorInstances[tabId];
-        cm.setOption("theme", body.classList.contains('dark-mode') ? "dracula" : "default");
+        cm.setOption("theme", isDark ? "dracula" : "default");
     }
 });
+
 
 // Функция для обновления номеров строк
 function updateLineNumbers(cm, lineNumbers) {
