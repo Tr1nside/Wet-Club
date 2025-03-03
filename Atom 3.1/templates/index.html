@@ -29,9 +29,9 @@
 
         <div class="toolbar">
             <div class="toolbar-left">
-                <button class="button run-button"><i><img class="button-icons" src="img/play.svg"></i></button>
-                <button class="button save-button"><i><img class="button-icons" src="img/save.svg"></i></button>
-                <button class="button open-button"><i><img class="button-icons" src="img/load.svg"></i></button>
+                <button class="button run-button"><i><img class="button-icons" src="{{ url_for('static', filename='img/play.svg') }}"></i></button>
+                <button class="button save-button"><i><img class="button-icons" src="{{ url_for('static', filename='img/save.svg') }}"></i></button>
+                <button class="button open-button"><i><img class="button-icons" src="{{ url_for('static', filename='img/load.svg') }}"></i></button>
             </div>
             <div class="toolbar-right">
                 <button class="button download-button"><i><img class="button-icons" src="img/save-console-as-text.svg"></i></button>
