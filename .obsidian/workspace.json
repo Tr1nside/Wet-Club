@@ -180,6 +180,9 @@
   },
   "active": "6cc1c62b1353cbea",
   "lastOpenFiles": [
+    "Atom 3.1/venv/Lib/site-packages/pip/_vendor/resolvelib/compat/__pycache__/__init__.cpython-312.pyc",
+    "Atom 3.1/venv/Lib/site-packages/pip/_vendor/resolvelib/compat/__pycache__/collections_abc.cpython-312.pyc",
+    "Atom 3.1/venv/Lib/site-packages/pip/_vendor/resolvelib/compat/__pycache__",
     "Гайд на коннект с помощью гита/Гайд.md",
     "Online IDE python/Tasks.md",
     "Online IDE python/online-ide-python.excalidraw",
@@ -197,8 +200,6 @@
     "Atom 3.1/venv/Lib/site-packages/flask_socketio/__pycache__/test_client.cpython-312.pyc",
     "Atom 3.1/venv/Lib/site-packages/flask_socketio/__pycache__",
     "Atom 3.1/venv/Lib/site-packages/flask_socketio/__init__.py",
-    "Atom 3.1/venv/Lib/site-packages/flask_socketio/test_client.py",
-    "Atom 3.1/venv/Lib/site-packages/flask_socketio/namespace.py",
     "Atom 3.1/venv/Lib/site-packages/flask/sansio/README.md",
     "Atom 3.1/venv/Lib/site-packages/eventlet/zipkin/example/ex3.png",
     "Atom 3.1/venv/Lib/site-packages/eventlet/zipkin/example/ex2.png",
