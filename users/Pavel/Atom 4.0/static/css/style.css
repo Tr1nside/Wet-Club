@@ -1,13 +1,13 @@
 html{
     background-color: #FFFFFF;
-    overflow-x: hidden;
+    overflow-x: hidden; 
     overflow-y: hidden;
 }
 
 .n-1{
     background: linear-gradient(45deg, #30cfd0, #330867);
     height: 60px;
-
+    
 }
 .white{
     color: white;
@@ -20,7 +20,7 @@ html{
     font-family: 'roboto', url('fonts/main.ttf');
     font-weight: 700;
     font-size: 30px;
-
+    
 }
 .titlenav{
     margin-left: 100px;
@@ -44,7 +44,7 @@ html{
     position: relative;
     left: -380px;
     border-radius: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    
 }
 
 
@@ -79,6 +79,13 @@ html{
     height: 23px;
     white-space: nowrap;
     border: 0px;
+    border-radius: 5px;
+    padding-left: 2px;
+    background-color: #ffffff00;
+    color: black;
+    font-weight: 700;
+    user-select: none;
+    
 }
 
 .form-btn{
@@ -97,13 +104,13 @@ html{
 
 .secondary-form{
     width: 80%;
-    background-color: #e6e6e6;
+    background-color: #ffffff;
     position: relative;
     left: -380px;
     height: 270px;
     margin-top: 60px;
     border-radius: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    
 }
 .input-code{
     overflow-y: scroll;
@@ -113,7 +120,7 @@ html{
     margin-top: 20px;
     height: 520px;
     width: 101%;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    
 }
 
 .input-code-form{
@@ -124,7 +131,7 @@ html{
     top: -20px;
     height: 370px;
     width: 1320px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    
 }
 textarea:focus, input:focus
 {
@@ -133,7 +140,7 @@ textarea:focus, input:focus
 
 .numbers{
     position: relative;
-
+    
     top: 20px;
 }
 
@@ -151,13 +158,13 @@ textarea:focus, input:focus
     border: 1px solid #ddd;
     height: auto;
     margin-top: 20px;
-
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 .bt-group-el{
     position: relative;
     white-space: nowrap;
     top: -10px;
-
+    
 }
 .bt-group-2{
     position: relative;
@@ -205,7 +212,7 @@ textarea:focus, input:focus
 }
 
 [data-tooltip] {
-    position: relative; /* Относительное позиционирование */
+    position: relative; /* Относительное позиционирование */ 
    }
    [data-tooltip]::after {
     content: attr(data-tooltip); /* Выводим текст */
@@ -222,7 +229,7 @@ textarea:focus, input:focus
     background: linear-gradient(45deg, #30cfd0, #330867);
     height: 44px;
     z-index: 2;
-   }
+   } 
    [data-tooltip]:hover::after {
     opacity: 1; /* Показываем подсказку */
     top: -1px;
@@ -234,7 +241,7 @@ textarea:focus, input:focus
    }
 
    [data-tooltip1] {
-    position: relative; /* Относительное позиционирование */
+    position: relative; /* Относительное позиционирование */ 
    }
    [data-tooltip1]::after {
     content: attr(data-tooltip1); /* Выводим текст */
@@ -251,8 +258,8 @@ textarea:focus, input:focus
     background: linear-gradient(45deg, #30cfd0, #330867);
     height: 44px;
     z-index: 2;
-
-   }
+    
+   } 
    [data-tooltip1]:hover::after {
     opacity: 1; /* Показываем подсказку */
     top: -1px;
@@ -287,24 +294,25 @@ textarea:focus, input:focus
 
 .console-output{
     resize: none;
-    height: 270px;
+    height: 200px;
     border-radius: 20px;
     width: 1320px;
     position: relative;
     left: -24px;
     padding: 15px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
 .alert-item{
     background: linear-gradient(45deg, #9890e3, #b1f4cf);
     padding: 20px;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: 600;
     width: 300px;
     position: absolute;
     right: 50px;
     top: 50px;
-    z-index: 3;
+    z-index: 7;
     border-radius: 15px;
     animation: myAnimation 2s;
     animation-duration: 5s;
@@ -329,8 +337,13 @@ textarea:focus, input:focus
     left: 10px;
     width: 1320px;
     display: inline-block;
-
+    
+    
 }
 .btn-group-dw{
     position: absolute;
 }
+.ch.changes{
+    background-color: rgb(215, 250, 228);
+}
+
