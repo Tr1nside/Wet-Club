@@ -1,0 +1,434 @@
+.bg-1{
+    font-weight: 700;
+    color: black;
+    background-image: url("img/bg-main-3.jfif");
+    size: 100%;
+    
+    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+
+.bg-2{
+    overflow-x: hidden;
+    font-weight: 800;
+    color: black;
+    background-image: url("img/bg-main-3.jfif");
+    size: 100%;
+    
+    height: 10000px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+    overflow-y: hidden;
+}
+
+.main-nav{
+    background-image: url("img/gradient_nav.png");
+    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
+
+div{
+    font-size: 20pt;
+    color: white;
+    font-family: url("fonts/Intro.otf");
+}
+.text-au-reg{
+    color: black;
+    position: relative;
+    top: 10px;
+}
+
+.nav-item{
+    margin: 10px;
+}
+
+.sp{
+    margin-top: 18px;
+}
+
+.nit{
+    color: black;
+    background-color: none;
+    border-radius: 30px;
+    transition-duration:200ms;
+    margin-top: 15px;
+    height: 50px;
+
+    
+}
+
+.nit:hover{
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    transition-duration:200ms;
+}
+
+.font-nav{
+    font-weight: 500;
+}
+
+
+
+.icon_nav{
+    width: 54px;
+    height: 54px;
+    margin-top: 0px;
+    border-radius: 10px;
+}
+
+.text_nav{
+    margin-top:-5px ;
+}
+
+.main_els_bg1{
+    background-image: url("img/gradient_main_elements.png");
+    border-radius: 20px;
+    height: 500px;
+    width: 550px;
+}
+
+.main_els_bg2{
+    background-image: url("img/gradient_main_elements.png");
+    border-radius: 20px;
+    height: 500px;
+    width: 550px;
+    
+}
+
+.main_els_labels{
+    background-image: url("img/gradient_nav.png");
+    background-size: 100%;
+    border-top-left-radius: 20px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    border-bottom-right-radius:20px ;
+    height: 50px;
+    border-top-right-radius:18px ;
+}
+
+.main_els_buttons{
+    background-color: yellow;
+    
+    height: 50px;
+    border: 1px;
+    border-bottom-right-radius:20px ;
+    
+    border-top-right-radius:20px ;
+}
+
+
+
+.form-log{
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    border-radius: 30px;
+    margin-left: -50px;
+    margin-right: 200px;
+}
+
+.form-reg1{
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.form-re-log{
+    margin-top: 0px;
+    
+}
+
+.back-but{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(80, 80, 245);
+    border-radius: 100%;
+    border: 0px;
+    position: relative;
+    top: 45px;
+    left: 50px;
+}
+
+.back-but:hover{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(116, 116, 240);
+    border-radius: 100%;
+    border: 0px;
+    position: relative;
+    top: 45px;
+    left: 50px;
+    animation-duration: 1000ms;
+    transition: 100ms;
+}
+
+.back-but:active{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(145, 145, 255);
+    border-radius: 100%;
+    border: 0px;
+    position: relative;
+    top: 45px;
+    left: 50px;
+    animation-duration: 1.5s;
+}
+
+.arrow-but{
+    position: relative;
+    top: -3.3px;
+    left: 1px;
+    
+}
+
+.forminput{
+    color: black;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-bottom: 3px;
+    border-color: black;
+    
+}
+
+.reg-but-click{
+    
+    margin-left: 20px;
+    width: 15px;
+    height: 15px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+.text-check-but{
+    color: black;
+    font-size: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+.but-reg-log-style{
+    font-size: 20px;
+    border-radius: 20px;
+    margin-right: 20px;
+    border: 5px;
+    color: white;
+    background-image: url("img/gradient_main_elements.png");
+}
+
+.courses-element{
+    width: 1200px;
+    height: 300px;
+    background-color: white;
+    justify-content: center;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    margin: 30px;
+
+}
+.bg-courses-menu{
+    background: -webkit-linear-gradient(135deg, rgb(223, 223, 223) 27%, rgb(117, 210, 190) 73%);
+    background: -moz-linear-gradient(135deg, rgb(223, 223, 223) 27%, rgb(117, 210, 190) 73%);
+    background: linear-gradient(135deg, rgb(223, 223, 223) 27%, rgb(117, 210, 190) 73%);
+    width: 10%;
+    height: 300px;
+    margin-left: -100px;
+    border-top-left-radius: 25px;
+}
+.course-label{
+    position:relative;
+    top: 20px;
+    left: 20px;
+    
+}
+.course-discription{
+    color: black;
+    font-size: 20px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+.course-button{
+    background-image: url("img/gradient_nav.png");
+    border: 1px;
+    border-radius: 10px;
+    position: relative;
+    left: 88%;
+    top: 80px;
+}
+
+.dis-links-dec{
+    text-decoration: none;
+    color: white;
+}
+
+.excourse-menu{ 
+    height: 1000px;
+    
+}
+.course-menu{
+    background-color: white;
+    height: 2000px;
+    position: relative;
+    margin-right: 50%;
+    left: -2%;
+    width: 20rem;
+    
+    
+}
+
+.but-course-menu{
+    margin-top: 50px;
+    width: 20rem;
+    border: none;
+    height: 50px;
+    transition: 0.2s;
+}
+.but-course-menu:hover{
+    margin-top: 50px;
+    width: 20rem;
+    border: none;
+    background-color: black;
+    color:white;
+    height: 50px;
+    transition: 0.2s;
+    
+}
+.bt{
+    color: black;
+}
+
+.course-menu-element{
+    background-color: white;
+    width: 1150px;
+    height: 700px;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.teory1{
+    background-color: white ;
+    width: 70rem;
+    height: 700px;
+    border-radius: 20px;
+    
+}
+.video1{
+    background-color: white ;
+    width: 70rem;
+    height: 700px;
+    border-radius: 20px;
+}
+.practice1{
+    background-color: white ;
+    width: 70rem;
+    height: 700px;
+    border-radius: 20px;
+}
+.mt25{
+    position: relative;
+    top:25px;
+}
+.mat-nav{
+    background-color: none;  
+    height: 0px;
+    position: relative;
+    top: 50px;
+    width: 0px;
+    
+}
+
+.rem10{
+    width: 10rem;
+}
+
+.bi-cr-course{
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.f21{
+    font-size: 21px;
+}
+
+.teory-rectangle{
+    background-color: rgb(219, 219, 219);
+    width: 700px;
+    height: 500px;
+    margin-top: 25px;
+    position: relative;
+    left: 175px;
+    
+}
+
+.scroll_element{
+    list-style-type: none;
+    height: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden; 
+}
+.teorybt{
+    color: black;
+    font-size: 20px;
+    text-align: start;
+    margin: 10px;
+}
+
+.videogap{
+    border-radius: 10px;
+    width: 711px;
+    height: 400px;
+    border: 0px;
+}
+.videoplace{
+    background-color: rgb(255, 255, 255);
+    width: 700px;
+    height: 500px;
+    margin-top: 25px;
+    position: relative;
+    left: 175px;
+    margin-top: 75px;
+}
+
+.marker0{
+    width: 100%;
+    background-color: rgb(255, 86, 86);
+    height: 20px;
+    position: relative;
+    font-size: 15px;
+    color: rgb(66, 66, 66);
+}
+
+.marker1{
+    width: 100%;
+    background-color: rgb(143, 255, 148);
+    height: 20px;
+    position: relative;
+    font-size: 15px;
+    color: rgb(66, 66, 66);
+}
+
+.task{
+    position: relative;
+    top: 200px;
+    color: black;
+    font-size: 20px;
+}
