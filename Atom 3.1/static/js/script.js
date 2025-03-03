@@ -50,8 +50,15 @@ if (!localStorage.getItem("darkMod")) {
 } else {
     darkMode = localStorage.getItem("darkMod");
     if (darkMode) {
-    document.body.classList.toggle("dark", darkMode);  // Меняем класс для темы
-    editor.setOption("theme", darkMode ? "dracula" : "default"); // Меняем тему CodeMirror
+        body.classList.toggle('dark-mode');
+        // Изменение значка луны на солнце и обратно
+        nightModeButton.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+
+        // Обновление темы CodeMirror при смене режима
+        for (const tabId in codeMirrorInstances) {
+            const cm = codeMirrorInstances[tabId];
+            cm.setOption("theme", body.classList.contains('dark-mode') ? "dracula" : "default");
+        }
     }
 }
 
