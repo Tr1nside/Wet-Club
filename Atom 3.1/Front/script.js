@@ -240,7 +240,7 @@ initialInputElement.addEventListener('keydown', function (event) {
 
 const storedCode = localStorage.getItem("code");
 if (storedCode) {
-    document.getElementById("codeInput").value = storedCode; // Устанавливаем значение в поле ввода
+    document.getElementById("CodeMirror").value = storedCode; // Устанавливаем значение в поле ввода
 }
 
 const storedCons = localStorage.getItem("console");
@@ -292,7 +292,7 @@ function executeCode() {
 
 // Очистка консоли вывода
 function clearConsole() {
-    localStorage.setItem("console", '')
+    localStorage.setItem("con+sole", '')
     document.getElementById("console").innerText = "";
     document.getElementById("consoleInput").style.display = "none";  // Скрываем поле для ввода
 }
@@ -311,7 +311,7 @@ socket.on('console_output', (data) => {
     // Если сервер запросил ввод, показываем поле ввода
     document.getElementById("consoleInput").style.display = "block";
     document.getElementById("consoleInput").focus();
-});
+});+
 
 // Обработчик нажатия клавиши Enter в поле ввода консоли
 function handleConsoleKeyPress(event) {
