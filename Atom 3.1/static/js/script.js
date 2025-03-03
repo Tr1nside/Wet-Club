@@ -68,7 +68,6 @@ nightModeButton.addEventListener('click', () => {
         cm.setOption("theme", body.classList.contains('dark-mode') ? "dracula" : "default");
     
     }
-    localStorage.setItem("darkMod", darkMode);
 });
 
 // Функция для обновления номеров строк
