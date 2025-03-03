@@ -42,6 +42,19 @@ document.addEventListener('keydown', (event) => {
 });
 
 // Переключение между режимами
+let darkMode = false;
+
+if (!localStorage.getItem("darkMod")) {
+    localStorage.setItem("darkMod", false);
+    darkMode = false;
+} else {
+    darkMode = localStorage.getItem("darkMod");
+    if (darkMode) {
+    document.body.classList.toggle("dark", darkMode);  // Меняем класс для темы
+    editor.setOption("theme", darkMode ? "dracula" : "default"); // Меняем тему CodeMirror
+    }
+}
+
 nightModeButton.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
     // Изменение значка луны на солнце и обратно
@@ -233,3 +246,4 @@ initialInputElement.addEventListener('keydown', function (event) {
         finishEditingTab(initialTab);
     }
 });
+
