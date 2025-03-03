@@ -53,3 +53,183 @@ nightModeButton.addEventListener('click', () => {
         cm.setOption("theme", body.classList.contains('dark-mode') ? "dracula" : "default");
     }
 });
+
+// Функция для обновления номеров строк
+function updateLineNumbers(cm, lineNumbers) {
+    const numberOfLines = cm.lineCount();
+    let numbers = "";
+    for (let i = 1; i <= numberOfLines; i++) {
+        numbers += i + "<br>";
+    }
+    lineNumbers.innerHTML = numbers;
+}
+
+// Функция для создания новой вкладки и редактора
+function createNewTab() {
+    tabCounter++;
+    const newTabId = `tab${tabCounter}`;
+
+    // Создаем новую вкладку
+    const newTab = document.createElement('div');
+    newTab.classList.add('tab');
+    newTab.dataset.tab = newTabId;
+    newTab.innerHTML = `<span>file${tabCounter - 1}.py</span><span class="close-tab">×</span>
+                            <input type="text" class="tab-input" value="file${tabCounter - 1}.py">`;
+    tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="tab2"]'));
+
+    // Создаем контейнер для CodeMirror
+    const codeArea = document.createElement('div');
+    codeArea.classList.add('code-area');
+    codeArea.dataset.tabContent = newTabId;
+    document.querySelector('.container').insertBefore(codeArea, document.querySelector('.toolbar'));
+
+    // Инициализируем CodeMirror
+    const cm = CodeMirror(codeArea, {
+        mode: "python",
+        theme: body.classList.contains('dark-mode') ? "dracula" : "default",
+        lineNumbers: true,
+        gutters: ["CodeMirror-linenumbers"]
+    });
+
+    codeMirrorInstances[newTabId] = cm;
+
+    // Активируем новую вкладку
+    activateTab(newTab);
+
+    // Добавляем обработчик двойного клика
+    newTab.addEventListener('dblclick', function () {
+        startEditingTab(this);
+    });
+
+    // Добавляем обработчик для потери фокуса с input
+    const inputElement = newTab.querySelector('.tab-input');
+    inputElement.addEventListener('blur', function () {
+        finishEditingTab(newTab);
+    });
+    // Добавляем обработчик нажатия Enter
+    inputElement.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            finishEditingTab(newTab);
+        }
+    });
+}
+
+// Функция для активации вкладки
+function activateTab(tab) {
+    const tabId = tab.dataset.tab;
+
+    // Сначала деактивируем все вкладки и контент
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.code-area[data-tab-content]').forEach(content => {
+        content.style.display = 'none';
+    });
+
+    // Активируем выбранную вкладку и контент
+    tab.classList.add('active');
+    const codeArea = document.querySelector(`.code-area[data-tab-content="${tabId}"]`);
+    codeArea.style.display = 'block';
+
+    // Обновляем размеры CodeMirror
+    if (codeMirrorInstances[tabId]) {
+        codeMirrorInstances[tabId].refresh();
+    }
+}
+
+// Функция для закрытия вкладки
+function closeTab(tab) {
+    const tabId = tab.dataset.tab;
+
+    // Получаем элементы вкладки и контента
+    const tabElement = document.querySelector(`.tab[data-tab="${tabId}"]`);
+    const codeAreaElement = document.querySelector(`.code-area[data-tab-content="${tabId}"]`);
+
+    // Удаляем вкладку и контент
+    tabElement.remove();
+    codeAreaElement.remove();
+
+    // Удаляем экземпляр CodeMirror, если он есть
+    if (codeMirrorInstances[tabId]) {
+        //codeMirrorInstances[tabId].toTextArea(); // Не нужно, т.к. нет textarea
+        delete codeMirrorInstances[tabId];
+    }
+
+    // Если закрыли активную вкладку, активируем первую вкладку (если она существует)
+    if (tab.classList.contains('active')) {
+        const firstTab = document.querySelector('.tab:not([data-tab="tab2"])');
+        if (firstTab) {
+            activateTab(firstTab);
+        }
+    }
+}
+
+// Функция для начала редактирования вкладки
+function startEditingTab(tab) {
+    tab.classList.add('editing');
+    const inputElement = tab.querySelector('.tab-input');
+    inputElement.style.display = 'block';
+    inputElement.focus();
+}
+
+// Функция для завершения редактирования вкладки
+function finishEditingTab(tab) {
+    tab.classList.remove('editing');
+    const inputElement = tab.querySelector('.tab-input');
+    const spanElement = tab.querySelector('span');
+    spanElement.textContent = inputElement.value;
+    inputElement.style.display = 'none';
+}
+
+// Обработчик клика на вкладки
+tabs.addEventListener('click', (event) => {
+    if (event.target.classList.contains('tab')) {
+        const tab = event.target;
+        if (tab.dataset.tab === 'tab2') { // Если кликнули на "+", создаем новую вкладку
+            createNewTab();
+        } else {
+            activateTab(tab);
+        }
+    } else if (event.target.classList.contains('close-tab')) {
+        const tab = event.target.parentNode;
+        closeTab(tab);
+    }
+});
+
+// Инициализация редактирования вкладки по двойному клику
+tabs.addEventListener('dblclick', (event) => {
+    if (event.target.classList.contains('tab') && event.target.dataset.tab !== 'tab2') {
+        startEditingTab(event.target);
+    }
+});
+
+// Инициализация начальной вкладки и CodeMirror
+const initialTab = document.querySelector('.tab[data-tab="tab1"]');
+const initialCodeArea = document.querySelector('.code-area[data-tab-content="tab1"]');
+
+// Инициализируем CodeMirror
+const cm = CodeMirror(initialCodeArea, {
+    mode: "python",
+    theme: body.classList.contains('dark-mode') ? "dracula" : "default",
+    lineNumbers: true,
+    gutters: ["CodeMirror-linenumbers"]
+});
+
+codeMirrorInstances['tab1'] = cm;
+activateTab(initialTab);
+
+// Добавляем обработчик двойного клика
+initialTab.addEventListener('dblclick', function () {
+    startEditingTab(this);
+});
+
+// Добавляем обработчик для потери фокуса с input
+const initialInputElement = initialTab.querySelector('.tab-input');
+initialInputElement.addEventListener('blur', function () {
+    finishEditingTab(initialTab);
+});
+
+// Добавляем обработчик нажатия Enter
+initialInputElement.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        finishEditingTab(initialTab);
+    }
+});
