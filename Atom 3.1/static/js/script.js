@@ -56,7 +56,7 @@ if (!localStorage.getItem("darkMod")) {
 }
 
 nightModeButton.addEventListener('click', () => {
-    localStorage.setItem("darkMod", darkMode);
+    // localStorage.setItem("darkMod", darkMode);
     body.classList.toggle('dark-mode');
     // Изменение значка луны на солнце и обратно
     nightModeButton.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
