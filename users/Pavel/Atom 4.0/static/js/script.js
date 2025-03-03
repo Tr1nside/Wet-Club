@@ -1,5 +1,25 @@
+
+const socket = io();
+
+let editor = CodeMirror.fromTextArea(document.getElementById('codeInput'), {
+    lineNumbers: true,
+    mode: "python",  // Устанавливаем Python как язык для подсветки
+    theme: "default" // Устанавливаем стандартную тему
+});
+editor.setSize(1320, 370);
+
+
+editor.on('change', function () {
+    const code = editor.getValue();
+    localStorage.setItem("code", code); // Сохраняем текущее значение в localStorage
+});
+
+
+
+
 alertitem = document.getElementById("alert-item");
 alertitem.hidden = true;
+file1 = document.getElementById("file1");
 file2 = document.getElementById("file2");
 file3 = document.getElementById("file3");
 delfile2 = document.getElementById("delfile2");
@@ -9,75 +29,178 @@ addfile3 = document.getElementById("addfile3");
 filer1 = document.getElementById("fileredact1");
 filer2 = document.getElementById("fileredact2");
 filer3 = document.getElementById("fileredact3");
+
+filere1 = document.getElementById('file1re');
+filere2 = document.getElementById('file2re');
+filere3 = document.getElementById('file3re');
+
+filer1.hidden = false;
+filer2.hidden = true;
+filer3.hidden = true;
+
+let create2 = 0
+let create3 = 0
+
+file1.setAttribute('style', 'background: white;')
+file2.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+file3.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+filere1.setAttribute('style', 'font-weight: 700;')
+filere2.setAttribute('style', 'font-weight: 400;')
+filere3.setAttribute('style', 'font-weight: 400;')
+
+filere1.onclick = function () {
+    filer1.hidden = false;
+    filer2.hidden = true;
+    filer3.hidden = true;
+    file1.setAttribute('style', 'background: white;')
+    file2.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    file3.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    filere1.setAttribute('style', 'font-weight: 700;')
+    filere2.setAttribute('style', 'font-weight: 400;')
+    filere3.setAttribute('style', 'font-weight: 400;')
+}
+filere2.onclick = function () {
+    filer1.hidden = true;
+    filer2.hidden = false;
+    filer3.hidden = true;
+    file1.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    file2.setAttribute('style', 'background: white;')
+    file3.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    filere1.setAttribute('style', 'font-weight: 400;')
+    filere2.setAttribute('style', 'font-weight: 700;')
+    filere3.setAttribute('style', 'font-weight: 400;')
+}
+filere3.onclick = function () {
+    filer1.hidden = true;
+    filer2.hidden = true;
+    filer3.hidden = false;
+    file1.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    file2.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    file3.setAttribute('style', 'background: white;')
+    filere1.setAttribute('style', 'font-weight: 400;')
+    filere2.setAttribute('style', 'font-weight: 400;')
+    filere3.setAttribute('style', 'font-weight: 700;')
+}
+
+
+
+
 file2.hidden = true;
 file3.hidden = true;
 let count = 1
-addfile2.onclick = function() {
+addfile2.onclick = function () {
     file2.hidden = false;
     count += 1;
     addfile2.hidden = true;
+    filer1.hidden = true;
+    filer2.hidden = false;
+    filer3.hidden = true;
+    if (create2 == 0) {
+        const editor1 = CodeMirror.fromTextArea(document.getElementById('codeInput1'), {
+            lineNumbers: true,
+            mode: "python",  // Устанавливаем Python как язык для подсветки
+            theme: "default" // Устанавливаем стандартную тему
+        });
+        editor1.setSize(1320, 370);
+        editor1.refresh();
+        create2 += 1;
+    }
+    file1.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    file2.setAttribute('style', 'background: white;')
+    file3.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    filere1.setAttribute('style', 'font-weight: 400;')
+    filere2.setAttribute('style', 'font-weight: 700;')
+    filere3.setAttribute('style', 'font-weight: 400;')
 }
 
-delfile2.onclick = function() {
+delfile2.onclick = function () {
     file2.hidden = true;
     count -= 1
-    if (count == 1){
+    if (count == 1) {
         addfile2.hidden = false;
     }
+    filer1.hidden = false;
+    filer2.hidden = true;
+    filer3.hidden = true;
+    file1.setAttribute('style', 'background: white;')
+    file2.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    file3.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    filere1.setAttribute('style', 'font-weight: 700;')
+    filere2.setAttribute('style', 'font-weight: 400;')
+    filere3.setAttribute('style', 'font-weight: 400;')
 }
 
-addfile3.onclick = function() {
+addfile3.onclick = function () {
     file3.hidden = false;
     addfile3.hidden = true;
     count += 1;
+    filer1.hidden = true;
+    filer2.hidden = true;
+    filer3.hidden = false;
+    if (create3 == 0) {
+        const editor2 = CodeMirror.fromTextArea(document.getElementById('codeInput2'), {
+            lineNumbers: true,
+            mode: "python",  // Устанавливаем Python как язык для подсветки
+            theme: "default" // Устанавливаем стандартную тему
+        });
+        editor2.setSize(1320, 370);
+        editor2.refresh();
+        create3 += 1;
+    }
+    file1.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    file2.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    file3.setAttribute('style', 'background: white;')
+    filere1.setAttribute('style', 'font-weight: 400;')
+    filere2.setAttribute('style', 'font-weight: 400;')
+    filere3.setAttribute('style', 'font-weight: 700;')
 }
 
-delfile3.onclick = function() {
+delfile3.onclick = function () {
     file3.hidden = true;
     addfile3.hidden = false;
     count -= 1;
-    if (count == 1){
+    if (count == 1) {
         addfile2.hidden = false;
     }
+    filer1.hidden = false;
+    filer2.hidden = true;
+    filer3.hidden = true;
+    file1.setAttribute('style', 'background: white;')
+    file2.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    file3.setAttribute('style', 'background: linear-gradient(45deg, #9890e3, #b1f4cf);')
+    filere1.setAttribute('style', 'font-weight: 700;')
+    filere2.setAttribute('style', 'font-weight: 400;')
+    filere3.setAttribute('style', 'font-weight: 400;')
 }
 
-const socket = io();
-
-let editor = CodeMirror.fromTextArea(document.getElementById('codeInput'), {
-lineNumbers: true,
-mode: "python",  // Устанавливаем Python как язык для подсветки
-theme: "default" // Устанавливаем стандартную тему
-});
-editor.setSize(1320,370);
-
-
-editor.on('change', function() {
-    const code = editor.getValue();
-    localStorage.setItem("code", code); // Сохраняем текущее значение в localStorage
-});
 
 
 document.getElementById('changed2').hidden = true;
-document.getElementById('changed1').onclick = function() {
+document.getElementById('changed1').onclick = function () {
     document.getElementById('changed2').hidden = false;
     document.getElementById('changed1').hidden = true;
 }
-document.getElementById('changed2').onclick = function() {
+document.getElementById('changed2').onclick = function () {
     document.getElementById('changed1').hidden = false;
     document.getElementById('changed2').hidden = true;
 }
-console_out = document.getElementById("console_out");
+
+
+cleartext = document.getElementById("console-output");
 concleartr = document.getElementById("consoletr");
-concleartr.onclick = function() {
+concleartr.onclick = function () {
     cleartext.value = "";
 }
 
 document.querySelector('.image-copy').addEventListener('click', () => {
-    navigator.clipboard.writeText(document.getElementById('console_out').value);
+    navigator.clipboard.writeText(document.getElementById('console-output').value);
     alertitem.hidden = false;
 
     setTimeout(() => alertitem.hidden = true, 5000);
 })
+
+
+
 
 const storedCode = localStorage.getItem("code");
 if (storedCode) {
