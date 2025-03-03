@@ -12,7 +12,7 @@
 
 <body>
     <div class="header">
-        <div class="header-title"><img src="{{ url_for('static', filename='img/logo.png') }}" class="logo-style">AiLab WEB</div>
+        <div class=""><img src="{{ url_for('static', filename='img/logo.png') }}" class="logo-style">AiLab WEB</div>
         <div class="night-mode">🌙</div>
     </div>
 
@@ -29,21 +29,21 @@
 
         <div class="toolbar">
             <div class="toolbar-left">
-                <button class="button run-button"><i><img class="button-icons" src="{{ url_for('static', filename='img/play.svg') }}"></i></button>
-                <button class="button save-button"><i><img class="button-icons" src="{{ url_for('static', filename='img/save.svg') }}"></i></button>
-                <button class="button open-button"><i><img class="button-icons" src="{{ url_for('static', filename='img/load.svg') }}"></i></button>
+                <button class="button run-button" onclick="executeCode()"><i><img class="button-icons" src="{{ url_for('static', filename='img/play.svg') }}"></i></button>
+                <button class="button save-button" onclick="saveCodeToFile()"><i><img class="button-icons" src="{{ url_for('static', filename='img/save.svg') }}"></i></button>
+                <button class="button open-button" onclick="loadFile()"><i><img class="button-icons" src="{{ url_for('static', filename='img/load.svg') }}"></i></button>
             </div>
             <div class="toolbar-right">
-                <button class="button download-button"><i><img class="button-icons" src="{{ url_for('static', filename='img/save-console-as-text.svg') }}"></i></button>
-                <button class="button text-button"><i><img class="button-icons" src="{{ url_for('static', filename='img/play.svg') }}"></i></button>
-                <button class="button delete-button"><i><img class="button-icons" src="{{ url_for('static', filename='img/del-console.svg') }}"></i></button>
+                <button class="button download-button" onclick="saveConsoleToFile()"><i><img class="button-icons" src="{{ url_for('static', filename='img/save-console-as-text.svg') }}"></i></button>
+                <button class="button text-button" onclick="copyToClipboard()"><i><img class="button-icons" src="{{ url_for('static', filename='img/play.svg') }}"></i></button>
+                <button class="button delete-button" onclick="clearConsole()"><i><img class="button-icons" src="{{ url_for('static', filename='img/del-console.svg') }}"></i></button>
             </div>
         </div>
 
         <div class="console">
             <div class="console-label">Консоль</div>
             <textarea class="console-output" readonly></textarea>
-            <textarea class="console-input" placeholder="" readonly></textarea>
+            <textarea class="console-input" id="consoleInput" placeholder="" readonly></textarea>
         </div>
     </div>
 
