@@ -42,7 +42,22 @@ document.addEventListener('keydown', (event) => {
 });
 
 // Переключение между режимами
+
+let darkMode = false;
+
+if (!localStorage.getItem("darkMod")) {
+    localStorage.setItem("darkMod", false);
+    darkMode = false;
+} else {
+    darkMode = localStorage.getItem("darkMod");
+    if (darkMode) {
+        document.body.classList.toggle("dark", darkMode);  // Меняем класс для темы
+        editor.setOption("theme", darkMode ? "dracula" : "default"); // Меняем тему CodeMirror
+    }
+}
+
 nightModeButton.addEventListener('click', () => {
+    darkMode = !darkMode
     body.classList.toggle('dark-mode');
     // Изменение значка луны на солнце и обратно
     nightModeButton.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
@@ -51,6 +66,7 @@ nightModeButton.addEventListener('click', () => {
     for (const tabId in codeMirrorInstances) {
         const cm = codeMirrorInstances[tabId];
         cm.setOption("theme", body.classList.contains('dark-mode') ? "dracula" : "default");
+    
     }
 });
 
@@ -326,9 +342,9 @@ function handleConsoleKeyPress(event) {
     }
 }
 
-// Функция для сохранения содержимого кода в текстовый файл
+// Функция для сохранения содержимого консоли в текстовый файл
 function saveCodeToFile() {
-    const consoleContent = document.getElementById("codeInput").innerText;  // Получаем текст кода
+    const consoleContent = document.getElementById("codeInput").innerText;  // Получаем текст консоли
     const blob = new Blob([consoleContent], { type: "text/plain;charset=utf-8" });  // Создаём Blob объект
 
     // Создаём ссылку для скачивания
@@ -404,7 +420,6 @@ function copyToClipboard() {
             console.error("Ошибка при копировании: ", err);  // Логируем ошибку, если что-то пошло не так
         });
 }
-
 // Функция для загрузки файла и вставки его содержимого в редактор
 function loadFile() {
     const fileInput = document.getElementById("fileInput"); // Получаем input-файл
