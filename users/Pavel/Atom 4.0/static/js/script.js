@@ -14,7 +14,7 @@ editor.on('change', function () {
     localStorage.setItem("code", code); // Сохраняем текущее значение в localStorage
 });
 
--
+-+
 
 alertitem = document.getElementById("alert-item");
 alertitem.hidden = true;
