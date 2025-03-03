@@ -251,9 +251,6 @@ initialInputElement.addEventListener('keydown', function (event) {
 });
 
 
-// ------------------------------------------------------------
-
-
 const storedCode = localStorage.getItem("code");
 if (storedCode) {
     document.getElementById("CodeMirror").value = storedCode; // Устанавливаем значение в поле ввода
@@ -266,15 +263,6 @@ if (storedCode) {
 
 const socket = io();
 
-
-
-
-
-
-
-
-
-
 // Инициализация редактора CodeMirror с настройками
 let editor = CodeMirror.fromTextArea(document.getElementById('codeInput'), {
     lineNumbers: true,
@@ -286,34 +274,6 @@ editor.on('change', function () {
     const code = editor.getValue();
     localStorage.setItem("code", code); // Сохраняем текущее значение в localStorage
 });
-
-
-
-
-
-
-
-
-// Переключение между светлой и тёмной темой
-let darkMode = false;
-
-if (!localStorage.getItem("darkMod")) {
-    localStorage.setItem("darkMod", false);
-    darkMode = false;
-} else {
-    darkMode = localStorage.getItem("darkMod");
-    if (darkMode) {
-        document.body.classList.toggle("dark", darkMode);  // Меняем класс для темы
-        editor.setOption("theme", darkMode ? "dracula" : "default"); // Меняем тему CodeMirror
-    }
-}
-
-function toggleTheme() {
-    darkMode = !darkMode;
-    localStorage.setItem("darkMod", darkMode);
-    document.body.classList.toggle("dark", darkMode);  // Меняем класс для темы
-    editor.setOption("theme", darkMode ? "dracula" : "default"); // Меняем тему CodeMirror
-}
 
 // Отправка кода на сервер для выполнения
 function executeCode() {
