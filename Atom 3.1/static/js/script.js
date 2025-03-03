@@ -264,6 +264,12 @@ if (storedCode) {
 
 const socket = io();
 
+// Инициализация редактора CodeMirror с настройками
+let editor = CodeMirror.fromTextArea(document.getElementById('codeInput'), {
+    lineNumbers: true,
+    mode: "python",  // Устанавливаем Python как язык для подсветки
+    theme: "default" // Устанавливаем стандартную тему
+});
 
 editor.on('change', function () {
     const code = editor.getValue();
@@ -279,7 +285,7 @@ function executeCode() {
 
 // Очистка консоли вывода
 function clearConsole() {
-    localStorage.setItem("con+sole", '')
+    localStorage.setItem("console", '')
     document.getElementById("console").innerText = "";
     document.getElementById("consoleInput").style.display = "none";  // Скрываем поле для ввода
 }
