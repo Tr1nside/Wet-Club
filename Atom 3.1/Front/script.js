@@ -326,9 +326,9 @@ function handleConsoleKeyPress(event) {
     }
 }
 
-// Функция для сохранения содержимого консоли в текстовый файл
+// Функция для сохранения содержимого кода в текстовый файл
 function saveCodeToFile() {
-    const consoleContent = document.getElementById("codeInput").innerText;  // Получаем текст консоли
+    const consoleContent = document.getElementById("codeInput").innerText;  // Получаем текст кода
     const blob = new Blob([consoleContent], { type: "text/plain;charset=utf-8" });  // Создаём Blob объект
 
     // Создаём ссылку для скачивания
@@ -404,6 +404,7 @@ function copyToClipboard() {
             console.error("Ошибка при копировании: ", err);  // Логируем ошибку, если что-то пошло не так
         });
 }
+
 // Функция для загрузки файла и вставки его содержимого в редактор
 function loadFile() {
     const fileInput = document.getElementById("fileInput"); // Получаем input-файл
