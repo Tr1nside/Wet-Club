@@ -11,14 +11,12 @@
             "id": "6cc1c62b1353cbea",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Гайд на коннект с помощью гита/Гайд.md",
-                "mode": "source",
-                "source": false
+                "file": "Online IDE python/online-ide-python.excalidraw"
               },
-              "icon": "lucide-file",
-              "title": "Гайд"
+              "icon": "excalidraw-icon",
+              "title": "online-ide-python"
             }
           },
           {
@@ -180,8 +178,8 @@
   },
   "active": "6cc1c62b1353cbea",
   "lastOpenFiles": [
-    "Online IDE python/Tasks.md",
     "Гайд на коннект с помощью гита/Гайд.md",
+    "Online IDE python/Tasks.md",
     "users/David",
     "users/Новая папка",
     "users/Pavel",
