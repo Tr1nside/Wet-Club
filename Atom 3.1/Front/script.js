@@ -51,16 +51,8 @@ if (!localStorage.getItem("darkMod")) {
 } else {
     darkMode = localStorage.getItem("darkMod");
     if (darkMode) {
-        body.classList.toggle('dark-mode');
-        // Изменение значка луны на солнце и обратно
-        nightModeButton.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
-
-        // Обновление темы CodeMirror при смене режима
-        for (const tabId in codeMirrorInstances) {
-            const cm = codeMirrorInstances[tabId];
-            cm.setOption("theme", body.classList.contains('dark-mode') ? "dracula" : "default");
-        
-        }
+        document.body.classList.toggle("dark", darkMode);  // Меняем класс для темы
+        editor.setOption("theme", darkMode ? "dracula" : "default"); // Меняем тему CodeMirror
     }
 }
 
@@ -76,7 +68,6 @@ nightModeButton.addEventListener('click', () => {
         cm.setOption("theme", body.classList.contains('dark-mode') ? "dracula" : "default");
     
     }
-    localStorage.setItem("darkMod", darkMode);
 });
 
 // Функция для обновления номеров строк
@@ -275,6 +266,15 @@ if (storedCode) {
 
 const socket = io();
 
+
+
+
+
+
+
+
+
+
 // Инициализация редактора CodeMirror с настройками
 let editor = CodeMirror.fromTextArea(document.getElementById('codeInput'), {
     lineNumbers: true,
@@ -288,6 +288,32 @@ editor.on('change', function () {
 });
 
 
+
+
+
+
+
+
+// Переключение между светлой и тёмной темой
+let darkMode = false;
+
+if (!localStorage.getItem("darkMod")) {
+    localStorage.setItem("darkMod", false);
+    darkMode = false;
+} else {
+    darkMode = localStorage.getItem("darkMod");
+    if (darkMode) {
+        document.body.classList.toggle("dark", darkMode);  // Меняем класс для темы
+        editor.setOption("theme", darkMode ? "dracula" : "default"); // Меняем тему CodeMirror
+    }
+}
+
+function toggleTheme() {
+    darkMode = !darkMode;
+    localStorage.setItem("darkMod", darkMode);
+    document.body.classList.toggle("dark", darkMode);  // Меняем класс для темы
+    editor.setOption("theme", darkMode ? "dracula" : "default"); // Меняем тему CodeMirror
+}
 
 // Отправка кода на сервер для выполнения
 function executeCode() {
