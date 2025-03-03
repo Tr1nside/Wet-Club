@@ -113,7 +113,7 @@ body.dark-mode .tab.active:hover {
     height: 40px;
     background: linear-gradient(45deg, #30cfd0, #330867);
     border-radius: 5px;
-    rotate: 110deg;
+    /* rotate: 110deg; */
 }
 
 .header-title {
