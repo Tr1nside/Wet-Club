@@ -42,18 +42,18 @@ document.addEventListener('keydown', (event) => {
 });
 
 // Переключение между режимами
-let darkMode = false;
+// let darkMode = false;
 
-if (!localStorage.getItem("darkMod")) {
-    localStorage.setItem("darkMod", false);
-    darkMode = false;
-} else {
-    darkMode = localStorage.getItem("darkMod");
-    if (darkMode) {
-    document.body.classList.toggle("dark", darkMode);  // Меняем класс для темы
-    editor.setOption("theme", darkMode ? "dracula" : "default"); // Меняем тему CodeMirror
-    }
-}
+// if (!localStorage.getItem("darkMod")) {
+//     localStorage.setItem("darkMod", false);
+//     darkMode = false;
+// } else {
+//     darkMode = localStorage.getItem("darkMod");
+//     if (darkMode) {
+//     document.body.classList.toggle("dark", darkMode);  // Меняем класс для темы
+//     editor.setOption("theme", darkMode ? "dracula" : "default"); // Меняем тему CodeMirror
+//     }
+// }
 
 nightModeButton.addEventListener('click', () => {
     // localStorage.setItem("darkMod", darkMode);
