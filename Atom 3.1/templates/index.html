@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ailab WEB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        
+        <div class="header-title"><img src="img/logo.png" class="logo-style">AiLab WEB</div>
+        <div class="night-mode">🌙</div>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="tab1"><span>main.py</span><span class="close-tab">×</span>
+                <input type="text" class="tab-input" value="main.py">
+            </div>
+            <div class="tab" data-tab="tab2">+</div>
+        </div>
+
+        <!-- Заменили div.editor на div с id для CodeMirror -->
+        <div class="code-area" data-tab-content="tab1"></div>
+
+        <div class="toolbar">
+            <div class="toolbar-left">
+                <button class="button run-button"><i><img class="button-icons" src="img/play.svg"></i></button>
+                <button class="button save-button"><i><img class="button-icons" src="img/save.svg"></i></button>
+                <button class="button open-button"><i><img class="button-icons" src="img/load.svg"></i></button>
+            </div>
+            <div class="toolbar-right">
+                <button class="button download-button"><i><img class="button-icons" src="img/save-console-as-text.svg"></i></button>
+                <button class="button text-button"><i><img class="button-icons" src="img/save-console-as-file.svg"></i></button>
+                <button class="button delete-button"><i><img class="button-icons" src="img/del-console.svg"></i></button>
+            </div>
+        </div>
+
+        <div class="console">
+            <div class="console-label">Консоль</div>
+            <textarea class="console-output" readonly></textarea>
+            <textarea class="console-input" placeholder="" readonly></textarea>
+        </div>
+    </div>
+
+    <div class="footer">
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
