@@ -178,6 +178,7 @@
   },
   "active": "6cc1c62b1353cbea",
   "lastOpenFiles": [
+    "Atom 3.1/static/css/style2.css",
     "Atom 3.1/venv/Lib/site-packages/flask_socketio/__pycache__/namespace.cpython-312.pyc",
     "Atom 3.1/venv/Lib/site-packages/flask_socketio/__pycache__/__init__.cpython-312.pyc",
     "Atom 3.1/venv/Lib/site-packages/flask_socketio/__pycache__/test_client.cpython-312.pyc",
@@ -188,7 +189,6 @@
     "Atom 3.1/venv/Lib/site-packages/flask_socketio",
     "Atom 3.1/venv/Lib/site-packages/python_socketio-5.12.1.dist-info/INSTALLER",
     "Atom 3.1/venv/Lib/site-packages/python_socketio-5.12.1.dist-info/WHEEL",
-    "Atom 3.1/venv/Lib/site-packages/python_socketio-5.12.1.dist-info/top_level.txt",
     "Atom 3.1/venv/Lib/site-packages/flask/sansio/README.md",
     "Atom 3.1/venv/Lib/site-packages/eventlet/zipkin/example/ex3.png",
     "Atom 3.1/venv/Lib/site-packages/eventlet/zipkin/example/ex2.png",
