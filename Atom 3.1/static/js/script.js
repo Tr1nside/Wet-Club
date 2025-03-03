@@ -264,12 +264,6 @@ if (storedCode) {
 
 const socket = io();
 
-// Инициализация редактора CodeMirror с настройками
-let editor = CodeMirror.fromTextArea(document.getElementById('codeInput'), {
-    lineNumbers: true,
-    mode: "python",  // Устанавливаем Python как язык для подсветки
-    theme: "default" // Устанавливаем стандартную тему
-});
 
 editor.on('change', function () {
     const code = editor.getValue();
