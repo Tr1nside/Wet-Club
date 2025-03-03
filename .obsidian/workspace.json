@@ -11,12 +11,14 @@
             "id": "6cc1c62b1353cbea",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Online IDE python/online-ide-python.excalidraw"
+                "file": "Online IDE python/Tasks.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "online-ide-python"
+              "icon": "lucide-file",
+              "title": "Tasks"
             }
           },
           {
@@ -178,8 +180,8 @@
   },
   "active": "6cc1c62b1353cbea",
   "lastOpenFiles": [
-    "Online IDE python/Tasks.md",
     "Online IDE python/online-ide-python.excalidraw",
+    "Online IDE python/Tasks.md",
     "Atom 3.1/static/img/save.svg",
     "Atom 3.1/static/img/save-console-as-text.svg",
     "Atom 3.1/static/img/logo.png",
