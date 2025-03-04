@@ -46,7 +46,25 @@ function toggleTheme() {
 // Отправка кода на сервер для выполнения
 function executeCode() {
     clearConsole();  // Очищаем консоль перед новым выводом
-    const code = editor.getValue();  // Получаем текст из редактора
+
+    // Находим активную вкладку
+    const activeTab = document.querySelector('.tab.active');
+    if (!activeTab) {
+        consoleOutput.value += "\nОшибка: активная вкладка не найдена.";
+        return;
+    }
+
+    // Получаем идентификатор активной вкладки и соответствующий экземпляр CodeMirror
+    const tabId = activeTab.dataset.tab;
+    const activeEditor = codeMirrorInstances[tabId];
+
+    if (!activeEditor) {
+        consoleOutput.value += "\nОшибка: не найден редактор для активной вкладки.";
+        return;
+    }
+
+    // Получаем код из активного редактора
+    const code = activeEditor.getValue();
     socket.emit('execute', code);  // Отправляем код на сервер через WebSocket
 }
 
