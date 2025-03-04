@@ -11,20 +11,14 @@
             "id": "ea2bc4f538dbc8dc",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Online IDE python/Задачи.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "Online IDE python/Без названия.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-trello",
-              "title": "Задачи"
+              "icon": "lucide-file",
+              "title": "Без названия"
             }
           }
         ]
@@ -175,6 +169,8 @@
   },
   "active": "ea2bc4f538dbc8dc",
   "lastOpenFiles": [
+    "Online IDE python/Задачи.md",
+    "Online IDE python/Без названия.md",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__/weakref_finalize.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__/__init__.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__/makefile.cpython-312.pyc",
@@ -185,7 +181,6 @@
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/util/__pycache__/wait.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/util/__pycache__/url.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/util/__pycache__/timeout.cpython-312.pyc",
-    "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/util/__pycache__/ssl_match_hostname.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/more.png",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/less.png",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
@@ -205,7 +200,6 @@
     "Atom 3.1 04.03/venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
     "Atom 3.1 04.03/venv/Lib/site-packages/flask/sansio/README.md",
     "Atom 3.1 04.03/README.md",
-    "Online IDE python/Задачи.md",
     "Online IDE python/Tasks.md",
     "Excalidraw/Drawing 2025-03-04 16.48.31.excalidraw.md",
     "Гайд на коннект с помощью гита/Гайд.md",
