@@ -11,20 +11,14 @@
             "id": "ea2bc4f538dbc8dc",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Online IDE python/Задачи.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "Online IDE python/Работа над пользователями/Без названия.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-trello",
-              "title": "Задачи"
+              "icon": "lucide-file",
+              "title": "Без названия"
             }
           }
         ]
@@ -173,8 +167,10 @@
       "obsidian-kanban:Создать новую доску": false
     }
   },
-  "active": "a05e1c48871892a0",
+  "active": "ea2bc4f538dbc8dc",
   "lastOpenFiles": [
+    "Online IDE python/Задачи.md",
+    "Online IDE python/Работа над пользователями/Без названия.md",
     "Online IDE python/Работа над пользователями",
     "Atom/app/forms.py",
     "Atom/__pycache__/config.cpython-312.pyc",
@@ -186,12 +182,10 @@
     "Atom/static/img/play443.svg",
     "Atom/static/img/play (2).svg",
     "Online IDE python/Описание.md",
-    "Online IDE python/Задачи.md",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__/weakref_finalize.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__/__init__.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__/makefile.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__/bindings.cpython-312.pyc",
-    "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__/__init__.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/more.png",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/less.png",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
