@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,15 +8,15 @@
     <title>Ailab WEB</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
     <div class="header">
-        <div class=""><img src="{{ url_for('static', filename='img/logo.png') }}" class="logo-style">AiLab WEB</div>
-        <div class="night-mode">🌙</div>
-    </div>
+        <div class="logo-block">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" class="logo-style">
+            <div class="header-title">AiLab WEB</div>
+        </div>
 
     <div class="container">
         <div class="tabs">
