@@ -394,3 +394,93 @@ function handleConsoleKeyPress(event) {
 }
 
 consoleInput.addEventListener('keydown', handleConsoleKeyPress);
+
+// Функция для сохранения содержимого консоли в текстовый файл
+function saveCodeToFile() {
+    const consoleContent = document.getElementById("codeInput").innerText;  // Получаем текст консоли
+    const blob = new Blob([consoleContent], { type: "text/plain;charset=utf-8" });  // Создаём Blob объект
+
+    // Создаём ссылку для скачивания
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);  // Преобразуем Blob в URL
+
+    // Указываем имя файла для скачивания
+    link.download = "code.txt";
+
+    // Симулируем клик по ссылке для начала скачивания
+    link.click();
+
+    // Обратите внимание: это вызовет диалоговое окно для сохранения файла в выбранной папке
+    // в зависимости от настроек браузера
+}
+
+function saveConsoleToFile() {
+    const consoleContent = document.getElementById("console").innerText;  // Получаем текст консоли
+    const blob = new Blob([consoleContent], { type: "text/plain;charset=utf-8" });  // Создаём Blob объект
+
+    // Создаём ссылку для скачивания
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);  // Преобразуем Blob в URL
+
+    // Указываем имя файла для скачивания
+    link.download = "console_output.txt";
+
+    // Симулируем клик по ссылке для начала скачивания
+    link.click();
+
+    // Обратите внимание: это вызовет диалоговое окно для сохранения файла в выбранной папке
+    // в зависимости от настроек браузера
+}
+
+// Функция для копирования содержимого консоли в буфер обмена
+function copyToClipboard() {
+    const consoleContent = document.getElementById("console").innerText;  // Получаем текст консоли
+    navigator.clipboard.writeText(consoleContent)  // Копируем текст в буфер обмена
+    .then(() => {
+        showNotification("Текст скопирован в буфер обмена!");  // Показываем уведомление
+    })
+    .catch(err => {
+        console.error("Ошибка при копировании: ", err);  // Логируем ошибку, если что-то пошло не так
+    });
+}
+// Функция для загрузки файла и вставки его содержимого в редактор
+function loadFile() {
+    const fileInput = document.getElementById("fileInput"); // Получаем input-файл
+    fileInput.click(); // Открываем диалог выбора файла
+
+    fileInput.onchange = function () {
+    const file = fileInput.files[0]; // Получаем выбранный файл
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        editor.setValue(event.target.result); // Устанавливаем содержимое в редактор
+    };
+    reader.readAsText(file);
+    };
+}
+
+
+// Функция для показа уведомлений
+function showNotification(message) {
+    const notification = document.createElement("div");
+    notification.className = "notification";  // Устанавливаем стиль уведомления
+    notification.innerText = message;  // Устанавливаем текст уведомления
+
+    // Добавляем уведомление в DOM
+    document.body.appendChild(notification);
+
+    // Показываем уведомление
+    setTimeout(() => {
+    notification.style.display = "block";  // Показываем уведомление
+    notification.style.opacity = 1;  // Устанавливаем полную видимость
+    }, 10);
+
+    // Через 3 секунды скрываем уведомление
+    setTimeout(() => {
+    notification.style.opacity = 0;  // Уменьшаем прозрачность до 0
+    setTimeout(() => {
+        notification.remove();  // Удаляем уведомление из DOM
+    }, 500);
+    }, 1000);
+}
