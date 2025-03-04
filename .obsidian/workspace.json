@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Online IDE python/Без названия.md",
+                "file": "Online IDE python/Описание.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Без названия"
+              "title": "Описание"
             }
           }
         ]
@@ -170,7 +170,7 @@
   "active": "ea2bc4f538dbc8dc",
   "lastOpenFiles": [
     "Online IDE python/Задачи.md",
-    "Online IDE python/Без названия.md",
+    "Online IDE python/Описание.md",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__/weakref_finalize.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__/__init__.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__/makefile.cpython-312.pyc",
