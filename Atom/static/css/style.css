@@ -108,6 +108,11 @@ body.dark-mode .tab.active:hover {
     align-items: center;
 }
 
+.header-title {
+    font-size: 34px;
+    margin-left: 1rem;
+}
+
 .logo-style{
     width: 40px;
     height: 40px;
