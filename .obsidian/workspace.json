@@ -173,8 +173,9 @@
       "obsidian-kanban:Создать новую доску": false
     }
   },
-  "active": "ea2bc4f538dbc8dc",
+  "active": "a05e1c48871892a0",
   "lastOpenFiles": [
+    "Online IDE python/Без названия",
     "Atom/app/forms.py",
     "Atom/__pycache__/config.cpython-312.pyc",
     "Atom/__pycache__",
@@ -191,7 +192,6 @@
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__/makefile.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__/bindings.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__/__init__.cpython-312.pyc",
-    "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__/low_level.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/more.png",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/less.png",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
