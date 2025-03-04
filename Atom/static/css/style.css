@@ -426,9 +426,9 @@ body.dark-mode .tab.active:hover {
 
 /* Общий стиль для окна автодополнения */
 .CodeMirror-hints {
-    background: white; /* Тёмный фон (Dracula) */
+    background: #282a36; /* Тёмный фон (Dracula) */
     color: #f8f8f2; /* Белый текст */
-    border: 1px solid #44475a; /* Тонкая граница */
+    border: 1px solid white; /* Тонкая граница */
     font-family: Consolas, Monaco, monospace;
     font-size: 14px;
     border-radius: 5px;
