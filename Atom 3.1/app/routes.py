@@ -27,18 +27,19 @@ def register_socketio_events(socketio):
     @socketio.on('execute')  # Обработчик события 'execute'
     def execute_code(code):
         sid = request.sid  # Получаем идентификатор сессии клиента
-        output_buffer = io.StringIO()  # Создаём буфер для захвата вывода
-        
         def custom_input(prompt=""):  # Определяем функцию для обработки ввода
+            result = output_buffer.getvalue().strip()  # Получаем вывод из буфера и убираем лишние пробелы
+            if result:  # Если вывод пустой
+                socketio.emit('console_output', result, room=sid)
             socketio.emit("console_output", prompt, room=sid)  # Отправляем запрос на ввод в консоль
             ev = eventlet.Event()  # Создаём событие для ожидания ввода
             pending_inputs[sid] = ev  # Сохраняем событие в словаре ожидания
             return ev.wait()  # Ожидаем ввода от клиента
 
+        local_env = {}  # Локальная среда для выполнения кода
         exec_globals = {"__builtins__": builtins.__dict__.copy(),
                         "input": custom_input}  # Глобальная среда с копией встроенных функций
-        local_env = {}  # Локальная среда для выполнения кода
-
+        output_buffer = io.StringIO()  # Создаём буфер для захвата вывода
         try:
             with contextlib.redirect_stdout(output_buffer):  # Перенаправляем стандартный вывод в буфер
                 exec(code, exec_globals, local_env)  # Выполняем код в заданной среде
