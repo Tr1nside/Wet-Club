@@ -4,35 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "d3b84c3dbd7d233b",
+        "id": "023d4f6214906b7e",
         "type": "tabs",
         "children": [
           {
-            "id": "6cc1c62b1353cbea",
+            "id": "5256790081b310ef",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Online IDE python/online-ide-python.excalidraw"
-              },
-              "icon": "excalidraw-icon",
-              "title": "online-ide-python"
-            }
-          },
-          {
-            "id": "b913a447c6df133d",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Online IDE python/online-ide-python.excalidraw"
-              },
-              "icon": "excalidraw-icon",
-              "title": "online-ide-python"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Новая вкладка"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -177,10 +162,10 @@
       "obsidian-excalidraw-plugin:Создать новый чертеж": false
     }
   },
-  "active": "b913a447c6df133d",
+  "active": "a05e1c48871892a0",
   "lastOpenFiles": [
-    "Excalidraw/Drawing 2025-03-04 16.48.31.excalidraw.md",
     "Online IDE python/online-ide-python.excalidraw",
+    "Excalidraw/Drawing 2025-03-04 16.48.31.excalidraw.md",
     "Excalidraw",
     "Online IDE python/Tasks.md",
     "Atom 3.1/venv/Lib/site-packages/Flask_SocketIO-5.5.1.dist-info/WHEEL",
