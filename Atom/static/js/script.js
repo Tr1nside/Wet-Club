@@ -58,7 +58,9 @@ function initializeCodeMirror(codeArea, content = "") {
         smartIndent: true,
         electricChars: true,
         extraKeys: {
-            "Ctrl-Space": "autocomplete",
+            "Ctrl-Space": function(cm) {
+                cm.showHint({ hint: pythonHint, completeSingle: false });
+            },
             "Tab": function(cm) {
                 if (cm.somethingSelected()) {
                     cm.indentSelection("add");
@@ -78,12 +80,13 @@ function initializeCodeMirror(codeArea, content = "") {
 
     cm.on("inputRead", function(cm, change) {
         if (change.text[0].match(/\w/) && cm.getTokenAt(cm.getCursor()).string.length > 0) {
-            cm.showHint({ hint: pythonHint, completeSingle: false });
+            setTimeout(() => cm.showHint({ hint: pythonHint, completeSingle: false }), 100);
         }
     });
 
     return cm;
 }
+
 
 consoleInput.addEventListener('focus', () => {
     if (consoleInput.readOnly) {
