@@ -379,7 +379,6 @@ function executeCode() {
 }
 
 function appendToConsole(text) {
-    const consoleDiv = document.getElementById("console");
-    consoleDiv.innerText += text;  // Добавляем текст в консоль
-    consoleDiv.scrollTop = consoleDiv.scrollHeight;  // Прокручиваем консоль вниз
+    consoleOutput.innerText += text;  // Добавляем текст в консоль
+    consoleOutput.scrollTop = consoleDiv.scrollHeight;  // Прокручиваем консоль вниз
     }
