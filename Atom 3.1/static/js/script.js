@@ -380,7 +380,7 @@ function executeCode() {
 
 function appendToConsole(text) {
     consoleOutput.innerText += text;  // Добавляем текст в консоль
-    consoleOutput.scrollTop = consoleDiv.scrollHeight;  // Прокручиваем консоль вниз
+    consoleOutput.scrollTop = consoleOutput.scrollHeight;  // Прокручиваем консоль вниз
     }
 socket.on('console_output', (data) => {
     appendToConsole(data + "\n");  // Добавляем вывод в консоль
