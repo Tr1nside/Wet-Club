@@ -1,5 +1,5 @@
 ---
-kanban-plugin: table
+kanban-plugin: list
 ---
 
 ## Задачи

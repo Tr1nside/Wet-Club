@@ -15,7 +15,7 @@
               "state": {
                 "file": "Безымянная Kanban-доска.md",
                 "kanbanViewState": {
-                  "kanban-plugin": "board",
+                  "kanban-plugin": "list",
                   "list-collapse": [
                     false,
                     false,
