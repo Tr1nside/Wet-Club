@@ -385,7 +385,7 @@ function appendToConsole(text) {
 socket.on('console_output', (data) => {
     appendToConsole(data + "\n");  // Добавляем вывод в консоль
     // Если сервер запросил ввод, показываем поле ввода
-    updateConsoleInputClass;
+    updateConsoleInputClass();
     consoleInput.focus();
 });
 
