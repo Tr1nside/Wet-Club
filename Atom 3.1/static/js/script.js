@@ -349,8 +349,8 @@ document.addEventListener('click', saveTabsToLocalStorage);
 // Отчистка консоли
 function clearConsole() {
     localStorage.setItem("console", '')
-    document.getElementById("console").innerText = "";
-    document.getElementById("consoleInput").style.display = "none";  // Скрываем поле для ввода
+    document.getElementById("console-output").innerText = "";
+    document.getElementById("console-input").style.display = "none";  // Скрываем поле для ввода
 }
 
 // Отправка кода на сервер
