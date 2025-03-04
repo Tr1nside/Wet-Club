@@ -178,8 +178,6 @@ function getNextTabId() {
     return `tab${newId}`;
 }
 
-// Функция для создания новой вкладки и редактора
-// Если переданы аргументы (customId, fileName, content, activate), то используется загрузка из localStorage
 // 🔹 Функция создания новой вкладки
 function createNewTab(customId = null, fileName = null, content = "", activate = true) {
     const newTabId = customId || getNextTabId();
