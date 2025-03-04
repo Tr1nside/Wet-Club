@@ -380,12 +380,14 @@ socket.on('console_output', (data) => {
 // Обработчик нажатия клавиши Enter в поле ввода консоли
 function handleConsoleKeyPress(event) {
     if (event.key === "Enter") {
-    const inputField = event.target;
-    const value = inputField.value;  // Получаем введённое значение
-    socket.emit('console_input', value);  // Отправляем на сервер
-    appendToConsole(value + "\n");  // Добавляем в консоль
-    inputField.value = "";  // Очищаем поле ввода
-    inputField.style.display = "none";  // Скрываем поле ввода
-    event.preventDefault();  // Отменяем стандартное поведение клавиши
+        event.preventDefault();
+        const value = consoleInput.value.trim();
+        if (value) {
+            socket.emit('console_input', value);  // Отправляем введённое значение на сервер
+            appendToConsole(value + "\n");         // Выводим введённое значение в консоль
+        }
+        consoleInput.value = "";                   // Очищаем поле ввода
+        consoleInput.readOnly = true;              // Блокируем ввод до следующего запроса от сервера
+        updateConsoleInputClass();
     }
 }
