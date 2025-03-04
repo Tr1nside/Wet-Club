@@ -25,10 +25,10 @@
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "Excalidraw/Drawing 2025-03-04 16.48.31.excalidraw.md"
+                "file": "Online IDE python/online-ide-python.excalidraw"
               },
               "icon": "excalidraw-icon",
-              "title": "Drawing 2025-03-04 16.48.31.excalidraw"
+              "title": "online-ide-python"
             }
           },
           {
@@ -191,8 +191,8 @@
   },
   "active": "b913a447c6df133d",
   "lastOpenFiles": [
-    "Online IDE python/online-ide-python.excalidraw",
     "Excalidraw/Drawing 2025-03-04 16.48.31.excalidraw.md",
+    "Online IDE python/online-ide-python.excalidraw",
     "Excalidraw",
     "Online IDE python/Tasks.md",
     "Atom 3.1/venv/Lib/site-packages/Flask_SocketIO-5.5.1.dist-info/WHEEL",
@@ -203,7 +203,6 @@
     "Atom 3.1/venv/Lib/site-packages/Flask_SocketIO-5.5.1.dist-info/LICENSE",
     "Atom 3.1/venv/Lib/site-packages/Flask_SocketIO-5.5.1.dist-info/INSTALLER",
     "Atom 3.1/venv/Lib/site-packages/Flask_SocketIO-5.5.1.dist-info",
-    "Atom 3.1/venv/Lib/site-packages/pip/_vendor/resolvelib/compat/__pycache__/__init__.cpython-312.pyc",
     "Гайд на коннект с помощью гита/Гайд.md",
     "Atom 3.1/static/img/save.svg",
     "Atom 3.1/static/img/save-console-as-text.svg",
