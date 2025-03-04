@@ -152,27 +152,27 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
     document.querySelector('.container').insertBefore(codeArea, document.querySelector('.toolbar'));
 
     // 🔹 Функция для автодополнения
-function pythonHint(cm) {
-    const cur = cm.getCursor();
-    const token = cm.getTokenAt(cur);
-    const start = token.start;
-    const end = cur.ch;
-    const word = token.string.slice(0, end - start);
-    
-    // 🔹 Берём все слова из текста + pythonKeywords
-    const existingWords = new Set(pythonKeywords);
-    const doc = cm.getValue().split(/\W+/);
-    doc.forEach(word => existingWords.add(word));
+    function pythonHint(cm) {
+        const cur = cm.getCursor();
+        const token = cm.getTokenAt(cur);
+        const start = token.start;
+        const end = cur.ch;
+        const word = token.string.slice(0, end - start);
+        
+        // 🔹 Берём все слова из текста + pythonKeywords
+        const existingWords = new Set(pythonKeywords);
+        const doc = cm.getValue().split(/\W+/);
+        doc.forEach(word => existingWords.add(word));
 
-    // 🔹 Фильтруем по введённым символам
-    const list = [...existingWords].filter(item => item.startsWith(word));
+        // 🔹 Фильтруем по введённым символам
+        const list = [...existingWords].filter(item => item.startsWith(word));
 
-    return {
-        list: list,
-        from: CodeMirror.Pos(cur.line, start),
-        to: CodeMirror.Pos(cur.line, end)
-    };
-}
+        return {
+            list: list,
+            from: CodeMirror.Pos(cur.line, start),
+            to: CodeMirror.Pos(cur.line, end)
+        };
+    }
     
 
     // Инициализируем CodeMirror
