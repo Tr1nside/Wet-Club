@@ -1,12 +1,10 @@
 const body = document.body;
 const nightModeButton = document.querySelector('.night-mode');
 const tabs = document.querySelector('.tabs');
-let tabCounter = 2; // Счетчик для новых вкладок
+let codeMirrorInstances = {};
 const consoleOutput = document.querySelector('.console-output');
 const consoleInput = document.querySelector('.console-input');
-let codeMirrorInstances = {};
 const socket = io();
-
 
 consoleInput.addEventListener('focus', () => {
     if (consoleInput.readOnly) {
@@ -25,14 +23,10 @@ function updateConsoleInputClass() {
         consoleInput.classList.add('console-input-active');
     }
 }
-
-// Вызываем функцию для инициализации класса
 updateConsoleInputClass();
-
 
 // Переключение между режимами
 let darkMode = false;
-
 if (!localStorage.getItem("darkMod")) {
     localStorage.setItem("darkMod", false);
     darkMode = false;
@@ -40,18 +34,13 @@ if (!localStorage.getItem("darkMod")) {
     darkMode = localStorage.getItem("darkMod");
     if (darkMode) {
         body.classList.toggle('dark-mode');
-        // Изменение значка луны на солнце и обратно
         nightModeButton.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
-
-        // Обновление темы CodeMirror при смене режима
         for (const tabId in codeMirrorInstances) {
             const cm = codeMirrorInstances[tabId];
             cm.setOption("theme", body.classList.contains('dark-mode') ? "dracula" : "default");
         }
     }
 }
-
-// При загрузке страницы проверяем, сохранена ли тема в localStorage
 const storedTheme = localStorage.getItem('theme');
 if (storedTheme === 'dark') {
     body.classList.add('dark-mode');
@@ -68,26 +57,18 @@ if (storedTheme === 'dark') {
         cm.setOption("theme", "default");
     }
 }
-
 nightModeButton.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
     const isDark = body.classList.contains('dark-mode');
-    
-    // Изменение значка луны на солнце и обратно
     nightModeButton.textContent = isDark ? '☀️' : '🌙';
-
-    // Сохранение выбранной темы в localStorage
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-
-    // Обновление темы CodeMirror при смене режима
     for (const tabId in codeMirrorInstances) {
         const cm = codeMirrorInstances[tabId];
         cm.setOption("theme", isDark ? "dracula" : "default");
     }
 });
 
-
-// Функция для обновления номеров строк
+// Функция для обновления номеров строк (если требуется)
 function updateLineNumbers(cm, lineNumbers) {
     const numberOfLines = cm.lineCount();
     let numbers = "";
@@ -97,17 +78,36 @@ function updateLineNumbers(cm, lineNumbers) {
     lineNumbers.innerHTML = numbers;
 }
 
+// ======================================================================
+// Новая логика работы вкладок
+// ======================================================================
+
+// Функция для поиска первого свободного номера вкладки
+function getNextTabId() {
+    const existingIds = new Set();
+    document.querySelectorAll('.tab:not([data-tab="create_tab"])').forEach(tab => {
+        const num = parseInt(tab.dataset.tab.replace("tab", ""), 10);
+        existingIds.add(num);
+    });
+    let newId = 1;
+    while (existingIds.has(newId)) {
+        newId++;
+    }
+    return `tab${newId}`;
+}
+
 // Функция для создания новой вкладки и редактора
-function createNewTab() {
-    tabCounter++;
-    const newTabId = `tab${tabCounter}`;
+// Если переданы аргументы (customId, fileName, content, activate), то используется загрузка из localStorage
+function createNewTab(customId = null, fileName = null, content = "", activate = true) {
+    const newTabId = customId || getNextTabId();
+    const newFileName = fileName || `file${newTabId.replace("tab", "")}.py`;
 
     // Создаем новую вкладку
     const newTab = document.createElement('div');
     newTab.classList.add('tab');
     newTab.dataset.tab = newTabId;
-    newTab.innerHTML = `<span>file${tabCounter - 1}.py</span><span class="close-tab">×</span>
-                            <input type="text" class="tab-input" value="file${tabCounter - 1}.py">`;
+    newTab.innerHTML = `<span>${newFileName}</span><span class="close-tab">×</span>
+                          <input type="text" class="tab-input" value="${newFileName}">`;
     tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="create_tab"]'));
 
     // Создаем контейнер для CodeMirror
@@ -123,46 +123,28 @@ function createNewTab() {
         lineNumbers: true,
         gutters: ["CodeMirror-linenumbers"]
     });
-
+    cm.setValue(content);
     codeMirrorInstances[newTabId] = cm;
 
-    // Активируем новую вкладку
-    activateTab(newTab);
+    if (activate) activateTab(newTab);
 
-    // Добавляем обработчик двойного клика
-    newTab.addEventListener('dblclick', function () {
-        startEditingTab(this);
-    });
-
-    // Добавляем обработчик для потери фокуса с input
+    newTab.addEventListener('dblclick', () => startEditingTab(newTab));
     const inputElement = newTab.querySelector('.tab-input');
-    inputElement.addEventListener('blur', function () {
-        finishEditingTab(newTab);
+    inputElement.addEventListener('blur', () => finishEditingTab(newTab));
+    inputElement.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') finishEditingTab(newTab);
     });
-    // Добавляем обработчик нажатия Enter
-    inputElement.addEventListener('keydown', function (event) {
-        if (event.key === 'Enter') {
-            finishEditingTab(newTab);
-        }
-    });
+    saveTabsToLocalStorage();
 }
 
 // Функция для активации вкладки
 function activateTab(tab) {
     const tabId = tab.dataset.tab;
-
-    // Сначала деактивируем все вкладки и контент
-    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-    document.querySelectorAll('.code-area[data-tab-content]').forEach(content => {
-        content.style.display = 'none';
-    });
-
-    // Активируем выбранную вкладку и контент
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.code-area[data-tab-content]').forEach(content => content.style.display = 'none');
     tab.classList.add('active');
     const codeArea = document.querySelector(`.code-area[data-tab-content="${tabId}"]`);
     codeArea.style.display = 'block';
-
-    // Обновляем размеры CodeMirror
     if (codeMirrorInstances[tabId]) {
         codeMirrorInstances[tabId].refresh();
     }
@@ -171,28 +153,14 @@ function activateTab(tab) {
 // Функция для закрытия вкладки
 function closeTab(tab) {
     const tabId = tab.dataset.tab;
-
-    // Получаем элементы вкладки и контента
-    const tabElement = document.querySelector(`.tab[data-tab="${tabId}"]`);
-    const codeAreaElement = document.querySelector(`.code-area[data-tab-content="${tabId}"]`);
-
-    // Удаляем вкладку и контент
-    tabElement.remove();
-    codeAreaElement.remove();
-
-    // Удаляем экземпляр CodeMirror, если он есть
-    if (codeMirrorInstances[tabId]) {
-        //codeMirrorInstances[tabId].toTextArea(); // Не нужно, т.к. нет textarea
-        delete codeMirrorInstances[tabId];
+    document.querySelector(`.tab[data-tab="${tabId}"]`).remove();
+    document.querySelector(`.code-area[data-tab-content="${tabId}"]`).remove();
+    delete codeMirrorInstances[tabId];
+    const firstTab = document.querySelector('.tab:not([data-tab="create_tab"])');
+    if (firstTab) {
+        activateTab(firstTab);
     }
-
-    // Если закрыли активную вкладку, активируем первую вкладку (если она существует)
-    if (tab.classList.contains('active')) {
-        const firstTab = document.querySelector('.tab:not([data-tab="create_tab"])');
-        if (firstTab) {
-            activateTab(firstTab);
-        }
-    }
+    saveTabsToLocalStorage();
 }
 
 // Функция для начала редактирования вкладки
@@ -210,68 +178,10 @@ function finishEditingTab(tab) {
     const spanElement = tab.querySelector('span');
     spanElement.textContent = inputElement.value;
     inputElement.style.display = 'none';
+    saveTabsToLocalStorage();
 }
 
-// Обработчик клика на вкладки
-tabs.addEventListener('click', (event) => {
-    const tab = event.target.closest('.tab');
-    if (!tab) return;
-    
-    if (event.target.classList.contains('close-tab')) {
-        closeTab(tab);
-        return;
-    }
-
-    if (tab.dataset.tab === 'create_tab') { // Если кликнули на "+", создаем новую вкладку
-        createNewTab();
-    } else {
-        activateTab(tab);
-    }
-});
-
-
-// Инициализация редактирования вкладки по двойному клику
-tabs.addEventListener('dblclick', (event) => {
-    if (event.target.classList.contains('tab') && event.target.dataset.tab !== 'create_tab') {
-        startEditingTab(event.target);
-    }
-});
-
-// Инициализация начальной вкладки и CodeMirror
-const initialTab = document.querySelector('.tab[data-tab="tab1"]');
-const initialCodeArea = document.querySelector('.code-area[data-tab-content="tab1"]');
-
-// Инициализируем CodeMirror
-const cm = CodeMirror(initialCodeArea, {
-    mode: "python",
-    theme: body.classList.contains('dark-mode') ? "dracula" : "default",
-    lineNumbers: true,
-    gutters: ["CodeMirror-linenumbers"]
-});
-
-codeMirrorInstances['tab1'] = cm;
-activateTab(initialTab);
-
-// Добавляем обработчик двойного клика
-initialTab.addEventListener('dblclick', function () {
-    startEditingTab(this);
-});
-
-// Добавляем обработчик для потери фокуса с input
-const initialInputElement = initialTab.querySelector('.tab-input');
-initialInputElement.addEventListener('blur', function () {
-    finishEditingTab(initialTab);
-});
-
-// Добавляем обработчик нажатия Enter
-initialInputElement.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        finishEditingTab(initialTab);
-    }
-});
-
-
-// Функция для сохранения данных во вкладках в localStorage
+// Функция для сохранения данных вкладок в localStorage
 function saveTabsToLocalStorage() {
     const tabsData = [];
     document.querySelectorAll('.tab:not([data-tab="create_tab"])').forEach(tab => {
@@ -283,66 +193,65 @@ function saveTabsToLocalStorage() {
     localStorage.setItem('savedTabs', JSON.stringify(tabsData));
 }
 
-
-
 // Функция для загрузки вкладок из localStorage
 function loadTabsFromLocalStorage() {
     const savedTabs = JSON.parse(localStorage.getItem('savedTabs')) || [];
     if (savedTabs.length === 0) return;
-
     document.querySelectorAll('.tab:not([data-tab="create_tab"])').forEach(tab => tab.remove());
     document.querySelectorAll('.code-area[data-tab-content]').forEach(area => area.remove());
     codeMirrorInstances = {};
-
-    let maxTabNumber = 1; // Отслеживаем максимальный номер вкладки
-
     savedTabs.forEach(tabData => {
-        const tabNumber = parseInt(tabData.id.replace("tab", ""), 10);
-        if (tabNumber > maxTabNumber) {
-            maxTabNumber = tabNumber;
-        }
-
-        const newTab = document.createElement('div');
-        newTab.classList.add('tab');
-        newTab.dataset.tab = tabData.id;
-        newTab.innerHTML = `<span>${tabData.name}</span><span class="close-tab">×</span>
-                            <input type="text" class="tab-input" value="${tabData.name}">`;
-        tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="create_tab"]'));
-
-        const codeArea = document.createElement('div');
-        codeArea.classList.add('code-area');
-        codeArea.dataset.tabContent = tabData.id;
-        document.querySelector('.container').insertBefore(codeArea, document.querySelector('.toolbar'));
-
-        const cm = CodeMirror(codeArea, {
-            mode: "python",
-            theme: body.classList.contains('dark-mode') ? "dracula" : "default",
-            lineNumbers: true,
-            gutters: ["CodeMirror-linenumbers"]
-        });
-        cm.setValue(tabData.content);
-        codeMirrorInstances[tabData.id] = cm;
-
-        newTab.addEventListener('dblclick', function () { startEditingTab(this); });
-        const inputElement = newTab.querySelector('.tab-input');
-        inputElement.addEventListener('blur', function () { finishEditingTab(newTab); });
-        inputElement.addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') finishEditingTab(newTab);
-        });
+        createNewTab(tabData.id, tabData.name, tabData.content, false);
     });
-
-    // Обновляем tabCounter на следующий номер после последней загруженной вкладки
-    tabCounter = maxTabNumber;
-
     activateTab(document.querySelector('.tab:not([data-tab="create_tab"])'));
 }
 
+// Обработчик клика на вкладки
+tabs.addEventListener('click', (event) => {
+    const tab = event.target.closest('.tab');
+    if (!tab) return;
+    if (event.target.classList.contains('close-tab')) {
+        closeTab(tab);
+        return;
+    }
+    if (tab.dataset.tab === 'create_tab') {
+        createNewTab();
+    } else {
+        activateTab(tab);
+    }
+});
+tabs.addEventListener('dblclick', (event) => {
+    if (event.target.classList.contains('tab') && event.target.dataset.tab !== 'create_tab') {
+        startEditingTab(event.target);
+    }
+});
 
+// Инициализация начальной вкладки и CodeMirror
+const initialTab = document.querySelector('.tab[data-tab="tab1"]');
+const initialCodeArea = document.querySelector('.code-area[data-tab-content="tab1"]');
+const cm = CodeMirror(initialCodeArea, {
+    mode: "python",
+    theme: body.classList.contains('dark-mode') ? "dracula" : "default",
+    lineNumbers: true,
+    gutters: ["CodeMirror-linenumbers"]
+});
+codeMirrorInstances['tab1'] = cm;
+activateTab(initialTab);
+initialTab.addEventListener('dblclick', function () {
+    startEditingTab(this);
+});
+const initialInputElement = initialTab.querySelector('.tab-input');
+initialInputElement.addEventListener('blur', function () {
+    finishEditingTab(initialTab);
+});
+initialInputElement.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        finishEditingTab(initialTab);
+    }
+});
 
-// Вызываем загрузку при запуске
+// Вызываем загрузку вкладок при запуске
 window.addEventListener('load', loadTabsFromLocalStorage);
-
-// Подключаем сохранение на изменения
 window.addEventListener('beforeunload', saveTabsToLocalStorage);
 document.addEventListener('input', saveTabsToLocalStorage);
 document.addEventListener('click', saveTabsToLocalStorage);
@@ -356,60 +265,47 @@ function clearConsole() {
 
 // Отправка кода на сервер
 function executeCode() {
-    clearConsole();  // Очищаем консоль перед новым выводом
-
-    // Находим активную вкладку
+    clearConsole();
     const activeTab = document.querySelector('.tab.active');
     if (!activeTab) {
         consoleOutput.value += "\nОшибка: активная вкладка не найдена.";
         return;
     }
-
-    // Получаем идентификатор активной вкладки и соответствующий экземпляр CodeMirror
     const tabId = activeTab.dataset.tab;
     const activeEditor = codeMirrorInstances[tabId];
-
     if (!activeEditor) {
         consoleOutput.value += "\nОшибка: не найден редактор для активной вкладки.";
         return;
     }
-
-    // Получаем код из активного редактора
     const code = activeEditor.getValue();
-    socket.emit('execute', code);  // Отправляем код на сервер через WebSocket
+    socket.emit('execute', code);
 }
-
 function appendToConsole(text) {
-    consoleOutput.value += text;  // Добавляем текст в консоль
-    consoleOutput.scrollTop = consoleOutput.scrollHeight;  // Прокручиваем консоль вниз
-    }
+    consoleOutput.value += text;
+    consoleOutput.scrollTop = consoleOutput.scrollHeight;
+}
 socket.on('console_output', (data) => {
-    appendToConsole(data + "\n");  // Добавляем вывод в консоль
-    // Если сервер запросил ввод, показываем поле ввода
-    consoleInput.readOnly = false;     
+    appendToConsole(data + "\n");
+    consoleInput.readOnly = false;
     updateConsoleInputClass();
     consoleInput.focus();
 });
-
-// Обработчик нажатия клавиши Enter в поле ввода консоли
 function handleConsoleKeyPress(event) {
-    console.log('hesus')
     if (event.key === "Enter") {
         event.preventDefault();
         const value = consoleInput.value.trim();
         if (value) {
-            socket.emit('console_input', value);  // Отправляем введённое значение на сервер
-            appendToConsole(value + "\n");         // Выводим введённое значение в консоль
+            socket.emit('console_input', value);
+            appendToConsole(value + "\n");
         }
-        consoleInput.value = "";                   // Очищаем поле ввода
-        consoleInput.readOnly = true;              // Блокируем ввод до следующего запроса от сервера
+        consoleInput.value = "";
+        consoleInput.readOnly = true;
         consoleInput.classList.remove('console-input-active');
     }
 }
-
 consoleInput.addEventListener('keydown', handleConsoleKeyPress);
 
-// Сохранение кода из активного редактора в файл с именем, соответствующим вкладке
+// Сохранение кода из активного редактора в файл
 function saveCodeToFile() {
     const activeTab = document.querySelector('.tab.active');
     if (!activeTab) {
@@ -431,7 +327,7 @@ function saveCodeToFile() {
     link.click();
 }
 
-// Сохранение вывода консоли в текстовый файл
+// Сохранение вывода консоли в файл
 function saveConsoleToFile() {
     const consoleContent = consoleOutput.value;
     const blob = new Blob([consoleContent], { type: "text/plain;charset=utf-8" });
@@ -444,16 +340,12 @@ function saveConsoleToFile() {
 // Показ уведомления на экране
 function showNotification(message) {
     const notification = document.createElement("div");
-    notification.className = "notification"; // Класс должен быть стилизован в CSS
+    notification.className = "notification";
     notification.innerText = message;
     document.body.appendChild(notification);
-    
-    // Плавное появление
     setTimeout(() => {
         notification.style.opacity = 1;
     }, 10);
-    
-    // Через 3 секунды скрываем уведомление и затем удаляем его
     setTimeout(() => {
         notification.style.opacity = 0;
         setTimeout(() => {
