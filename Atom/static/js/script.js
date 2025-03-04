@@ -181,22 +181,25 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
         theme: body.classList.contains('dark-mode') ? "dracula" : "default",
         lineNumbers: true,
         gutters: ["CodeMirror-linenumbers"],
+         // 🔹 Автозакрытие скобок, кавычек, квадратных и фигурных скобок
+        autoCloseBrackets: true,
+
+        // 🔹 Подключаем "Ctrl-Space" для автодополнения
         extraKeys: {
-            "Ctrl-Space": function(cm) {
-                cm.showHint({ hint: pythonHint, completeSingle: false });
+            "Ctrl-Space": "autocomplete",
+            "Tab": function(cm) {
+                if (cm.somethingSelected()) {
+                    cm.indentSelection("add");
+                } else {
+                    cm.replaceSelection("    ", "end", "+input");
+                }
+            },
+            "Shift-Tab": function(cm) {
+                cm.indentSelection("subtract");
+            },
+            "Ctrl-/": function(cm) {
+                cm.execCommand("toggleComment");
             }
-        },
-        autoCloseBrackets: true, // Автоматически закрывать скобки и кавычки
-        indentWithTabs: true, // Автоотступы при нажатии Tab
-        smartIndent: true, // Умное выравнивание
-        electricChars: true // Автоматический отступ после ":"
-    });
-    
-    // Автоматический вызов автодополнения при вводе символа (если это буква или цифра)
-    cm.on("inputRead", function(cm, change) {
-        // Проверяем, что изменение вызвано вводом буквенно-цифрового символа.
-        if (change.text[0].match(/\w/)) {
-            cm.showHint({ hint: pythonHint, completeSingle: false });
         }
     });
     
