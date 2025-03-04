@@ -280,3 +280,65 @@ initialInputElement.addEventListener('keydown', function (event) {
     }
 });
 
+
+// Функция для сохранения данных во вкладках в localStorage
+function saveTabsToLocalStorage() {
+    const tabsData = [];
+    document.querySelectorAll('.tab:not([data-tab="tab2"])').forEach(tab => {
+        const tabId = tab.dataset.tab;
+        const fileName = tab.querySelector('span').textContent;
+        const content = codeMirrorInstances[tabId] ? codeMirrorInstances[tabId].getValue() : "";
+        tabsData.push({ id: tabId, name: fileName, content: content });
+    });
+    localStorage.setItem('savedTabs', JSON.stringify(tabsData));
+}
+
+// Функция для загрузки вкладок из localStorage
+function loadTabsFromLocalStorage() {
+    const savedTabs = JSON.parse(localStorage.getItem('savedTabs')) || [];
+    if (savedTabs.length === 0) return;
+
+    document.querySelectorAll('.tab:not([data-tab="tab2"])').forEach(tab => tab.remove());
+    document.querySelectorAll('.code-area[data-tab-content]').forEach(area => area.remove());
+    codeMirrorInstances = {};
+
+    savedTabs.forEach((tabData, index) => {
+        const newTab = document.createElement('div');
+        newTab.classList.add('tab');
+        newTab.dataset.tab = tabData.id;
+        newTab.innerHTML = `<span>${tabData.name}</span><span class="close-tab">×</span>
+                            <input type="text" class="tab-input" value="${tabData.name}">`;
+        tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="tab2"]'));
+
+        const codeArea = document.createElement('div');
+        codeArea.classList.add('code-area');
+        codeArea.dataset.tabContent = tabData.id;
+        document.querySelector('.container').insertBefore(codeArea, document.querySelector('.toolbar'));
+
+        const cm = CodeMirror(codeArea, {
+            mode: "python",
+            theme: body.classList.contains('dark-mode') ? "dracula" : "default",
+            lineNumbers: true,
+            gutters: ["CodeMirror-linenumbers"]
+        });
+        cm.setValue(tabData.content);
+        codeMirrorInstances[tabData.id] = cm;
+
+        newTab.addEventListener('dblclick', function () { startEditingTab(this); });
+        const inputElement = newTab.querySelector('.tab-input');
+        inputElement.addEventListener('blur', function () { finishEditingTab(newTab); });
+        inputElement.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') finishEditingTab(newTab);
+        });
+    });
+
+    activateTab(document.querySelector('.tab:not([data-tab="tab2"])'));
+}
+
+// Вызываем загрузку при запуске
+window.addEventListener('load', loadTabsFromLocalStorage);
+
+// Подключаем сохранение на изменения
+window.addEventListener('beforeunload', saveTabsToLocalStorage);
+document.addEventListener('input', saveTabsToLocalStorage);
+document.addEventListener('click', saveTabsToLocalStorage);
