@@ -177,7 +177,10 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
                 cm.showHint({ hint: pythonHint, completeSingle: false });
             }
         },
-        autoCloseBrackets: true // Автоматически закрывать скобки и кавычки
+        autoCloseBrackets: true, // Автоматически закрывать скобки и кавычки
+        indentWithTabs: true, // Автоотступы при нажатии Tab
+        smartIndent: true, // Умное выравнивание
+        electricChars: true // Автоматический отступ после ":"
     });
     
     // Автоматический вызов автодополнения при вводе символа (если это буква или цифра)
