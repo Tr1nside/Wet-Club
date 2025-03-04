@@ -64,3 +64,8 @@ def register_socketio_events(socketio):
             del pending_inputs[sid]  # Удаляем событие из словаря
         else:  # Если нет ожидающего ввода
             socketio.emit('console_output', f"\n(Ввод вне запроса: {data})\n", room=sid)  # Уведомляем клиента о вводе вне запроса
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Sign In', form=form)
