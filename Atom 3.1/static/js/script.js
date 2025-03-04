@@ -380,7 +380,7 @@ function handleConsoleKeyPress(event) {
     if (event.key === "Enter") {
     const inputField = event.target;
     const value = inputField.value;  // Получаем введённое значение
-    socket.emit('console_input', value);  // Отправляем на сервер
+    socket.emit('console-input', value);  // Отправляем на сервер
     appendToConsole(value + "\n");  // Добавляем в консоль
     inputField.value = "";  // Очищаем поле ввода
     inputField.style.display = "none";  // Скрываем поле ввода
