@@ -5,65 +5,6 @@ let codeMirrorInstances = {};
 const consoleOutput = document.querySelector('.console-output');
 const consoleInput = document.querySelector('.console-input');
 const socket = io();
-const pythonKeywords = [
-    // Ключевые слова Python
-    "False", "None", "True", "and", "as", "assert", "async", "await",
-    "break", "class", "continue", "def", "del", "elif", "else", "except",
-    "finally", "for", "from", "global", "if", "import", "in", "is",
-    "lambda", "nonlocal", "not", "or", "pass", "raise", "return", "try",
-    "while", "with", "yield",
-
-    // Встроенные функции Python
-    "abs", "all", "any", "ascii", "bin", "bool", "bytearray", "bytes",
-    "callable", "chr", "classmethod", "compile", "complex", "delattr",
-    "dict", "dir", "divmod", "enumerate", "eval", "exec", "filter", "float",
-    "format", "frozenset", "getattr", "globals", "hasattr", "hash", "help",
-    "hex", "id", "input", "int", "isinstance", "issubclass", "iter", "len",
-    "list", "locals", "map", "max", "memoryview", "min", "next", "object",
-    "oct", "open", "ord", "pow", "print", "property", "range", "repr",
-    "reversed", "round", "set", "setattr", "slice", "sorted", "staticmethod",
-    "str", "sum", "super", "tuple", "type", "vars", "zip",
-
-    // Встроенные типы
-    "int", "float", "bool", "str", "list", "tuple", "set", "dict", "complex",
-
-    // Часто используемые стандартные модули и функции
-    "os", "sys", "re", "math", "random", "datetime", "time", "json", "subprocess",
-    "logging", "itertools", "functools", "collections", "threading", "multiprocessing",
-    "pathlib", "shutil", "argparse", "socket", "http", "urllib", "email", "sqlite3",
-    "decimal", "fractions", "statistics", "heapq", "bisect", "copy", "pprint",
-
-    // Дополнительные часто используемые идентификаторы
-    "self", "cls", "init", "main", "data", "value", "result", "error", "file",
-    "read", "write", "open", "close", "config", "args", "kwargs", "key", "item",
-    "index", "count", "sum", "avg", "mean", "min", "max"
-];
-
-// 🔹 Функция для автодополнения
-function pythonHint(cm) {
-    const cur = cm.getCursor();
-    const token = cm.getTokenAt(cur);
-    const start = token.start;
-    const end = cur.ch;
-    const word = token.string.slice(0, end - start);
-    
-    // 🔹 Берём все слова из текста + pythonKeywords
-    const existingWords = new Set(pythonKeywords);
-    const doc = cm.getValue().split(/\W+/);
-    doc.forEach(word => existingWords.add(word));
-
-    // 🔹 Фильтруем по введённым символам
-    const list = [...existingWords].filter(item => item.startsWith(word));
-
-    return {
-        list: list,
-        from: CodeMirror.Pos(cur.line, start),
-        to: CodeMirror.Pos(cur.line, end)
-    };
-}
-
-
-
 
 consoleInput.addEventListener('focus', () => {
     if (consoleInput.readOnly) {
@@ -175,44 +116,13 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
     codeArea.dataset.tabContent = newTabId;
     document.querySelector('.container').insertBefore(codeArea, document.querySelector('.toolbar'));
 
-    // 🔹 Инициализируем CodeMirror
-    const cm = CodeMirror(document.querySelector(".code-area"), {
+    // Инициализируем CodeMirror
+    const cm = CodeMirror(codeArea, {
         mode: "python",
-        theme: "dracula",
+        theme: body.classList.contains('dark-mode') ? "dracula" : "default",
         lineNumbers: true,
-        gutters: ["CodeMirror-linenumbers"],
-        
-        // 🔹 Автозакрытие скобок, кавычек, квадратных и фигурных скобок
-        autoCloseBrackets: true,
-
-        // 🔹 Подключаем "Ctrl-Space" для автодополнения
-        extraKeys: {
-            "Ctrl-Space": "autocomplete",
-            "Tab": function(cm) {
-                if (cm.somethingSelected()) {
-                    cm.indentSelection("add");
-                } else {
-                    cm.replaceSelection("    ", "end", "+input");
-                }
-            },
-            "Shift-Tab": function(cm) {
-                cm.indentSelection("subtract");
-            },
-            "Ctrl-/": function(cm) {
-                cm.execCommand("toggleComment");
-            }
-        }
+        gutters: ["CodeMirror-linenumbers"]
     });
-    
-    // 🔹 Автодополнение при вводе текста
-    cm.on("inputRead", function(cm, change) {
-        if (change.text[0].match(/\w/)) { // Если введён символ (буква/цифра)
-            cm.showHint({ hint: pythonHint, completeSingle: false });
-        }
-    });
-        
-
-
     cm.setValue(content);
     codeMirrorInstances[newTabId] = cm;
 
