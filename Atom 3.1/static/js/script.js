@@ -108,7 +108,7 @@ function createNewTab() {
     newTab.dataset.tab = newTabId;
     newTab.innerHTML = `<span>file${tabCounter - 1}.py</span><span class="close-tab">×</span>
                             <input type="text" class="tab-input" value="file${tabCounter - 1}.py">`;
-    tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="tab2"]'));
+    tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="create_tab"]'));
 
     // Создаем контейнер для CodeMirror
     const codeArea = document.createElement('div');
@@ -188,7 +188,7 @@ function closeTab(tab) {
 
     // Если закрыли активную вкладку, активируем первую вкладку (если она существует)
     if (tab.classList.contains('active')) {
-        const firstTab = document.querySelector('.tab:not([data-tab="tab2"])');
+        const firstTab = document.querySelector('.tab:not([data-tab="create_tab"])');
         if (firstTab) {
             activateTab(firstTab);
         }
@@ -222,7 +222,7 @@ tabs.addEventListener('click', (event) => {
         return;
     }
 
-    if (tab.dataset.tab === 'create_tab') { // Если кликнули на "+", создаем новую вкладку
+    if (tab.dataset.tab === 'tab2') { // Если кликнули на "+", создаем новую вкладку
         createNewTab();
     } else {
         activateTab(tab);
@@ -232,7 +232,7 @@ tabs.addEventListener('click', (event) => {
 
 // Инициализация редактирования вкладки по двойному клику
 tabs.addEventListener('dblclick', (event) => {
-    if (event.target.classList.contains('tab') && event.target.dataset.tab !== 'create_tab') {
+    if (event.target.classList.contains('tab') && event.target.dataset.tab !== 'tab2') {
         startEditingTab(event.target);
     }
 });
@@ -274,7 +274,7 @@ initialInputElement.addEventListener('keydown', function (event) {
 // Функция для сохранения данных во вкладках в localStorage
 function saveTabsToLocalStorage() {
     const tabsData = [];
-    document.querySelectorAll('.tab:not([data-tab="tab2"])').forEach(tab => {
+    document.querySelectorAll('.tab:not([data-tab="create_tab"])').forEach(tab => {
         const tabId = tab.dataset.tab;
         const fileName = tab.querySelector('span').textContent;
         const content = codeMirrorInstances[tabId] ? codeMirrorInstances[tabId].getValue() : "";
@@ -288,7 +288,7 @@ function loadTabsFromLocalStorage() {
     const savedTabs = JSON.parse(localStorage.getItem('savedTabs')) || [];
     if (savedTabs.length === 0) return;
 
-    document.querySelectorAll('.tab:not([data-tab="tab2"])').forEach(tab => tab.remove());
+    document.querySelectorAll('.tab:not([data-tab="create_tab"])').forEach(tab => tab.remove());
     document.querySelectorAll('.code-area[data-tab-content]').forEach(area => area.remove());
     codeMirrorInstances = {};
 
@@ -298,7 +298,7 @@ function loadTabsFromLocalStorage() {
         newTab.dataset.tab = tabData.id;
         newTab.innerHTML = `<span>${tabData.name}</span><span class="close-tab">×</span>
                             <input type="text" class="tab-input" value="${tabData.name}">`;
-        tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="tab2"]'));
+        tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="create_tab"]'));
 
         const codeArea = document.createElement('div');
         codeArea.classList.add('code-area');
@@ -322,7 +322,7 @@ function loadTabsFromLocalStorage() {
         });
     });
 
-    activateTab(document.querySelector('.tab:not([data-tab="tab2"])'));
+    activateTab(document.querySelector('.tab:not([data-tab="create_tab"])'));
 }
 
 // Вызываем загрузку при запуске
