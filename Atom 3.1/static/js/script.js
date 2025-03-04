@@ -108,7 +108,7 @@ function createNewTab() {
     newTab.dataset.tab = newTabId;
     newTab.innerHTML = `<span>file${tabCounter - 1}.py</span><span class="close-tab">×</span>
                             <input type="text" class="tab-input" value="file${tabCounter - 1}.py">`;
-    tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="create_tab"]'));
+    tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="tab2"]'));
 
     // Создаем контейнер для CodeMirror
     const codeArea = document.createElement('div');
@@ -188,7 +188,7 @@ function closeTab(tab) {
 
     // Если закрыли активную вкладку, активируем первую вкладку (если она существует)
     if (tab.classList.contains('active')) {
-        const firstTab = document.querySelector('.tab:not([data-tab="create_tab"])');
+        const firstTab = document.querySelector('.tab:not([data-tab="tab2"])');
         if (firstTab) {
             activateTab(firstTab);
         }
@@ -274,7 +274,7 @@ initialInputElement.addEventListener('keydown', function (event) {
 // Функция для сохранения данных во вкладках в localStorage
 function saveTabsToLocalStorage() {
     const tabsData = [];
-    document.querySelectorAll('.tab:not([data-tab="create_tab"])').forEach(tab => {
+    document.querySelectorAll('.tab:not([data-tab="tab2"])').forEach(tab => {
         const tabId = tab.dataset.tab;
         const fileName = tab.querySelector('span').textContent;
         const content = codeMirrorInstances[tabId] ? codeMirrorInstances[tabId].getValue() : "";
@@ -300,7 +300,7 @@ function loadTabsFromLocalStorage() {
         newTab.dataset.tab = tabData.id;
         newTab.innerHTML = `<span>${tabData.name}</span><span class="close-tab">×</span>
                             <input type="text" class="tab-input" value="${tabData.name}">`;
-        tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="create_tab"]'));
+        tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="tab2"]'));
 
         const codeArea = document.createElement('div');
         codeArea.classList.add('code-area');
