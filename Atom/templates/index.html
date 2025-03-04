@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,12 +17,15 @@
             <div class="header-title">AiLab WEB</div>
         </div>
 
+        <div class="night-mode">🌙</div>
+    </div>
+
     <div class="container">
         <div class="tabs">
             <div class="tab active" data-tab="tab1"><span>main.py</span><span class="close-tab">×</span>
                 <input type="text" class="tab-input" value="main.py">
             </div>
-            <div class="tab" id="create-tab" data-tab="create_tab">+</div>
+            <div class="tab" data-tab="create_tab">+</div>
         </div>
 
         <!-- Заменили div.editor на div с id для CodeMirror -->
@@ -56,9 +58,6 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.js"></script>
-    <!-- Для простого автодополнения можно использовать anyword-hint, который предлагает слова из редактора -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/anyword-hint.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
