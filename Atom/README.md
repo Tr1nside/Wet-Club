@@ -1,2 +1,0 @@
-# atom
-Ioy sveg chinazes
