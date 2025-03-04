@@ -376,15 +376,15 @@ socket.on('console-output', (data) => {
     consoleInput.focus();
 });
 
-function handleConsoleKeyPress(event) {
-    if (event.key === "Enter") {
-    const inputField = event.target;
-    const value = inputField.value;  // Получаем введённое значение
-    socket.emit('console-input', value);  // Отправляем на сервер
-    appendToConsole(value + "\n");  // Добавляем в консоль
-    inputField.value = "";  // Очищаем поле ввода
-    consoleInput.readOnly = true;
-    updateConsoleInputClass();
-    event.preventDefault();  // Отменяем стандартное поведение клавиши
-    }
-}
+// function handleConsoleKeyPress(event) {
+//     if (event.key === "Enter") {
+//     const inputField = event.target;
+//     const value = inputField.value;  // Получаем введённое значение
+//     socket.emit('console-input', value);  // Отправляем на сервер
+//     appendToConsole(value + "\n");  // Добавляем в консоль
+//     inputField.value = "";  // Очищаем поле ввода
+//     consoleInput.readOnly = true;
+//     updateConsoleInputClass();
+//     event.preventDefault();  // Отменяем стандартное поведение клавиши
+//     }
+// }
