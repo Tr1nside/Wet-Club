@@ -14,13 +14,13 @@
     <!-- Стили для автодополнения -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css">
 
-    <link rel="stylesheet" href="{% url_for('static', filename='css/style.css') %}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
     <div class="header">
         <div class="logo-block">
-            <img src="{% url_for('static', filename='img/logo.png') %}" class="logo-style">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" class="logo-style">
             <div class="header-title">AiLab WEB</div>
         </div>
 
@@ -51,7 +51,7 @@
     {% block under %}
     {% endblock %}
 
-    <script src="{% url_for('static', filename='js/script.js') %}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
 </html>
