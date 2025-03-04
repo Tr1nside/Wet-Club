@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Online IDE python/Работа над пользователями/Описание.md",
+                "file": "Online IDE python/Описание.md",
                 "mode": "source",
                 "source": false
               },
@@ -169,6 +169,7 @@
   },
   "active": "ea2bc4f538dbc8dc",
   "lastOpenFiles": [
+    "Online IDE python/Работа над пользователями/Описание.md",
     "Atom/templates/login.html",
     "Atom/templates/base.html",
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/WHEEL",
@@ -179,11 +180,9 @@
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/LICENSE.txt",
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/INSTALLER",
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/entry_points.txt",
-    "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/AUTHORS.txt",
     "Atom/venv/Lib/site-packages/wtforms/locale/README.md",
     "Pasted image 20250304235425.png",
     "Online IDE python/Задачи.md",
-    "Online IDE python/Работа над пользователями/Описание.md",
     "Atom/static/img/save-console-as-text.svg",
     "Atom/static/img/play.svg",
     "Atom/static/img/play443.svg",
