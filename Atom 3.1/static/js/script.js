@@ -368,7 +368,7 @@ function appendToConsole(text) {
     consoleOutput.innerText += text;  // Добавляем текст в консоль
     consoleOutput.scrollTop = consoleOutput.scrollHeight;  // Прокручиваем консоль вниз
     }
-socket.on('console_output', (data) => {
+socket.on('console-output', (data) => {
     appendToConsole(data + "\n");  // Добавляем вывод в консоль
     // Если сервер запросил ввод, показываем поле ввода
     consoleInput.readOnly = false;
@@ -376,3 +376,14 @@ socket.on('console_output', (data) => {
     consoleInput.focus();
 });
 
+function handleConsoleKeyPress(event) {
+    if (event.key === "Enter") {
+    const inputField = event.target;
+    const value = inputField.value;  // Получаем введённое значение
+    socket.emit('console_input', value);  // Отправляем на сервер
+    appendToConsole(value + "\n");  // Добавляем в консоль
+    inputField.value = "";  // Очищаем поле ввода
+    inputField.style.display = "none";  // Скрываем поле ввода
+    event.preventDefault();  // Отменяем стандартное поведение клавиши
+    }
+}
