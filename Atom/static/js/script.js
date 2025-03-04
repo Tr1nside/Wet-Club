@@ -177,32 +177,24 @@ function getNextTabId() {
 
 // Функция для создания новой вкладки и редактора
 // Если переданы аргументы (customId, fileName, content, activate), то используется загрузка из localStorage
+// 🔹 Функция создания новой вкладки
 function createNewTab(customId = null, fileName = null, content = "", activate = true) {
     const newTabId = customId || getNextTabId();
     const newFileName = fileName || `file${newTabId.replace("tab", "")}.py`;
 
-    // Создаем новую вкладку
     const newTab = document.createElement('div');
     newTab.classList.add('tab');
     newTab.dataset.tab = newTabId;
     newTab.innerHTML = `<span>${newFileName}</span><span class="close-tab">×</span>
-                          <input type="text" class="tab-input" value="${newFileName}">`;
+                        <input type="text" class="tab-input" value="${newFileName}">`;
     tabs.insertBefore(newTab, document.querySelector('.tab[data-tab="create_tab"]'));
 
-    // Создаем контейнер для CodeMirror
     const codeArea = document.createElement('div');
     codeArea.classList.add('code-area');
     codeArea.dataset.tabContent = newTabId;
     document.querySelector('.container').insertBefore(codeArea, document.querySelector('.toolbar'));
 
-    // Инициализируем CodeMirror
-    const cm = CodeMirror(codeArea, {
-        mode: "python",
-        theme: body.classList.contains('dark-mode') ? "dracula" : "default",
-        lineNumbers: true,
-        gutters: ["CodeMirror-linenumbers"]
-    });
-    cm.setValue(content);
+    const cm = initializeCodeMirror(codeArea, content);
     codeMirrorInstances[newTabId] = cm;
 
     if (activate) activateTab(newTab);
