@@ -395,94 +395,98 @@ function handleConsoleKeyPress(event) {
 
 consoleInput.addEventListener('keydown', handleConsoleKeyPress);
 
+// Сохранение кода из активного редактора в файл с именем, соответствующим вкладке
+function saveCodeToFile() {
+    const activeTab = document.querySelector('.tab.active');
+    if (!activeTab) {
+        showNotification("Активная вкладка не найдена!");
+        return;
+    }
+    const tabId = activeTab.dataset.tab;
+    const editor = codeMirrorInstances[tabId];
+    if (!editor) {
+        showNotification("Редактор не найден!");
+        return;
+    }
+    const codeContent = editor.getValue();
+    const fileName = activeTab.querySelector('span').textContent || "code.txt";
+    const blob = new Blob([codeContent], { type: "text/plain;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    link.click();
+}
 
-// Функция для показа уведомлений
+// Сохранение вывода консоли в текстовый файл
+function saveConsoleToFile() {
+    const consoleContent = consoleOutput.value;
+    const blob = new Blob([consoleContent], { type: "text/plain;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "console_output.txt";
+    link.click();
+}
+
+// Показ уведомления на экране
 function showNotification(message) {
     const notification = document.createElement("div");
-    notification.className = "notification";  // Устанавливаем стиль уведомления
-    notification.innerText = message;  // Устанавливаем текст уведомления
-
-    // Добавляем уведомление в DOM
+    notification.className = "notification"; // Класс должен быть стилизован в CSS
+    notification.innerText = message;
     document.body.appendChild(notification);
-
-    // Показываем уведомление
+    
+    // Плавное появление
     setTimeout(() => {
-    notification.style.display = "block";  // Показываем уведомление
-    notification.style.opacity = 1;  // Устанавливаем полную видимость
+        notification.style.opacity = 1;
     }, 10);
-
-    // Через 3 секунды скрываем уведомление
+    
+    // Через 3 секунды скрываем уведомление и затем удаляем его
     setTimeout(() => {
-    notification.style.opacity = 0;  // Уменьшаем прозрачность до 0
-    setTimeout(() => {
-        notification.remove();  // Удаляем уведомление из DOM
-    }, 500);
-    }, 1000);
+        notification.style.opacity = 0;
+        setTimeout(() => {
+            notification.remove();
+        }, 500);
+    }, 3000);
 }
 
-
-// Функция для сохранения содержимого консоли в текстовый файл
-function saveCodeToFile() {
-    const consoleContent = document.getElementById("codeInput").innerText;  // Получаем текст консоли
-    const blob = new Blob([consoleContent], { type: "text/plain;charset=utf-8" });  // Создаём Blob объект
-
-    // Создаём ссылку для скачивания
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);  // Преобразуем Blob в URL
-
-    // Указываем имя файла для скачивания
-    link.download = "code.txt";
-
-    // Симулируем клик по ссылке для начала скачивания
-    link.click();
-
-    // Обратите внимание: это вызовет диалоговое окно для сохранения файла в выбранной папке
-    // в зависимости от настроек браузера
+// Загрузка файла в активный редактор CodeMirror
+function loadFile() {
+    let fileInput = document.getElementById("fileInput");
+    if (!fileInput) {
+        fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.id = "fileInput";
+        fileInput.style.display = "none";
+        document.body.appendChild(fileInput);
+    }
+    fileInput.click();
+    fileInput.onchange = function () {
+        const file = fileInput.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            const activeTab = document.querySelector('.tab.active');
+            if (!activeTab) {
+                showNotification("Активная вкладка не найдена!");
+                return;
+            }
+            const tabId = activeTab.dataset.tab;
+            const editor = codeMirrorInstances[tabId];
+            if (editor) {
+                editor.setValue(event.target.result);
+            }
+        };
+        reader.readAsText(file);
+    };
 }
 
-function saveConsoleToFile() {
-    const consoleContent = document.getElementById("console").innerText;  // Получаем текст консоли
-    const blob = new Blob([consoleContent], { type: "text/plain;charset=utf-8" });  // Создаём Blob объект
-
-    // Создаём ссылку для скачивания
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);  // Преобразуем Blob в URL
-
-    // Указываем имя файла для скачивания
-    link.download = "console_output.txt";
-
-    // Симулируем клик по ссылке для начала скачивания
-    link.click();
-
-    // Обратите внимание: это вызовет диалоговое окно для сохранения файла в выбранной папке
-    // в зависимости от настроек браузера
-}
-
-// Функция для копирования содержимого консоли в буфер обмена
+// Копирование текста из консоли в буфер обмена
 function copyToClipboard() {
-    const consoleContent = document.getElementById("console").innerText;  // Получаем текст консоли
-    navigator.clipboard.writeText(consoleContent)  // Копируем текст в буфер обмена
+    const text = consoleOutput.value;
+    navigator.clipboard.writeText(text)
     .then(() => {
-        showNotification("Текст скопирован в буфер обмена!");  // Показываем уведомление
+        showNotification("Текст скопирован в буфер обмена!");
     })
     .catch(err => {
-        console.error("Ошибка при копировании: ", err);  // Логируем ошибку, если что-то пошло не так
+        console.error("Ошибка при копировании: ", err);
     });
 }
-// Функция для загрузки файла и вставки его содержимого в редактор
-function loadFile() {
-    const fileInput = document.getElementById("fileInput"); // Получаем input-файл
-    fileInput.click(); // Открываем диалог выбора файла
-
-    fileInput.onchange = function () {
-    const file = fileInput.files[0]; // Получаем выбранный файл
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function (event) {
-        editor.setValue(event.target.result); // Устанавливаем содержимое в редактор
-    };
-    reader.readAsText(file);
-    };
-}
-
