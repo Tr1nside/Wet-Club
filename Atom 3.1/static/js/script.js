@@ -355,7 +355,7 @@ function clearConsole() {
 
 // Отправка кода на сервер
 function executeCode() {
-    // clearConsole();  // Очищаем консоль перед новым выводом
+    clearConsole();  // Очищаем консоль перед новым выводом
     console.log("penis");
 
     // Находим активную вкладку
