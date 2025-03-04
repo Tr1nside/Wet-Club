@@ -423,3 +423,26 @@ body.dark-mode .tab.active:hover {
     margin-top: 5px;
     margin-left: 5px;
 }
+
+/* Общий стиль для окна автодополнения */
+.CodeMirror-hints {
+    background: #282a36; /* Тёмный фон (Dracula) */
+    color: #f8f8f2; /* Белый текст */
+    border: 1px solid #44475a; /* Тонкая граница */
+    font-family: Consolas, Monaco, monospace;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Подсвеченный элемент (выбранный в автодополнении) */
+.CodeMirror-hint-active {
+    background: #44475a !important; /* Цвет фона при выборе */
+    color: #50fa7b !important; /* Цвет текста */
+}
+
+/* Разделители (если есть) */
+.CodeMirror-hint {
+    padding: 5px;
+}
