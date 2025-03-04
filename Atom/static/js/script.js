@@ -121,7 +121,10 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
         mode: "python",
         theme: body.classList.contains('dark-mode') ? "dracula" : "default",
         lineNumbers: true,
-        gutters: ["CodeMirror-linenumbers"]
+        gutters: ["CodeMirror-linenumbers"],
+        extraKeys: {
+            "Ctrl-Space": "autocomplete" // Запускает автодополнение
+        }
     });
     cm.setValue(content);
     codeMirrorInstances[newTabId] = cm;
