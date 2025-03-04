@@ -124,6 +124,23 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
     codeArea.dataset.tabContent = newTabId;
     document.querySelector('.container').insertBefore(codeArea, document.querySelector('.toolbar'));
 
+    function pythonHint(cm) {
+        const cur = cm.getCursor();
+        const token = cm.getTokenAt(cur);
+        const start = token.start;
+        const end = cur.ch;
+        const word = token.string.slice(0, end - start);
+        const list = pythonKeywords.filter(function(item) {
+            return item.indexOf(word) === 0;
+        });
+        return {
+            list: list,
+            from: CodeMirror.Pos(cur.line, start),
+            to: CodeMirror.Pos(cur.line, end)
+        };
+    }
+    
+
     // Инициализируем CodeMirror
     const cm = CodeMirror(codeArea, {
         mode: "python",
