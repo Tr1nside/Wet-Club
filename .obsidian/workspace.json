@@ -31,12 +31,12 @@
             "id": "5b77ac401623ddca",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "excalidraw",
               "state": {
-                "file": "Pasted image 20250304235425.png"
+                "file": "Excalidraw/Drawing 2025-03-05 00.52.12.excalidraw.md"
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250304235425"
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2025-03-05 00.52.12.excalidraw"
             }
           }
         ],
@@ -188,6 +188,7 @@
   },
   "active": "5b77ac401623ddca",
   "lastOpenFiles": [
+    "Pasted image 20250304235425.png",
     "Excalidraw/Drawing 2025-03-05 00.52.12.excalidraw.md",
     "Online IDE python/Задачи.md",
     "Excalidraw",
@@ -203,7 +204,6 @@
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/LICENSE.txt",
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/INSTALLER",
     "Atom/venv/Lib/site-packages/wtforms/locale/README.md",
-    "Pasted image 20250304235425.png",
     "Atom/static/img/save-console-as-text.svg",
     "Atom/static/img/play.svg",
     "Atom/static/img/play443.svg",
