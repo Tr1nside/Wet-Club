@@ -16,10 +16,14 @@ kanban-plugin: board
 - [ ] Неправильная обработка сервером, код обрабатывается несколько раз, до выполнения input в коде, и после.
 
 
+## Задачи в будущем
+
+
+
 
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false]}
+{"kanban-plugin":"board","list-collapse":[false,false,false]}
 ```
 %%
