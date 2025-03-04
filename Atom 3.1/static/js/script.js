@@ -349,7 +349,7 @@ document.addEventListener('click', saveTabsToLocalStorage);
 // Отправка кода на сервер
 function executeCode() {
     // clearConsole();  // Очищаем консоль перед новым выводом
-    console.log("penis")
+    console.log("penis");
 
     // Находим активную вкладку
     const activeTab = document.querySelector('.tab.active');
@@ -370,4 +370,5 @@ function executeCode() {
     // Получаем код из активного редактора
     const code = activeEditor.getValue();
     socket.emit('execute', code);  // Отправляем код на сервер через WebSocket
+    consoleOutput.log("penis2")
 }
