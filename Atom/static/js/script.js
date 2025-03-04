@@ -39,6 +39,30 @@ const pythonKeywords = [
     "index", "count", "sum", "avg", "mean", "min", "max"
 ];
 
+// 🔹 Функция для автодополнения
+function pythonHint(cm) {
+    const cur = cm.getCursor();
+    const token = cm.getTokenAt(cur);
+    const start = token.start;
+    const end = cur.ch;
+    const word = token.string.slice(0, end - start);
+    
+    // 🔹 Берём все слова из текста + pythonKeywords
+    const existingWords = new Set(pythonKeywords);
+    const doc = cm.getValue().split(/\W+/);
+    doc.forEach(word => existingWords.add(word));
+
+    // 🔹 Фильтруем по введённым символам
+    const list = [...existingWords].filter(item => item.startsWith(word));
+
+    return {
+        list: list,
+        from: CodeMirror.Pos(cur.line, start),
+        to: CodeMirror.Pos(cur.line, end)
+    };
+}
+
+
 
 
 consoleInput.addEventListener('focus', () => {
@@ -151,39 +175,31 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
     codeArea.dataset.tabContent = newTabId;
     document.querySelector('.container').insertBefore(codeArea, document.querySelector('.toolbar'));
 
-    // 🔹 Функция для автодополнения
-    function pythonHint(cm) {
-        const cur = cm.getCursor();
-        const token = cm.getTokenAt(cur);
-        const start = token.start;
-        const end = cur.ch;
-        const word = token.string.slice(0, end - start);
-        
-        // 🔹 Берём все слова из текста + pythonKeywords
-        const existingWords = new Set(pythonKeywords);
-        const doc = cm.getValue().split(/\W+/);
-        doc.forEach(word => existingWords.add(word));
-
-        // 🔹 Фильтруем по введённым символам
-        const list = [...existingWords].filter(item => item.startsWith(word));
-
-        return {
-            list: list,
-            from: CodeMirror.Pos(cur.line, start),
-            to: CodeMirror.Pos(cur.line, end)
-        };
-    }
-    
-
-    // Инициализируем CodeMirror
-    const cm = CodeMirror(codeArea, {
+    // 🔹 Инициализируем CodeMirror
+    const cm = CodeMirror(document.querySelector(".code-area"), {
         mode: "python",
-        theme: body.classList.contains('dark-mode') ? "dracula" : "default",
+        theme: "dracula",
         lineNumbers: true,
         gutters: ["CodeMirror-linenumbers"],
+        
+        // 🔹 Автозакрытие скобок, кавычек, квадратных и фигурных скобок
+        autoCloseBrackets: true,
+
+        // 🔹 Подключаем "Ctrl-Space" для автодополнения
         extraKeys: {
-            "Ctrl-Space": function(cm) {
-                cm.showHint({ hint: pythonHint, completeSingle: false });
+            "Ctrl-Space": "autocomplete",
+            "Tab": function(cm) {
+                if (cm.somethingSelected()) {
+                    cm.indentSelection("add");
+                } else {
+                    cm.replaceSelection("    ", "end", "+input");
+                }
+            },
+            "Shift-Tab": function(cm) {
+                cm.indentSelection("subtract");
+            },
+            "Ctrl-/": function(cm) {
+                cm.execCommand("toggleComment");
             }
         }
     });
