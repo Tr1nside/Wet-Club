@@ -366,7 +366,7 @@ function executeCode() {
 }
 
 function appendToConsole(text) {
-    text = text
+    text = text;
     console.log(text);
     consoleOutput.innerText += text;  // Добавляем текст в консоль
     consoleOutput.scrollTop = consoleOutput.scrollHeight;  // Прокручиваем консоль вниз
