@@ -5,24 +5,22 @@ let codeMirrorInstances = {};
 const consoleOutput = document.querySelector('.console-output');
 const consoleInput = document.querySelector('.console-input');
 const socket = io();
+
+// 🔹 Список ключевых слов и встроенных функций Python для автодополнения
 const pythonKeywords = [
-    // 🔹 Ключевые слова Python
     "False", "None", "True", "and", "as", "assert", "async", "await",
     "break", "class", "continue", "def", "del", "elif", "else", "except",
     "finally", "for", "from", "global", "if", "import", "in", "is",
     "lambda", "nonlocal", "not", "or", "pass", "raise", "return", "try",
-    "while", "with", "yield",
-
-    // 🔹 Встроенные функции Python
-    "abs", "all", "any", "bin", "bool", "bytearray", "bytes", "callable",
-    "chr", "classmethod", "compile", "complex", "delattr", "dict", "dir",
-    "divmod", "enumerate", "eval", "exec", "filter", "float", "format",
-    "frozenset", "getattr", "globals", "hasattr", "hash", "help", "hex",
-    "id", "input", "int", "isinstance", "issubclass", "iter", "len",
-    "list", "locals", "map", "max", "memoryview", "min", "next", "object",
-    "oct", "open", "ord", "pow", "print", "property", "range", "repr",
-    "reversed", "round", "set", "setattr", "slice", "sorted", "staticmethod",
-    "str", "sum", "super", "tuple", "type", "vars", "zip"
+    "while", "with", "yield", "abs", "all", "any", "bin", "bool",
+    "bytearray", "bytes", "callable", "chr", "classmethod", "compile",
+    "complex", "delattr", "dict", "dir", "divmod", "enumerate", "eval",
+    "exec", "filter", "float", "format", "frozenset", "getattr", "globals",
+    "hasattr", "hash", "help", "hex", "id", "input", "int", "isinstance",
+    "issubclass", "iter", "len", "list", "locals", "map", "max", "memoryview",
+    "min", "next", "object", "oct", "open", "ord", "pow", "print", "property",
+    "range", "repr", "reversed", "round", "set", "setattr", "slice", "sorted",
+    "staticmethod", "str", "sum", "super", "tuple", "type", "vars", "zip"
 ];
 
 // 🔹 Функция для автодополнения
@@ -32,13 +30,12 @@ function pythonHint(cm) {
     const start = token.start;
     const end = cur.ch;
     const word = token.string.slice(0, end - start);
-    
-    // 🔹 Берём все слова из текста + pythonKeywords
-    const existingWords = new Set(pythonKeywords);
-    const doc = cm.getValue().split(/\W+/);
-    doc.forEach(word => existingWords.add(word));
+    if (!word.length) return;
 
-    // 🔹 Фильтруем по введённым символам
+    const existingWords = new Set(pythonKeywords);
+    const doc = cm.getValue().match(/\b\w+\b/g) || [];
+    doc.forEach(w => existingWords.add(w));
+
     const list = [...existingWords].filter(item => item.startsWith(word));
 
     return {
@@ -46,6 +43,46 @@ function pythonHint(cm) {
         from: CodeMirror.Pos(cur.line, start),
         to: CodeMirror.Pos(cur.line, end)
     };
+}
+
+// 🔹 Функция инициализации CodeMirror с настройками, как в VS Code
+function initializeCodeMirror(codeArea, content = "") {
+    const cm = CodeMirror(codeArea, {
+        mode: "python",
+        theme: body.classList.contains('dark-mode') ? "dracula" : "default",
+        lineNumbers: true,
+        gutters: ["CodeMirror-linenumbers"],
+        autoCloseBrackets: true,
+        indentWithTabs: false,
+        tabSize: 4,
+        smartIndent: true,
+        electricChars: true,
+        extraKeys: {
+            "Ctrl-Space": "autocomplete",
+            "Tab": function(cm) {
+                if (cm.somethingSelected()) {
+                    cm.indentSelection("add");
+                } else {
+                    cm.replaceSelection("    ", "end", "+input");
+                }
+            },
+            "Shift-Tab": function(cm) {
+                cm.indentSelection("subtract");
+            },
+            "Ctrl-/": function(cm) {
+                cm.execCommand("toggleComment");
+            }
+        }
+    });
+    cm.setValue(content);
+
+    cm.on("inputRead", function(cm, change) {
+        if (change.text[0].match(/\w/) && cm.getTokenAt(cm.getCursor()).string.length > 0) {
+            cm.showHint({ hint: pythonHint, completeSingle: false });
+        }
+    });
+
+    return cm;
 }
 
 consoleInput.addEventListener('focus', () => {
