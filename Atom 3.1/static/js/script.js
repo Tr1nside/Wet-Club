@@ -284,12 +284,20 @@ function appendToConsole(text) {
     consoleOutput.value += text;
     consoleOutput.scrollTop = consoleOutput.scrollHeight;
 }
-socket.on('console_output', (data) => {
-    appendToConsole(data + "\n");
+
+socket.on('request_input', (prompt) => {
+    appendToConsole(prompt + "\n"); // Выводим запрос в консоль
     consoleInput.readOnly = false;
     updateConsoleInputClass();
     consoleInput.focus();
 });
+
+
+socket.on('console_output', (data) => {
+    appendToConsole(data + "\n");
+});
+
+
 function handleConsoleKeyPress(event) {
     if (event.key === "Enter") {
         event.preventDefault();
