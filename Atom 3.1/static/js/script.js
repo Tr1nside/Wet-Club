@@ -288,11 +288,13 @@ function loadTabsFromLocalStorage() {
     const savedTabs = JSON.parse(localStorage.getItem('savedTabs')) || [];
     if (savedTabs.length === 0) return;
 
-    document.querySelectorAll('.tab:not([data-tab="create_tab"])').forEach(tab => tab.remove());
+    document.querySelectorAll('.tab:not([data-tab="tab2"])').forEach(tab => tab.remove());
     document.querySelectorAll('.code-area[data-tab-content]').forEach(area => area.remove());
     codeMirrorInstances = {};
 
-    savedTabs.forEach((tabData, index) => {
+    let maxTabNumber = 1; // Переменная для отслеживания номера последней вкладки
+
+    savedTabs.forEach((tabData) => {
         const newTab = document.createElement('div');
         newTab.classList.add('tab');
         newTab.dataset.tab = tabData.id;
@@ -320,10 +322,23 @@ function loadTabsFromLocalStorage() {
         inputElement.addEventListener('keydown', function (event) {
             if (event.key === 'Enter') finishEditingTab(newTab);
         });
+
+        // Определяем максимальный номер вкладки
+        const tabNumberMatch = tabData.id.match(/\d+/);
+        if (tabNumberMatch) {
+            const tabNumber = parseInt(tabNumberMatch[0], 10);
+            if (tabNumber > maxTabNumber) {
+                maxTabNumber = tabNumber;
+            }
+        }
     });
 
-    activateTab(document.querySelector('.tab:not([data-tab="create_tab"])'));
+    // Устанавливаем tabCounter так, чтобы следующая вкладка получала корректный номер
+    tabCounter = maxTabNumber + 1;
+
+    activateTab(document.querySelector('.tab:not([data-tab="tab2"])'));
 }
+
 
 // Вызываем загрузку при запуске
 window.addEventListener('load', loadTabsFromLocalStorage);
