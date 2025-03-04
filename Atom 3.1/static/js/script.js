@@ -179,6 +179,7 @@ function closeTab(tab) {
     // Удаляем вкладку и контент
     tabElement.remove();
     codeAreaElement.remove();
+    tabCounter--;
 
     // Удаляем экземпляр CodeMirror, если он есть
     if (codeMirrorInstances[tabId]) {
