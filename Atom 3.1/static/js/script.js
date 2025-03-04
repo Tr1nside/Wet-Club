@@ -350,9 +350,7 @@ document.addEventListener('click', saveTabsToLocalStorage);
 function clearConsole() {
     localStorage.setItem("console", '')
     document.querySelector(".console-output").value = "";
-    const element = document.getElementById("myElement");
-    element.classList.remove("hidden");
-
+    consoleInput.classList.remove('console-input-active');
 }
 
 // Отправка кода на сервер
