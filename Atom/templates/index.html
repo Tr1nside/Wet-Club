@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-    {% block title %} Online Ide {{ endblock }}    
+    {% block title %} Online Ide {% endblock %}    
     {% block head %}
     <!-- CodeMirror Основной стиль -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
@@ -8,9 +8,9 @@
     <!-- Стили для автодополнения -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css">
 
-    {{ endblock }}
+    {% endblock %}
     
-{{ block main }}
+{% block main %}
     <div class="container">
         <div class="tabs">
             <div class="tab active" data-tab="tab1"><span>main.py</span><span class="close-tab">×</span>
@@ -24,14 +24,14 @@
 
         <div class="toolbar">
             <div class="toolbar-left">
-                <button class="button run-button" onclick="executeCode()"><i><img class="button-icons" src="{{ url_for('static', filename='img/play.svg') }}"></i></button>
-                <button class="button save-button" onclick="saveCodeToFile()"><i><img class="button-icons" src="{{ url_for('static', filename='img/save.svg') }}"></i></button>
-                <button class="button open-button" onclick="loadFile()"><i><img class="button-icons" src="{{ url_for('static', filename='img/load.svg') }}"></i></button>
+                <button class="button run-button" onclick="executeCode()"><i><img class="button-icons" src="{% url_for('static', filename='img/play.svg') %}"></i></button>
+                <button class="button save-button" onclick="saveCodeToFile()"><i><img class="button-icons" src="{% url_for('static', filename='img/save.svg') %}"></i></button>
+                <button class="button open-button" onclick="loadFile()"><i><img class="button-icons" src="{% url_for('static', filename='img/load.svg') %}"></i></button>
             </div>
             <div class="toolbar-right">
-                <button class="button download-button" onclick="saveConsoleToFile()"><i><img class="button-icons" src="{{ url_for('static', filename='img/save-console-as-text.svg') }}"></i></button>
-                <button class="button text-button" onclick="copyToClipboard()"><i><img class="button-icons" src="{{ url_for('static', filename='img/play.svg') }}"></i></button>
-                <button class="button delete-button" onclick="clearConsole()"><i><img class="button-icons" src="{{ url_for('static', filename='img/del-console.svg') }}"></i></button>
+                <button class="button download-button" onclick="saveConsoleToFile()"><i><img class="button-icons" src="{% url_for('static', filename='img/save-console-as-text.svg') %}"></i></button>
+                <button class="button text-button" onclick="copyToClipboard()"><i><img class="button-icons" src="{% url_for('static', filename='img/play.svg') %}"></i></button>
+                <button class="button delete-button" onclick="clearConsole()"><i><img class="button-icons" src="{% url_for('static', filename='img/del-console.svg') %}"></i></button>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
         </div>
     </div>
 
-{{  endblock }}
+{%  endblock %}
 {% block under %}
 
     <!-- Основной CodeMirror -->
@@ -60,4 +60,4 @@
     <!-- Подключаем Socket.IO -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js"></script>
     
-{{ endblock }}
+{% endblock %}
