@@ -148,9 +148,14 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
         lineNumbers: true,
         gutters: ["CodeMirror-linenumbers"],
         extraKeys: {
-            "Ctrl-Space": "autocomplete" // Запускает автодополнение
+            "Ctrl-Space": function(cm) {
+                cm.showHint({ hint: pythonHint });
+            }
         }
     });
+    
+
+
     cm.setValue(content);
     codeMirrorInstances[newTabId] = cm;
 
