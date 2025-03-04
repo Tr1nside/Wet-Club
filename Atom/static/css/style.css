@@ -436,7 +436,7 @@ body.dark-mode .tab.active:hover {
 
 /* НЕ выбранный текст (обычные элементы) */
 .CodeMirror-hint {
-    color: #e5e5e7; /* Белый цвет текста */
+    color: #aaaaad; /* Белый цвет текста */
     padding: 5px;
 }
 
