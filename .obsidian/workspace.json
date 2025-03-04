@@ -169,6 +169,7 @@
   },
   "active": "ea2bc4f538dbc8dc",
   "lastOpenFiles": [
+    "Atom/templates/login.html",
     "Atom/templates/base.html",
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/WHEEL",
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/top_level.txt",
@@ -179,7 +180,6 @@
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/INSTALLER",
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/entry_points.txt",
     "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info/AUTHORS.txt",
-    "Atom/venv/Lib/site-packages/pip-25.0.1.dist-info",
     "Atom/venv/Lib/site-packages/wtforms/locale/README.md",
     "Pasted image 20250304235425.png",
     "Online IDE python/Задачи.md",
