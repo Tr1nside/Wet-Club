@@ -378,7 +378,6 @@ socket.on('console_output', (data) => {
 
 // Обработчик нажатия клавиши Enter в поле ввода консоли
 function handleConsoleKeyPress(event) {
-    console.log('hesus')
     if (event.key === "Enter") {
         event.preventDefault();
         const value = consoleInput.value.trim();
