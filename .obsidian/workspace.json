@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "023d4f6214906b7e",
+        "id": "219be3a0e82e84bc",
         "type": "tabs",
         "children": [
           {
-            "id": "5256790081b310ef",
+            "id": "ea2bc4f538dbc8dc",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -173,11 +173,11 @@
       "obsidian-kanban:Создать новую доску": false
     }
   },
-  "active": "5256790081b310ef",
+  "active": "ea2bc4f538dbc8dc",
   "lastOpenFiles": [
+    "Online IDE python/Задачи.md",
     "Atom 3.1/README.md",
     "Online IDE python/Tasks.md",
-    "Online IDE python/Задачи.md",
     "Online IDE python/online-ide-python.excalidraw",
     "Excalidraw/Drawing 2025-03-04 16.48.31.excalidraw.md",
     "Excalidraw",
