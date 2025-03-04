@@ -388,7 +388,7 @@ function handleConsoleKeyPress(event) {
             appendToConsole(value + "\n");         // Выводим введённое значение в консоль
         }
         consoleInput.value = "";                   // Очищаем поле ввода
-        consoleInput.readOnly = true;              // Блокируем ввод до следующего запроса от сервера
+        consoleInput.readOnly = false;              // Блокируем ввод до следующего запроса от сервера
         updateConsoleInputClass();
     }
 }
