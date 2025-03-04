@@ -340,153 +340,153 @@ function clearConsole() {
     consoleInput.classList.remove('console-input-active');
 }
 
-// Отправка кода на сервер
-function executeCode() {
-    clearConsole();  // Очищаем консоль перед новым выводом
+// // Отправка кода на сервер
+// function executeCode() {
+//     clearConsole();  // Очищаем консоль перед новым выводом
 
-    // Находим активную вкладку
-    const activeTab = document.querySelector('.tab.active');
-    if (!activeTab) {
-        consoleOutput.value += "\nОшибка: активная вкладка не найдена.";
-        return;
-    }
+//     // Находим активную вкладку
+//     const activeTab = document.querySelector('.tab.active');
+//     if (!activeTab) {
+//         consoleOutput.value += "\nОшибка: активная вкладка не найдена.";
+//         return;
+//     }
 
-    // Получаем идентификатор активной вкладки и соответствующий экземпляр CodeMirror
-    const tabId = activeTab.dataset.tab;
-    const activeEditor = codeMirrorInstances[tabId];
+//     // Получаем идентификатор активной вкладки и соответствующий экземпляр CodeMirror
+//     const tabId = activeTab.dataset.tab;
+//     const activeEditor = codeMirrorInstances[tabId];
 
-    if (!activeEditor) {
-        consoleOutput.value += "\nОшибка: не найден редактор для активной вкладки.";
-        return;
-    }
+//     if (!activeEditor) {
+//         consoleOutput.value += "\nОшибка: не найден редактор для активной вкладки.";
+//         return;
+//     }
 
-    // Получаем код из активного редактора
-    const code = activeEditor.getValue();
-    socket.emit('execute', code);  // Отправляем код на сервер через WebSocket
-}
+//     // Получаем код из активного редактора
+//     const code = activeEditor.getValue();
+//     socket.emit('execute', code);  // Отправляем код на сервер через WebSocket
+// }
 
-function appendToConsole(text) {
-    consoleOutput.value += text;  // Добавляем текст в консоль
-    consoleOutput.scrollTop = consoleOutput.scrollHeight;  // Прокручиваем консоль вниз
-    }
-socket.on('console_output', (data) => {
-    appendToConsole(data + "\n");  // Добавляем вывод в консоль
-    // Если сервер запросил ввод, показываем поле ввода
-    consoleInput.readOnly = false;     
-    updateConsoleInputClass();
-    consoleInput.focus();
-});
+// function appendToConsole(text) {
+//     consoleOutput.value += text;  // Добавляем текст в консоль
+//     consoleOutput.scrollTop = consoleOutput.scrollHeight;  // Прокручиваем консоль вниз
+//     }
+// socket.on('console_output', (data) => {
+//     appendToConsole(data + "\n");  // Добавляем вывод в консоль
+//     // Если сервер запросил ввод, показываем поле ввода
+//     consoleInput.readOnly = false;     
+//     updateConsoleInputClass();
+//     consoleInput.focus();
+// });
 
-// Обработчик нажатия клавиши Enter в поле ввода консоли
-function handleConsoleKeyPress(event) {
-    console.log('hesus')
-    if (event.key === "Enter") {
-        event.preventDefault();
-        const value = consoleInput.value.trim();
-        if (value) {
-            socket.emit('console_input', value);  // Отправляем введённое значение на сервер
-            appendToConsole(value + "\n");         // Выводим введённое значение в консоль
-        }
-        consoleInput.value = "";                   // Очищаем поле ввода
-        consoleInput.readOnly = true;              // Блокируем ввод до следующего запроса от сервера
-        consoleInput.classList.remove('console-input-active');
-    }
-}
+// // Обработчик нажатия клавиши Enter в поле ввода консоли
+// function handleConsoleKeyPress(event) {
+//     console.log('hesus')
+//     if (event.key === "Enter") {
+//         event.preventDefault();
+//         const value = consoleInput.value.trim();
+//         if (value) {
+//             socket.emit('console_input', value);  // Отправляем введённое значение на сервер
+//             appendToConsole(value + "\n");         // Выводим введённое значение в консоль
+//         }
+//         consoleInput.value = "";                   // Очищаем поле ввода
+//         consoleInput.readOnly = true;              // Блокируем ввод до следующего запроса от сервера
+//         consoleInput.classList.remove('console-input-active');
+//     }
+// }
 
-consoleInput.addEventListener('keydown', handleConsoleKeyPress);
+// consoleInput.addEventListener('keydown', handleConsoleKeyPress);
 
-// Сохранение кода из активного редактора в файл с именем, соответствующим вкладке
-function saveCodeToFile() {
-    const activeTab = document.querySelector('.tab.active');
-    if (!activeTab) {
-        showNotification("Активная вкладка не найдена!");
-        return;
-    }
-    const tabId = activeTab.dataset.tab;
-    const editor = codeMirrorInstances[tabId];
-    if (!editor) {
-        showNotification("Редактор не найден!");
-        return;
-    }
-    const codeContent = editor.getValue();
-    const fileName = activeTab.querySelector('span').textContent || "code.txt";
-    const blob = new Blob([codeContent], { type: "text/plain;charset=utf-8" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName;
-    link.click();
-}
+// // Сохранение кода из активного редактора в файл с именем, соответствующим вкладке
+// function saveCodeToFile() {
+//     const activeTab = document.querySelector('.tab.active');
+//     if (!activeTab) {
+//         showNotification("Активная вкладка не найдена!");
+//         return;
+//     }
+//     const tabId = activeTab.dataset.tab;
+//     const editor = codeMirrorInstances[tabId];
+//     if (!editor) {
+//         showNotification("Редактор не найден!");
+//         return;
+//     }
+//     const codeContent = editor.getValue();
+//     const fileName = activeTab.querySelector('span').textContent || "code.txt";
+//     const blob = new Blob([codeContent], { type: "text/plain;charset=utf-8" });
+//     const link = document.createElement("a");
+//     link.href = URL.createObjectURL(blob);
+//     link.download = fileName;
+//     link.click();
+// }
 
-// Сохранение вывода консоли в текстовый файл
-function saveConsoleToFile() {
-    const consoleContent = consoleOutput.value;
-    const blob = new Blob([consoleContent], { type: "text/plain;charset=utf-8" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "console_output.txt";
-    link.click();
-}
+// // Сохранение вывода консоли в текстовый файл
+// function saveConsoleToFile() {
+//     const consoleContent = consoleOutput.value;
+//     const blob = new Blob([consoleContent], { type: "text/plain;charset=utf-8" });
+//     const link = document.createElement("a");
+//     link.href = URL.createObjectURL(blob);
+//     link.download = "console_output.txt";
+//     link.click();
+// }
 
-// Показ уведомления на экране
-function showNotification(message) {
-    const notification = document.createElement("div");
-    notification.className = "notification"; // Класс должен быть стилизован в CSS
-    notification.innerText = message;
-    document.body.appendChild(notification);
+// // Показ уведомления на экране
+// function showNotification(message) {
+//     const notification = document.createElement("div");
+//     notification.className = "notification"; // Класс должен быть стилизован в CSS
+//     notification.innerText = message;
+//     document.body.appendChild(notification);
     
-    // Плавное появление
-    setTimeout(() => {
-        notification.style.opacity = 1;
-    }, 10);
+//     // Плавное появление
+//     setTimeout(() => {
+//         notification.style.opacity = 1;
+//     }, 10);
     
-    // Через 3 секунды скрываем уведомление и затем удаляем его
-    setTimeout(() => {
-        notification.style.opacity = 0;
-        setTimeout(() => {
-            notification.remove();
-        }, 500);
-    }, 3000);
-}
+//     // Через 3 секунды скрываем уведомление и затем удаляем его
+//     setTimeout(() => {
+//         notification.style.opacity = 0;
+//         setTimeout(() => {
+//             notification.remove();
+//         }, 500);
+//     }, 3000);
+// }
 
-// Загрузка файла в активный редактор CodeMirror
-function loadFile() {
-    let fileInput = document.getElementById("fileInput");
-    if (!fileInput) {
-        fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.id = "fileInput";
-        fileInput.style.display = "none";
-        document.body.appendChild(fileInput);
-    }
-    fileInput.click();
-    fileInput.onchange = function () {
-        const file = fileInput.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function (event) {
-            const activeTab = document.querySelector('.tab.active');
-            if (!activeTab) {
-                showNotification("Активная вкладка не найдена!");
-                return;
-            }
-            const tabId = activeTab.dataset.tab;
-            const editor = codeMirrorInstances[tabId];
-            if (editor) {
-                editor.setValue(event.target.result);
-            }
-        };
-        reader.readAsText(file);
-    };
-}
+// // Загрузка файла в активный редактор CodeMirror
+// function loadFile() {
+//     let fileInput = document.getElementById("fileInput");
+//     if (!fileInput) {
+//         fileInput = document.createElement("input");
+//         fileInput.type = "file";
+//         fileInput.id = "fileInput";
+//         fileInput.style.display = "none";
+//         document.body.appendChild(fileInput);
+//     }
+//     fileInput.click();
+//     fileInput.onchange = function () {
+//         const file = fileInput.files[0];
+//         if (!file) return;
+//         const reader = new FileReader();
+//         reader.onload = function (event) {
+//             const activeTab = document.querySelector('.tab.active');
+//             if (!activeTab) {
+//                 showNotification("Активная вкладка не найдена!");
+//                 return;
+//             }
+//             const tabId = activeTab.dataset.tab;
+//             const editor = codeMirrorInstances[tabId];
+//             if (editor) {
+//                 editor.setValue(event.target.result);
+//             }
+//         };
+//         reader.readAsText(file);
+//     };
+// }
 
-// Копирование текста из консоли в буфер обмена
-function copyToClipboard() {
-    const text = consoleOutput.value;
-    navigator.clipboard.writeText(text)
-    .then(() => {
-        showNotification("Текст скопирован в буфер обмена!");
-    })
-    .catch(err => {
-        console.error("Ошибка при копировании: ", err);
-    });
-}
+// // Копирование текста из консоли в буфер обмена
+// function copyToClipboard() {
+//     const text = consoleOutput.value;
+//     navigator.clipboard.writeText(text)
+//     .then(() => {
+//         showNotification("Текст скопирован в буфер обмена!");
+//     })
+//     .catch(err => {
+//         console.error("Ошибка при копировании: ", err);
+//     });
+// }
