@@ -31,12 +31,12 @@
             "id": "5b77ac401623ddca",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "image",
               "state": {
-                "file": "Excalidraw/Drawing 2025-03-05 00.52.12.excalidraw.md"
+                "file": "Pasted image 20250304235425.png"
               },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2025-03-05 00.52.12.excalidraw"
+              "icon": "lucide-image",
+              "title": "Pasted image 20250304235425"
             }
           }
         ],
@@ -188,8 +188,8 @@
   },
   "active": "5b77ac401623ddca",
   "lastOpenFiles": [
-    "Online IDE python/Задачи.md",
     "Excalidraw/Drawing 2025-03-05 00.52.12.excalidraw.md",
+    "Online IDE python/Задачи.md",
     "Excalidraw",
     "Online IDE python/Описание.md",
     "Online IDE python/Работа над пользователями/Описание.md",
