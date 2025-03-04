@@ -227,18 +227,21 @@ function finishEditingTab(tab) {
 
 // Обработчик клика на вкладки
 tabs.addEventListener('click', (event) => {
-    if (event.target.classList.contains('tab')) {
-        const tab = event.target;
-        if (tab.dataset.tab === 'tab2') { // Если кликнули на "+", создаем новую вкладку
-            createNewTab();
-        } else {
-            activateTab(tab);
-        }
-    } else if (event.target.classList.contains('close-tab')) {
-        const tab = event.target.parentNode;
+    const tab = event.target.closest('.tab');
+    if (!tab) return;
+    
+    if (event.target.classList.contains('close-tab')) {
         closeTab(tab);
+        return;
+    }
+
+    if (tab.dataset.tab === 'tab2') { // Если кликнули на "+", создаем новую вкладку
+        createNewTab();
+    } else {
+        activateTab(tab);
     }
 });
+
 
 // Инициализация редактирования вкладки по двойному клику
 tabs.addEventListener('dblclick', (event) => {
