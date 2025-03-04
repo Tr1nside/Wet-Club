@@ -377,3 +377,9 @@ function executeCode() {
     const code = activeEditor.getValue();
     socket.emit('execute', code);  // Отправляем код на сервер через WebSocket
 }
+
+function appendToConsole(text) {
+    const consoleDiv = document.getElementById("console");
+    consoleDiv.innerText += text;  // Добавляем текст в консоль
+    consoleDiv.scrollTop = consoleDiv.scrollHeight;  // Прокручиваем консоль вниз
+    }
