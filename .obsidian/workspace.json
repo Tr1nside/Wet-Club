@@ -175,6 +175,7 @@
   },
   "active": "ea2bc4f538dbc8dc",
   "lastOpenFiles": [
+    "Atom/app/forms.py",
     "Atom/__pycache__/config.cpython-312.pyc",
     "Atom/__pycache__",
     "Atom/config.py",
@@ -191,7 +192,6 @@
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__/bindings.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__/__init__.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__/low_level.cpython-312.pyc",
-    "Atom/venv/Lib/site-packages/pip/_vendor/urllib3/util/__pycache__/__init__.cpython-312.pyc",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/more.png",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/less.png",
     "Atom/venv/Lib/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
