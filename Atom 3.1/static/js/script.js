@@ -222,7 +222,7 @@ tabs.addEventListener('click', (event) => {
         return;
     }
 
-    if (tab.dataset.tab === 'tab2') { // Если кликнули на "+", создаем новую вкладку
+    if (tab.dataset.tab === 'create_tab') { // Если кликнули на "+", создаем новую вкладку
         createNewTab();
     } else {
         activateTab(tab);
@@ -232,7 +232,7 @@ tabs.addEventListener('click', (event) => {
 
 // Инициализация редактирования вкладки по двойному клику
 tabs.addEventListener('dblclick', (event) => {
-    if (event.target.classList.contains('tab') && event.target.dataset.tab !== 'tab2') {
+    if (event.target.classList.contains('tab') && event.target.dataset.tab !== 'create_tab') {
         startEditingTab(event.target);
     }
 });
