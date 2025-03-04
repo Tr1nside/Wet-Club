@@ -391,4 +391,4 @@ function handleConsoleKeyPress(event) {
         consoleInput.classList.add('console-input-active');
     }
 }
-consoleInput.addEventListener('keydown', handleConsoleKeyPress);
+consoleInput.addEventListener('Enter', handleConsoleKeyPress);
