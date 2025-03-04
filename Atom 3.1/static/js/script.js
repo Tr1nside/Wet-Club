@@ -346,6 +346,13 @@ window.addEventListener('beforeunload', saveTabsToLocalStorage);
 document.addEventListener('input', saveTabsToLocalStorage);
 document.addEventListener('click', saveTabsToLocalStorage);
 
+// Отчистка консоли
+function clearConsole() {
+    localStorage.setItem("console", '')
+    document.getElementById("console").innerText = "";
+    document.getElementById("consoleInput").style.display = "none";  // Скрываем поле для ввода
+}
+
 // Отправка кода на сервер
 function executeCode() {
     // clearConsole();  // Очищаем консоль перед новым выводом
