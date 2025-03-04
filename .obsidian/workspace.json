@@ -26,21 +26,8 @@
               "icon": "lucide-trello",
               "title": "Задачи"
             }
-          },
-          {
-            "id": "5b77ac401623ddca",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Drawing 2025-03-05 00.52.12.excalidraw.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2025-03-05 00.52.12.excalidraw"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -186,10 +173,10 @@
       "obsidian-kanban:Создать новую доску": false
     }
   },
-  "active": "5b77ac401623ddca",
+  "active": "ea2bc4f538dbc8dc",
   "lastOpenFiles": [
-    "Pasted image 20250304235425.png",
     "Excalidraw/Drawing 2025-03-05 00.52.12.excalidraw.md",
+    "Pasted image 20250304235425.png",
     "Online IDE python/Задачи.md",
     "Excalidraw",
     "Online IDE python/Описание.md",
