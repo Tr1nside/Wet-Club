@@ -176,7 +176,8 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
             "Ctrl-Space": function(cm) {
                 cm.showHint({ hint: pythonHint, completeSingle: false });
             }
-        }
+        },
+        autoCloseBrackets: true // Автоматически закрывать скобки и кавычки
     });
     
     // Автоматический вызов автодополнения при вводе символа (если это буква или цифра)
