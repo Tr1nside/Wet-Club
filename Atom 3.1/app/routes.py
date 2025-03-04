@@ -49,14 +49,14 @@ def register_socketio_events(socketio):
         except Exception as e:  # Обрабатываем исключения
             result = f"Ошибка: {e}"  # Сохраняем сообщение об ошибке
 
-        socketio.emit('console-output', result, room=sid)  # Отправляем результат выполнения кода обратно клиенту
+        socketio.emit('console_output', result, room=sid)  # Отправляем результат выполнения кода обратно клиенту
 
 
-    @socketio.on('console-input')  # Обработчик события 'console_input'
+    @socketio.on('console_input')  # Обработчик события 'console_input'
     def handle_console_input(data):
         sid = request.sid  # Получаем идентификатор сессии клиента
         if sid in pending_inputs:  # Проверяем, есть ли ожидающий ввод для этой сессии
             pending_inputs[sid].send(data)  # Отправляем введённые данные в ожидающее событие
             del pending_inputs[sid]  # Удаляем событие из словаря
         else:  # Если нет ожидающего ввода
-            socketio.emit('console-output', f"\n(Ввод вне запроса: {data})\n", room=sid)  # Уведомляем клиента о вводе вне запроса
+            socketio.emit('console_output', f"\n(Ввод вне запроса: {data})\n", room=sid)  # Уведомляем клиента о вводе вне запроса
