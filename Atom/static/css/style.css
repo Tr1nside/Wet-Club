@@ -418,3 +418,7 @@ body.dark-mode .tab.active:hover {
     margin-top: 5px;
     margin-left: 5px;
 }
+
+#create-tab {
+    min-width: 20px;
+}
