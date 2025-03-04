@@ -297,29 +297,19 @@ tabs.addEventListener('dblclick', (event) => {
     }
 });
 
-// Инициализация начальной вкладки и CodeMirror
+// 🔹 Инициализация первой вкладки
 const initialTab = document.querySelector('.tab[data-tab="tab1"]');
 const initialCodeArea = document.querySelector('.code-area[data-tab-content="tab1"]');
-const cm = CodeMirror(initialCodeArea, {
-    mode: "python",
-    theme: body.classList.contains('dark-mode') ? "dracula" : "default",
-    lineNumbers: true,
-    gutters: ["CodeMirror-linenumbers"]
-});
-codeMirrorInstances['tab1'] = cm;
+codeMirrorInstances['tab1'] = initializeCodeMirror(initialCodeArea);
 activateTab(initialTab);
-initialTab.addEventListener('dblclick', function () {
-    startEditingTab(this);
-});
+
+initialTab.addEventListener('dblclick', function () { startEditingTab(this); });
 const initialInputElement = initialTab.querySelector('.tab-input');
-initialInputElement.addEventListener('blur', function () {
-    finishEditingTab(initialTab);
-});
+initialInputElement.addEventListener('blur', function () { finishEditingTab(initialTab); });
 initialInputElement.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        finishEditingTab(initialTab);
-    }
+    if (event.key === 'Enter') finishEditingTab(initialTab);
 });
+
 
 // Вызываем загрузку вкладок при запуске
 window.addEventListener('load', loadTabsFromLocalStorage);
