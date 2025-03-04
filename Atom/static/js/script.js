@@ -157,9 +157,7 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
         const start = token.start;
         const end = cur.ch;
         const word = token.string.slice(0, end - start);
-        const list = pythonKeywords.filter(function(item) {
-            return item.indexOf(word) === 0;
-        });
+        const list = pythonKeywords.filter(item => item.indexOf(word) === 0);
         return {
             list: list,
             from: CodeMirror.Pos(cur.line, start),
