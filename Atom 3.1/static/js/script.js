@@ -345,3 +345,5 @@ window.addEventListener('load', loadTabsFromLocalStorage);
 window.addEventListener('beforeunload', saveTabsToLocalStorage);
 document.addEventListener('input', saveTabsToLocalStorage);
 document.addEventListener('click', saveTabsToLocalStorage);
+
+
