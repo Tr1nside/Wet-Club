@@ -195,7 +195,7 @@ body.dark-mode .tab.active:hover {
     /* Закругляем углы */
     outline: none;
     font-family: monospace;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 20px;
     height: 300px;
     /* Уменьшаем высоту */
