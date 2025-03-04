@@ -372,7 +372,7 @@ function appendToConsole(text) {
 socket.on('console_output', (data) => {
     appendToConsole(data + "\n");  // Добавляем вывод в консоль
     // Если сервер запросил ввод, показываем поле ввода
-    consoleInput.readOnly = true;     
+    consoleInput.readOnly = false;     
     updateConsoleInputClass();
     consoleInput.focus();
 });
