@@ -8,14 +8,14 @@ const socket = io();
 
 // 🔹 Список ключевых слов и встроенных функций Python для автодополнения
 const pythonKeywords = [
-    // Ключевые слова Python
+    // 🔹 Ключевые слова Python
     "False", "None", "True", "and", "as", "assert", "async", "await",
     "break", "class", "continue", "def", "del", "elif", "else", "except",
     "finally", "for", "from", "global", "if", "import", "in", "is",
     "lambda", "nonlocal", "not", "or", "pass", "raise", "return", "try",
     "while", "with", "yield",
-  
-    // Встроенные функции Python
+
+    // 🔹 Встроенные функции Python
     "abs", "all", "any", "bin", "bool", "bytearray", "bytes", "callable",
     "chr", "classmethod", "compile", "complex", "delattr", "dict", "dir",
     "divmod", "enumerate", "eval", "exec", "filter", "float", "format",
@@ -25,11 +25,24 @@ const pythonKeywords = [
     "oct", "open", "ord", "pow", "print", "property", "range", "repr",
     "reversed", "round", "set", "setattr", "slice", "sorted", "staticmethod",
     "str", "sum", "super", "tuple", "type", "vars", "zip",
-  
-    // Дополнительно часто используемые идентификаторы
-    "self", "init", "main", "os", "sys", "json", "time", "re", "math",
-    "random", "datetime", "open", "read", "write", "close"
-  ];
+
+    // 🔹 Базовые структуры данных
+    "list", "tuple", "set", "frozenset", "dict",
+
+    // 🔹 Структуры из модуля collections
+    "deque", "defaultdict", "OrderedDict", "Counter", "ChainMap", "namedtuple",
+
+    // 🔹 Структуры из модуля dataclasses
+    "dataclass",
+
+    // 🔹 Другие структуры данных
+    "array", "heapq", "queue", "PriorityQueue",
+
+    // 🔹 Часто используемые идентификаторы
+    "self", "__init__", "__main__", "os", "sys", "json", "time", "re",
+    "math", "random", "datetime", "open", "read", "write", "close"
+];
+    
 
 // 🔹 Функция для автодополнения
 function pythonHint(cm) {
