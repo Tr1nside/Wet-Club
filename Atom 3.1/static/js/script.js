@@ -283,6 +283,8 @@ function saveTabsToLocalStorage() {
     localStorage.setItem('savedTabs', JSON.stringify(tabsData));
 }
 
+
+
 // Функция для загрузки вкладок из localStorage
 function loadTabsFromLocalStorage() {
     const savedTabs = JSON.parse(localStorage.getItem('savedTabs')) || [];
@@ -292,7 +294,14 @@ function loadTabsFromLocalStorage() {
     document.querySelectorAll('.code-area[data-tab-content]').forEach(area => area.remove());
     codeMirrorInstances = {};
 
-    savedTabs.forEach((tabData, index) => {
+    let maxTabNumber = 1; // Отслеживаем максимальный номер вкладки
+
+    savedTabs.forEach(tabData => {
+        const tabNumber = parseInt(tabData.id.replace("tab", ""), 10);
+        if (tabNumber > maxTabNumber) {
+            maxTabNumber = tabNumber;
+        }
+
         const newTab = document.createElement('div');
         newTab.classList.add('tab');
         newTab.dataset.tab = tabData.id;
@@ -322,8 +331,13 @@ function loadTabsFromLocalStorage() {
         });
     });
 
+    // Обновляем tabCounter на следующий номер после последней загруженной вкладки
+    tabCounter = maxTabNumber;
+
     activateTab(document.querySelector('.tab:not([data-tab="create_tab"])'));
 }
+
+
 
 // Вызываем загрузку при запуске
 window.addEventListener('load', loadTabsFromLocalStorage);
