@@ -383,7 +383,8 @@ function handleConsoleKeyPress(event) {
     socket.emit('console-input', value);  // Отправляем на сервер
     appendToConsole(value + "\n");  // Добавляем в консоль
     inputField.value = "";  // Очищаем поле ввода
-    inputField.style.display = "none";  // Скрываем поле ввода
+    consoleInput.readOnly = true;
+    updateConsoleInputClass();
     event.preventDefault();  // Отменяем стандартное поведение клавиши
     }
 }
