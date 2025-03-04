@@ -13,7 +13,7 @@
             "state": {
               "type": "kanban",
               "state": {
-                "file": "Безымянная Kanban-доска.md",
+                "file": "Задачи.md",
                 "kanbanViewState": {
                   "kanban-plugin": "board",
                   "list-collapse": [
@@ -24,7 +24,7 @@
                 }
               },
               "icon": "lucide-trello",
-              "title": "Безымянная Kanban-доска"
+              "title": "Задачи"
             }
           }
         ]
@@ -173,10 +173,10 @@
       "obsidian-kanban:Создать новую доску": false
     }
   },
-  "active": "5256790081b310ef",
+  "active": "a05e1c48871892a0",
   "lastOpenFiles": [
     "Online IDE python/online-ide-python.excalidraw",
-    "Безымянная Kanban-доска.md",
+    "Задачи.md",
     "Excalidraw/Drawing 2025-03-04 16.48.31.excalidraw.md",
     "Excalidraw",
     "Online IDE python/Tasks.md",
