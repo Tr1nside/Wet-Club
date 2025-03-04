@@ -159,12 +159,43 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
     document.querySelector('.container').insertBefore(codeArea, document.querySelector('.toolbar'));
 
     // Инициализируем CodeMirror
-    const cm = CodeMirror(codeArea, {
+    // 🔹 Инициализируем CodeMirror
+    const cm = CodeMirror(document.querySelector(".code-area"), {
         mode: "python",
         theme: body.classList.contains('dark-mode') ? "dracula" : "default",
         lineNumbers: true,
-        gutters: ["CodeMirror-linenumbers"]
+        gutters: ["CodeMirror-linenumbers"],
+        
+        // 🔹 Автозакрытие скобок, кавычек, квадратных и фигурных скобок
+        autoCloseBrackets: true,
+
+        // 🔹 Подключаем "Ctrl-Space" для автодополнения
+        extraKeys: {
+            "Ctrl-Space": "autocomplete",
+            "Tab": function(cm) {
+                if (cm.somethingSelected()) {
+                    cm.indentSelection("add");
+                } else {
+                    cm.replaceSelection("    ", "end", "+input");
+                }
+            },
+            "Shift-Tab": function(cm) {
+                cm.indentSelection("subtract");
+            },
+            "Ctrl-/": function(cm) {
+                cm.execCommand("toggleComment");
+            }
+        }
     });
+
+    // 🔹 Автодополнение при вводе текста
+    cm.on("inputRead", function(cm, change) {
+        if (change.text[0].match(/\w/)) { // Если введён символ (буква/цифра)
+            cm.showHint({ hint: pythonHint, completeSingle: false });
+        }
+    });
+
+
     cm.setValue(content);
     codeMirrorInstances[newTabId] = cm;
 
