@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ailab WEB</title>
+{% extends "base.html" %}
+    {% block title %} Online Ide {{ endblock }}    
+    {% block head %}
     <!-- CodeMirror Основной стиль -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
     <!-- Тема Dracula (или выбери другую) -->
@@ -12,19 +8,9 @@
     <!-- Стили для автодополнения -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
-<body>
-    <div class="header">
-        <div class="logo-block">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" class="logo-style">
-            <div class="header-title">AiLab WEB</div>
-        </div>
-
-        <div class="night-mode">🌙</div>
-    </div>
-
+    {{ endblock }}
+    
+{{ block main }}
     <div class="container">
         <div class="tabs">
             <div class="tab active" data-tab="tab1"><span>main.py</span><span class="close-tab">×</span>
@@ -56,8 +42,8 @@
         </div>
     </div>
 
-    <div class="footer">
-    </div>
+{{  endblock }}
+{% block under %}
 
     <!-- Основной CodeMirror -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
@@ -74,7 +60,4 @@
     <!-- Подключаем Socket.IO -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js"></script>
     
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-
-</html>
+{{ endblock }}
