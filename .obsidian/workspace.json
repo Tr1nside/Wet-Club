@@ -11,10 +11,16 @@
             "id": "5256790081b310ef",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "type": "kanban",
+              "state": {
+                "file": "Безымянная Kanban-доска.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": []
+                }
+              },
+              "icon": "lucide-trello",
+              "title": "Безымянная Kanban-доска"
             }
           }
         ]
@@ -159,12 +165,14 @@
       "daily-notes:Сегодняшняя заметка": false,
       "templates:Вставить шаблон": false,
       "command-palette:Открыть палитру команд": false,
-      "obsidian-excalidraw-plugin:Создать новый чертеж": false
+      "obsidian-excalidraw-plugin:Создать новый чертеж": false,
+      "obsidian-kanban:Создать новую доску": false
     }
   },
-  "active": "a05e1c48871892a0",
+  "active": "5256790081b310ef",
   "lastOpenFiles": [
     "Online IDE python/online-ide-python.excalidraw",
+    "Безымянная Kanban-доска.md",
     "Excalidraw/Drawing 2025-03-04 16.48.31.excalidraw.md",
     "Excalidraw",
     "Online IDE python/Tasks.md",
