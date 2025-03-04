@@ -1,8 +1,6 @@
-from flask import render_template, Flask
-
-app = Flask(__name__)
+from app import app
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return 'hello world'
+    return "Hello, World!"
