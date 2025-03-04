@@ -348,7 +348,7 @@ document.addEventListener('click', saveTabsToLocalStorage);
 
 // Отправка кода на сервер
 function executeCode() {
-    clearConsole();  // Очищаем консоль перед новым выводом
+    // clearConsole();  // Очищаем консоль перед новым выводом
 
     // Находим активную вкладку
     const activeTab = document.querySelector('.tab.active');
