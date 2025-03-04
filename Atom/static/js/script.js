@@ -271,42 +271,12 @@ tabs.addEventListener('dblclick', (event) => {
 // Инициализация начальной вкладки и CodeMirror
 const initialTab = document.querySelector('.tab[data-tab="tab1"]');
 const initialCodeArea = document.querySelector('.code-area[data-tab-content="tab1"]');
-// 🔹 Инициализируем CodeMirror
-const cm = CodeMirror(document.querySelector(".code-area"), {
+const cm = CodeMirror(initialCodeArea, {
     mode: "python",
     theme: body.classList.contains('dark-mode') ? "dracula" : "default",
     lineNumbers: true,
-    gutters: ["CodeMirror-linenumbers"],
-    
-    // 🔹 Автозакрытие скобок, кавычек, квадратных и фигурных скобок
-    autoCloseBrackets: true,
-
-    // 🔹 Подключаем "Ctrl-Space" для автодополнения
-    extraKeys: {
-        "Ctrl-Space": "autocomplete",
-        "Tab": function(cm) {
-            if (cm.somethingSelected()) {
-                cm.indentSelection("add");
-            } else {
-                cm.replaceSelection("    ", "end", "+input");
-            }
-        },
-        "Shift-Tab": function(cm) {
-            cm.indentSelection("subtract");
-        },
-        "Ctrl-/": function(cm) {
-            cm.execCommand("toggleComment");
-        }
-    }
+    gutters: ["CodeMirror-linenumbers"]
 });
-
-// 🔹 Автодополнение при вводе текста
-cm.on("inputRead", function(cm, change) {
-    if (change.text[0].match(/\w/)) { // Если введён символ (буква/цифра)
-        cm.showHint({ hint: pythonHint, completeSingle: false });
-    }
-});
-
 codeMirrorInstances['tab1'] = cm;
 activateTab(initialTab);
 initialTab.addEventListener('dblclick', function () {
