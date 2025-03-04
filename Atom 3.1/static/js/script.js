@@ -349,7 +349,7 @@ document.addEventListener('click', saveTabsToLocalStorage);
 // Отчистка консоли
 function clearConsole() {
     localStorage.setItem("console", '')
-    document.querySelector(".console-output").value = "";
+    consoleOutput.value = "";
     consoleInput.classList.remove('console-input-active');
 }
 
