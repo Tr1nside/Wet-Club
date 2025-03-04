@@ -370,5 +370,5 @@ function executeCode() {
     // Получаем код из активного редактора
     const code = activeEditor.getValue();
     socket.emit('execute', code);  // Отправляем код на сервер через WebSocket
-    consoleOutput.log("penis2")
+    console.log("penis2")
 }
