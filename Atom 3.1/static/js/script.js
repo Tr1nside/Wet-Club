@@ -29,20 +29,6 @@ function updateConsoleInputClass() {
 // Вызываем функцию для инициализации класса
 updateConsoleInputClass();
 
-// Пример функции для эмуляции запроса от сервера
-function simulateServerRequest() {
-    consoleOutput.value += "\nСервер: Требуется дополнительный параметр. Введите команду:";
-    consoleInput.readOnly = false;
-    updateConsoleInputClass();
-}
-
-// Добавляем кнопку или условие для эмуляции запроса
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        simulateServerRequest();
-    }
-});
-
 // Переключение между режимами
 let darkMode = false;
 
