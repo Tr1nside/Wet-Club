@@ -5,6 +5,8 @@ let tabCounter = 2; // Счетчик для новых вкладок
 const consoleOutput = document.querySelector('.console-output');
 const consoleInput = document.querySelector('.console-input');
 let codeMirrorInstances = {};
+const socket = io();
+
 
 consoleInput.addEventListener('focus', () => {
     if (consoleInput.readOnly) {
