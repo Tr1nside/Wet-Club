@@ -29,6 +29,8 @@ def register_socketio_events(socketio):
         sid = request.sid  # Получаем идентификатор сессии клиента
         def custom_input(prompt=""):
             result = output_buffer.getvalue().strip()
+            output_buffer.truncate(0)
+            output_buffer.seek(0)
             if result:
                 socketio.emit('console_output', result, room=sid)
             # Отправляем запрос на ввод через отдельное событие
