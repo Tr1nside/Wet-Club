@@ -149,8 +149,16 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
         gutters: ["CodeMirror-linenumbers"],
         extraKeys: {
             "Ctrl-Space": function(cm) {
-                cm.showHint({ hint: pythonHint });
+                cm.showHint({ hint: pythonHint, completeSingle: false });
             }
+        }
+    });
+    
+    // Автоматический вызов автодополнения при вводе символа (если это буква или цифра)
+    cm.on("inputRead", function(cm, change) {
+        // Проверяем, что изменение вызвано вводом буквенно-цифрового символа.
+        if (change.text[0].match(/\w/)) {
+            cm.showHint({ hint: pythonHint, completeSingle: false });
         }
     });
     
