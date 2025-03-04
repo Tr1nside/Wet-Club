@@ -389,7 +389,7 @@ function handleConsoleKeyPress(event) {
         }
         consoleInput.value = "";                   // Очищаем поле ввода
         consoleInput.readOnly = true;              // Блокируем ввод до следующего запроса от сервера
-        consoleInput.classList.remove('console-input-active');
+        consoleInput.classList.add('console-input-active');
     }
 }
 
