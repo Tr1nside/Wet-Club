@@ -29,6 +29,19 @@ function updateConsoleInputClass() {
 // Вызываем функцию для инициализации класса
 updateConsoleInputClass();
 
+// Пример функции для эмуляции запроса от сервера
+function simulateServerRequest() {
+    consoleOutput.value += "\nСервер: Требуется дополнительный параметр. Введите команду:";
+    consoleInput.readOnly = false;
+    updateConsoleInputClass();
+}
+
+// Добавляем кнопку или условие для эмуляции запроса
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        simulateServerRequest();
+    }
+});
 
 // Переключение между режимами
 let darkMode = false;
@@ -336,7 +349,7 @@ document.addEventListener('click', saveTabsToLocalStorage);
 // Отчистка консоли
 function clearConsole() {
     localStorage.setItem("console", '')
-    consoleOutput.value = "";
+    document.querySelector(".console-output").value = "";
     consoleInput.classList.remove('console-input-active');
 }
 
@@ -365,32 +378,3 @@ function executeCode() {
     socket.emit('execute', code);  // Отправляем код на сервер через WebSocket
 }
 
-function appendToConsole(text) {
-    consoleOutput.value += text;  // Добавляем текст в консоль
-    consoleOutput.scrollTop = consoleOutput.scrollHeight;  // Прокручиваем консоль вниз
-    }
-socket.on('console_output', (data) => {
-    appendToConsole(data + "\n");  // Добавляем вывод в консоль
-    // Если сервер запросил ввод, показываем поле ввода
-    consoleInput.readOnly = false;     
-    updateConsoleInputClass();
-    consoleInput.focus();
-});
-
-// Обработчик нажатия клавиши Enter в поле ввода консоли
-function handleConsoleKeyPress(event) {
-    console.log('hesus')
-    if (event.key === "Enter") {
-        event.preventDefault();
-        const value = consoleInput.value.trim();
-        if (value) {
-            socket.emit('console_input', value);  // Отправляем введённое значение на сервер
-            appendToConsole(value + "\n");         // Выводим введённое значение в консоль
-        }
-        consoleInput.value = "";                   // Очищаем поле ввода
-        consoleInput.readOnly = true;              // Блокируем ввод до следующего запроса от сервера
-        consoleInput.classList.add('console-input-active');
-    }
-}
-
-consoleInput.addEventListener('keydown', handleConsoleKeyPress);
