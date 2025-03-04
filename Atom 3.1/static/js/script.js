@@ -395,6 +395,32 @@ function handleConsoleKeyPress(event) {
 
 consoleInput.addEventListener('keydown', handleConsoleKeyPress);
 
+
+// Функция для показа уведомлений
+function showNotification(message) {
+    const notification = document.createElement("div");
+    notification.className = "notification";  // Устанавливаем стиль уведомления
+    notification.innerText = message;  // Устанавливаем текст уведомления
+
+    // Добавляем уведомление в DOM
+    document.body.appendChild(notification);
+
+    // Показываем уведомление
+    setTimeout(() => {
+    notification.style.display = "block";  // Показываем уведомление
+    notification.style.opacity = 1;  // Устанавливаем полную видимость
+    }, 10);
+
+    // Через 3 секунды скрываем уведомление
+    setTimeout(() => {
+    notification.style.opacity = 0;  // Уменьшаем прозрачность до 0
+    setTimeout(() => {
+        notification.remove();  // Удаляем уведомление из DOM
+    }, 500);
+    }, 1000);
+}
+
+
 // Функция для сохранения содержимого консоли в текстовый файл
 function saveCodeToFile() {
     const consoleContent = document.getElementById("codeInput").innerText;  // Получаем текст консоли
@@ -460,27 +486,3 @@ function loadFile() {
     };
 }
 
-
-// Функция для показа уведомлений
-function showNotification(message) {
-    const notification = document.createElement("div");
-    notification.className = "notification";  // Устанавливаем стиль уведомления
-    notification.innerText = message;  // Устанавливаем текст уведомления
-
-    // Добавляем уведомление в DOM
-    document.body.appendChild(notification);
-
-    // Показываем уведомление
-    setTimeout(() => {
-    notification.style.display = "block";  // Показываем уведомление
-    notification.style.opacity = 1;  // Устанавливаем полную видимость
-    }, 10);
-
-    // Через 3 секунды скрываем уведомление
-    setTimeout(() => {
-    notification.style.opacity = 0;  // Уменьшаем прозрачность до 0
-    setTimeout(() => {
-        notification.remove();  // Удаляем уведомление из DOM
-    }, 500);
-    }, 1000);
-}
