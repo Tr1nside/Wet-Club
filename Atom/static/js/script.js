@@ -202,8 +202,13 @@ function createNewTab(customId = null, fileName = null, content = "", activate =
             }
         }
     });
-    
 
+    // 🔹 Автодополнение при вводе текста
+    cm.on("inputRead", function(cm, change) {
+        if (change.text[0].match(/\w/)) { // Если введён символ (буква/цифра)
+            cm.showHint({ hint: pythonHint, completeSingle: false });
+        }
+    });
 
     cm.setValue(content);
     codeMirrorInstances[newTabId] = cm;
