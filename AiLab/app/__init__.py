@@ -1,5 +1,5 @@
 import eventlet
-eventlet.monkey_patch()
+eventlet.monkey_patch()  # Должно быть первым, до любых других импортов
 from .routes import main_bp, register_socketio_events # Импортируем наш Blueprint и функцию, где регистрируются события
 from flask import Flask
 from flask_socketio import SocketIO
