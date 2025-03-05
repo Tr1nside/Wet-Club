@@ -4,7 +4,7 @@ const tabs = document.querySelector('.tabs');
 let codeMirrorInstances = {};
 const consoleOutput = document.querySelector('.console-output');
 const consoleInput = document.querySelector('.console-input');
-// const socket = io();
+const socket = io();
 
 // 🔹 Список ключевых слов и встроенных функций Python для автодополнения
 const pythonKeywords = [
