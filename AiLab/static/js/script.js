@@ -4,7 +4,12 @@ const tabs = document.querySelector('.tabs');
 let codeMirrorInstances = {};
 const consoleOutput = document.querySelector('.console-output');
 const consoleInput = document.querySelector('.console-input');
-const socket = io();
+try {
+    const socket = io();
+} catch (e) { 
+    console.error('Error connecting to socket.io:', e);
+}
+
 
 // 🔹 Список ключевых слов и встроенных функций Python для автодополнения
 const pythonKeywords = [
