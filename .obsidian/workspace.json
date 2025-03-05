@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "219be3a0e82e84bc",
+        "id": "ebab52feb22b6075",
         "type": "tabs",
         "children": [
           {
-            "id": "ea2bc4f538dbc8dc",
+            "id": "0deebf027e01f0cb",
             "type": "leaf",
             "state": {
-              "type": "image",
-              "state": {
-                "file": "0 - Кэш/Pasted image 20250304235425.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250304235425"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Новая вкладка"
             }
           }
         ]
@@ -167,9 +165,9 @@
   },
   "active": "a05e1c48871892a0",
   "lastOpenFiles": [
+    "0 - Кэш/Pasted image 20250304235425.png",
     "0 - Кэш",
     "1 - Заметки/Гайд на коннект с помощью гита/Гайд.md",
-    "0 - Кэш/Pasted image 20250304235425.png",
     "Отчеты AiLab/Отчет по практике 2025.doc",
     "Архивы/AiLab.7z",
     "Архивы",
@@ -181,7 +179,6 @@
     "1 - Заметки/Гайд на коннект с помощью гита/auto_push.bat",
     "1 - Заметки/Гайд на коннект с помощью гита/auto_pull.bat",
     "1 - Заметки/Гайд на коннект с помощью гита/autopull.ps1",
-    "1 - Заметки/Гайд на коннект с помощью гита",
     "1 - Заметки/Online IDE python/Работа над пользователями/Описание.md",
     "1 - Заметки/Online IDE python/Описание.md",
     "1 - Заметки/Online IDE python/Задачи.md",
