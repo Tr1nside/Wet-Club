@@ -11,10 +11,14 @@
             "id": "ea2bc4f538dbc8dc",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Заметки/Гайд на коннект с помощью гита/Гайд.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "title": "Гайд"
             }
           }
         ]
@@ -165,6 +169,7 @@
   },
   "active": "ea2bc4f538dbc8dc",
   "lastOpenFiles": [
+    "Заметки/Pasted image 20250304235425.png",
     "Отчеты AiLab/Отчет по практике 2025.doc",
     "Архивы/AiLab.7z",
     "Архивы",
@@ -172,7 +177,6 @@
     "Online IDE python/Задачи.md",
     "Заметки/Excalidraw/Drawing 2025-03-05 00.52.12.excalidraw.md",
     "Заметки/Excalidraw",
-    "Заметки/Pasted image 20250304235425.png",
     "Заметки/Гайд на коннект с помощью гита/Гайд.md",
     "Заметки/Гайд на коннект с помощью гита/autopush.ps1",
     "Заметки/Гайд на коннект с помощью гита/auto_push.bat",
@@ -180,7 +184,6 @@
     "Заметки/Гайд на коннект с помощью гита/autopull.ps1",
     "Заметки/Гайд на коннект с помощью гита",
     "Заметки/Online IDE python/Работа над пользователями/Описание.md",
-    "Заметки/Online IDE python/Работа над пользователями",
     "Заметки/Online IDE python/Описание.md",
     "Заметки/Online IDE python/Задачи.md",
     "AiLab/venv/Lib/site-packages/flask/sansio/README.md",

@@ -2,5 +2,6 @@
   "cssTheme": "Mado Miniflow",
   "theme": "system",
   "interfaceFontFamily": "Fira Code",
-  "textFontFamily": "Fira Code"
+  "textFontFamily": "Fira Code",
+  "monospaceFontFamily": "Fira Code"
 }
