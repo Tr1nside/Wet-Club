@@ -4,7 +4,7 @@ import eventlet  # Импортируем eventlet для работы с аси
 import builtins  # Импортируем встроенные функции Python
 import contextlib  # Импортируем contextlib для управления контекстами
 import io  # Импортируем io для работы с потоками ввода-вывода
-from app import app
+from flask import current_app as app
 from app.forms import LoginForm
 
 main_bp = Blueprint('main_bp', __name__) # Создаём Blueprint для организации маршрутов
