@@ -1,5 +1,6 @@
 {
   "promptDelete": false,
   "newFileLocation": "folder",
-  "newFileFolderPath": "1 - "
+  "newFileFolderPath": "1 - Заметки",
+  "attachmentFolderPath": "attachments"
 }
