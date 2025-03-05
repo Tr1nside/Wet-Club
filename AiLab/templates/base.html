@@ -20,12 +20,6 @@
 
         <div class="night-mode">🌙</div>
     </div>
-
-    {% block main %}
-    {% endblock %}
-
-    <div class="footer">
-    </div>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul>
@@ -40,6 +34,12 @@
     {% block under %}
     {% endblock %}
 
+    {% block main %}
+    {% endblock %}
+
+    <div class="footer">
+    </div>
+    
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
