@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect  # Импортируем необходимые модули из Flask
+from flask import Blueprint, render_template, request, flash, redirect, url_for  # Импортируем необходимые модули из Flask
 from flask_socketio import emit  # Импортируем emit для отправки сообщений через SocketIO
 import eventlet  # Импортируем eventlet для работы с асинхронными событиями
 import builtins  # Импортируем встроенные функции Python
@@ -76,5 +76,5 @@ def login():
     if form.validate_on_submit():
         flash('Login requested for user {}, remember_me={}'.format(
             form.username.data, form.remember_me.data))
-        return redirect('/main')
+        return redirect(url_for('/main'))
     return render_template('login.html', title='Sign In', form=form)
