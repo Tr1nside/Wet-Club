@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request  # Импортируем необходимые модули из Flask
+from flask import Blueprint, render_template, request, flash, redirect  # Импортируем необходимые модули из Flask
 from flask_socketio import emit  # Импортируем emit для отправки сообщений через SocketIO
 import eventlet  # Импортируем eventlet для работы с асинхронными событиями
 import builtins  # Импортируем встроенные функции Python
@@ -69,7 +69,12 @@ def register_socketio_events(socketio):
         else:  # Если нет ожидающего ввода
             socketio.emit('console_output', f"\n(Ввод вне запроса: {data})\n", room=sid)  # Уведомляем клиента о вводе вне запроса
 
-@main_bp.route('/login')
+
+@main_bp.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        flash('Login requested for user {}, remember_me={}'.format(
+            form.username.data, form.remember_me.data))
+        return redirect('/index')
     return render_template('login.html', title='Sign In', form=form)
