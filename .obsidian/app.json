@@ -1,4 +1,5 @@
 {
   "promptDelete": false,
-  "newFileLocation": "folder"
+  "newFileLocation": "folder",
+  "newFileFolderPath": "1 - "
 }
