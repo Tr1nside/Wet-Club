@@ -1,4 +1,3 @@
-const body = document.body;
 const tabs = document.querySelector('.tabs');
 let codeMirrorInstances = {};
 const consoleOutput = document.querySelector('.console-output');
