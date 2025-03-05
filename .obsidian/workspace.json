@@ -175,6 +175,8 @@
   },
   "active": "0deebf027e01f0cb",
   "lastOpenFiles": [
+    "AiLab/venv/Lib/site-packages/sqlalchemy/sql/__pycache__/util.cpython-312.pyc",
+    "AiLab/venv/Lib/site-packages/sqlalchemy/sql/__pycache__/visitors.cpython-312.pyc",
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/__init__.cpython-312.pyc",
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/types.cpython-312.pyc",
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/reserved_words.cpython-312.pyc",
@@ -184,8 +186,6 @@
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/provision.cpython-312.pyc",
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/mysqldb.cpython-312.pyc",
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/mysqlconnector.cpython-312.pyc",
-    "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/mariadbconnector.cpython-312.pyc",
-    "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/mariadb.cpython-312.pyc",
     "1 - Заметки/Гайд на коннект с помощью гита/Гайд.md",
     "0 - Кэш/Pasted image 20250305134158.png",
     "0 - Кэш/Pasted image 20250304235425.png",
