@@ -175,6 +175,7 @@
   },
   "active": "0deebf027e01f0cb",
   "lastOpenFiles": [
+    "AiLab/app/models.py",
     "AiLab.zip",
     "AiLab/venv/Lib/site-packages/sqlalchemy/sql/__pycache__/util.cpython-312.pyc",
     "AiLab/venv/Lib/site-packages/sqlalchemy/sql/__pycache__/visitors.cpython-312.pyc",
@@ -185,7 +186,6 @@
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/pyodbc.cpython-312.pyc",
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/pymysql.cpython-312.pyc",
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/provision.cpython-312.pyc",
-    "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/mysqldb.cpython-312.pyc",
     "1 - Заметки/Гайд на коннект с помощью гита/Гайд.md",
     "0 - Кэш/Pasted image 20250305134158.png",
     "0 - Кэш/Pasted image 20250304235425.png",
