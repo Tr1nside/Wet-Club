@@ -1,4 +1,4 @@
-const body = document.body;
+body = document.body;
 const nightModeButton = document.querySelector('.night-mode');
 
 // Переключение между режимами
