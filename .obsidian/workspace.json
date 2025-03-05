@@ -11,14 +11,12 @@
             "id": "ea2bc4f538dbc8dc",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "1 - Заметки/Гайд на коннект с помощью гита/Гайд.md",
-                "mode": "source",
-                "source": false
+                "file": "1 - Заметки/Pasted image 20250304235425.png"
               },
-              "icon": "lucide-file",
-              "title": "Гайд"
+              "icon": "lucide-image",
+              "title": "Pasted image 20250304235425"
             }
           }
         ]
@@ -169,6 +167,7 @@
   },
   "active": "a05e1c48871892a0",
   "lastOpenFiles": [
+    "1 - Заметки/Гайд на коннект с помощью гита/Гайд.md",
     "1 - Заметки/Pasted image 20250304235425.png",
     "Отчеты AiLab/Отчет по практике 2025.doc",
     "Архивы/AiLab.7z",
@@ -177,7 +176,6 @@
     "Online IDE python/Задачи.md",
     "1 - Заметки/Excalidraw/Drawing 2025-03-05 00.52.12.excalidraw.md",
     "1 - Заметки/Excalidraw",
-    "1 - Заметки/Гайд на коннект с помощью гита/Гайд.md",
     "1 - Заметки/Гайд на коннект с помощью гита/autopush.ps1",
     "1 - Заметки/Гайд на коннект с помощью гита/auto_push.bat",
     "1 - Заметки/Гайд на коннект с помощью гита/auto_pull.bat",
