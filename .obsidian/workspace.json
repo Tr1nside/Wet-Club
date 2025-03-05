@@ -11,10 +11,14 @@
             "id": "0deebf027e01f0cb",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "1 - Заметки/Гайд на коннект с помощью гита/Гайд.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "title": "Гайд"
             }
           }
         ]
@@ -163,8 +167,9 @@
       "obsidian-kanban:Создать новую доску": false
     }
   },
-  "active": "a05e1c48871892a0",
+  "active": "0deebf027e01f0cb",
   "lastOpenFiles": [
+    "0 - Кэш/Pasted image 20250305134158.png",
     "0 - Кэш/Pasted image 20250304235425.png",
     "0 - Кэш",
     "1 - Заметки/Гайд на коннект с помощью гита/Гайд.md",
