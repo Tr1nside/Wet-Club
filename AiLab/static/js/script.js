@@ -1,12 +1,12 @@
 body = document.body;
- tabs = document.querySelector('.tabs');
-let codeMirrorInstances = {};
-const consoleOutput = document.querySelector('.console-output');
-const consoleInput = document.querySelector('.console-input');
-const socket = io();
+tabs = document.querySelector('.tabs');
+codeMirrorInstances = {};
+consoleOutput = document.querySelector('.console-output');
+consoleInput = document.querySelector('.console-input');
+socket = io();
 
 // 🔹 Список ключевых слов и встроенных функций Python для автодополнения
-const pythonKeywords = [
+pythonKeywords = [
     // 🔹 Ключевые слова Python
     "False", "None", "True", "and", "as", "assert", "async", "await",
     "break", "class", "continue", "def", "del", "elif", "else", "except",
