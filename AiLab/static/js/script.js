@@ -1,5 +1,4 @@
 const body = document.body;
-const nightModeButton = document.querySelector('.night-mode');
 const tabs = document.querySelector('.tabs');
 let codeMirrorInstances = {};
 const consoleOutput = document.querySelector('.console-output');
