@@ -14,7 +14,7 @@ def index():
     return render_template('index.html')  # Возвращаем HTML-шаблон index.html
 
 @main_bp.route('/main') # Определяем маршрут для главной страницы, доступной по адресу http://127.0.0.1:5000/
-def index():
+def main():
     return render_template('main.html')  # Возвращаем HTML-шаблон index.html
 
 pending_inputs = {}  # Общий словарь для хранения событий ожидания ввода
