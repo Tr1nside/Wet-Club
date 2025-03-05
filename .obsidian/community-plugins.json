@@ -1,5 +1,6 @@
 [
   "obsidian-excalidraw-plugin",
   "obsidian-kanban",
-  "url-into-selection"
+  "url-into-selection",
+  "obsidian-relative-line-numbers"
 ]
