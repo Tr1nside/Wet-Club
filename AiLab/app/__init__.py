@@ -13,6 +13,7 @@ MAIN_FOLDER = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__,
             static_folder=os.path.join(MAIN_FOLDER, '..', 'static'),
             template_folder=os.path.join(MAIN_FOLDER, '..', 'templates')) # Создаём Flask-приложение
+app.config.from_object(Config)
 
 socketio = SocketIO(app) # Инициализируем SocketIO
 app.register_blueprint(main_bp) # Регистрируем Blueprint
