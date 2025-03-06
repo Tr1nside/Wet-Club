@@ -3,8 +3,6 @@ eventlet.monkey_patch()  # Должно быть первым, до любых �
 from .routes import main_bp, register_socketio_events # Импортируем наш Blueprint и функцию, где регистрируются события
 from flask import Flask
 from flask_socketio import SocketIO
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from config import Config
 import os
 
