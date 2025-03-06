@@ -14,8 +14,6 @@ app = Flask(__name__,
             static_folder=os.path.join(MAIN_FOLDER, '..', 'static'),
             template_folder=os.path.join(MAIN_FOLDER, '..', 'templates')) # Создаём Flask-приложение
 app.config.from_object(Config)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 
 socketio = SocketIO(app) # Инициализируем SocketIO
 app.register_blueprint(main_bp) # Регистрируем Blueprint
