@@ -5,6 +5,8 @@ import builtins  # Импортируем встроенные функции Py
 import contextlib  # Импортируем contextlib для управления контекстами
 import io  # Импортируем io для работы с потоками ввода-вывода
 from app.forms import LoginForm
+import sqlalchemy as sa
+import sqlalchemy.orm as so
 
 main_bp = Blueprint('main_bp', __name__) # Создаём Blueprint для организации маршрутов
 
@@ -78,3 +80,8 @@ def login():
             form.username.data, form.remember_me.data))
         return redirect(url_for('main_bp.main'))
     return render_template('login.html', title='Sign In', form=form)
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'sa': sa, 'so': so, 'db': db, 'User': User, 'Post': Post,
+            'Message': Message, 'Notification': Notification, 'Task': Task}
