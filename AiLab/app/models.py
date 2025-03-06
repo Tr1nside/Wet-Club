@@ -1,7 +1,7 @@
 from typing import Optional
 import sqlalchemy as sa
 import sqlalchemy.orm as so
-from app import db, app
+from app import app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
