@@ -21,3 +21,4 @@ socketio = SocketIO(app) # Инициализируем SocketIO
 app.register_blueprint(main_bp) # Регистрируем Blueprint
 register_socketio_events(socketio) # Регистрируем события для SocketIO (обработчики on('execute'), on('console_input'), и т.д.)
 
+from app import models
