@@ -82,7 +82,6 @@ def login():
         return redirect(url_for('main_bp.main'))
     return render_template('login.html', title='Sign In', form=form)
 
-@app.shell_context_processor
+@main_bp.shell_context_processor
 def make_shell_context():
-    return {'sa': sa, 'so': so, 'db': db, 'User': User, 'Post': Post,
-            'Message': Message, 'Notification': Notification, 'Task': Task}
+    return {'sa': sa, 'so': so, 'db': db, 'User': User}
