@@ -7,7 +7,7 @@ import io  # Импортируем io для работы с потоками �
 from app.forms import LoginForm
 import sqlalchemy as sa
 import sqlalchemy.orm as so
-from .models import User, Post, Message, Notification, Task
+from models import User, Post, Message, Notification, Task
 
 main_bp = Blueprint('main_bp', __name__) # Создаём Blueprint для организации маршрутов
 
@@ -82,6 +82,3 @@ def login():
         return redirect(url_for('main_bp.main'))
     return render_template('login.html', title='Sign In', form=form)
 
-@main_bp.shell_context_processor
-def make_shell_context():
-    return {'sa': sa, 'so': so, 'db': db, 'User': User}
