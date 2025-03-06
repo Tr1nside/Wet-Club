@@ -7,6 +7,7 @@ import io  # Импортируем io для работы с потоками �
 from app.forms import LoginForm
 import sqlalchemy as sa
 import sqlalchemy.orm as so
+from models import User, Post, Message, Notification, Task
 
 main_bp = Blueprint('main_bp', __name__) # Создаём Blueprint для организации маршрутов
 
