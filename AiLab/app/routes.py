@@ -5,9 +5,6 @@ import builtins  # Импортируем встроенные функции Py
 import contextlib  # Импортируем contextlib для управления контекстами
 import io  # Импортируем io для работы с потоками ввода-вывода
 from app.forms import LoginForm
-import sqlalchemy as sa
-import sqlalchemy.orm as so
-
 main_bp = Blueprint('main_bp', __name__) # Создаём Blueprint для организации маршрутов
 
 
