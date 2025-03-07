@@ -26,8 +26,19 @@
               "icon": "lucide-trello",
               "title": "Задачи"
             }
+          },
+          {
+            "id": "ca203242099886ca",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Новая вкладка"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -173,8 +184,9 @@
       "obsidian-kanban:Создать новую доску": false
     }
   },
-  "active": "0deebf027e01f0cb",
+  "active": "ca203242099886ca",
   "lastOpenFiles": [
+    "1 - Заметки/Online IDE python/Задачи.md",
     "AiLab/app/models.py",
     "AiLab.zip",
     "AiLab/venv/Lib/site-packages/sqlalchemy/sql/__pycache__/util.cpython-312.pyc",
@@ -185,7 +197,6 @@
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/reflection.cpython-312.pyc",
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/pyodbc.cpython-312.pyc",
     "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/pymysql.cpython-312.pyc",
-    "AiLab/venv/Lib/site-packages/sqlalchemy/dialects/mysql/__pycache__/provision.cpython-312.pyc",
     "1 - Заметки/Гайд на коннект с помощью гита/Гайд.md",
     "0 - Кэш/Pasted image 20250305134158.png",
     "0 - Кэш/Pasted image 20250304235425.png",
@@ -193,7 +204,6 @@
     "1 - Заметки/Excalidraw/Drawing 2025-03-05 00.52.12.excalidraw.md",
     "1 - Заметки/Online IDE python/Работа над пользователями/Описание.md",
     "1 - Заметки/Online IDE python/Описание.md",
-    "1 - Заметки/Online IDE python/Задачи.md",
     "AiLab/venv/Lib/site-packages/flask/sansio/README.md",
     "AiLab/venv/Lib/site-packages/eventlet/zipkin/example/ex3.png",
     "AiLab/venv/Lib/site-packages/eventlet/zipkin/example/ex2.png",
