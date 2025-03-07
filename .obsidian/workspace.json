@@ -26,16 +26,6 @@
               "icon": "lucide-trello",
               "title": "Задачи"
             }
-          },
-          {
-            "id": "ca203242099886ca",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Новая вкладка"
-            }
           }
         ]
       }
