@@ -37,8 +37,7 @@
               "title": "Новая вкладка"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -184,7 +183,7 @@
       "obsidian-kanban:Создать новую доску": false
     }
   },
-  "active": "ca203242099886ca",
+  "active": "0deebf027e01f0cb",
   "lastOpenFiles": [
     "1 - Заметки/Online IDE python/Задачи.md",
     "AiLab/app/models.py",
