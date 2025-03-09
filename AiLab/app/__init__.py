@@ -12,7 +12,7 @@ app = Flask(__name__,
             static_folder=os.path.join(MAIN_FOLDER, '..', 'static'),
             template_folder=os.path.join(MAIN_FOLDER, '..', 'templates')) # Создаём Flask-приложение
 
-app.config['SECRET_KEY'] = 'some_secret_key'
+app.config.from_object(Config)
 socketio = SocketIO(app) # Инициализируем SocketIO
 app.register_blueprint(main_bp) # Регистрируем Blueprint
 register_socketio_events(socketio) # Регистрируем события для SocketIO (обработчики on('execute'), on('console_input'), и т.д.)
