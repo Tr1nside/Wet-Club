@@ -140,7 +140,7 @@ body.dark-mode .tab.active:hover {
 /* Вкладки */
 
 #create_tab {
-    min-width: 20px;
+    min-width: 15px;
 }
 
 .tabs {
