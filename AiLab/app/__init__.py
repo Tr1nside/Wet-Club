@@ -5,9 +5,9 @@ from .routes import main_bp, register_socketio_events # Импортируем �
 from flask import Flask
 from flask_socketio import SocketIO
 from config import Config
+from models import User
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from models import User
 from auth import auth_bp
 
 login_manager = LoginManager(app)
