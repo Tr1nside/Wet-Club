@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Браузерная IDE с интерактивной консолью</title>
+
+  <!-- Подключаем CSS для CodeMirror (редактора кода) с двумя темами: светлая и тёмная -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h2>Браузерная IDE с интерактивным вводом</h2>
+
+  <!-- Кнопки: переключение темы, выполнение кода и сохранение в файл -->
+  <button class="btn" onclick="toggleTheme()">Тёмная/Светлая тема</button>
+  <button class="btn" onclick="executeCode()">Выполнить</button>
+  <!-- Кнопка для сохранения консоли в txt файл -->
+  <button class="btn" onclick="saveConsoleToFile()">Сохранить консоль в файл</button>
+  <!-- Кнопка для очистки консоли -->
+  <button class="btn" onclick="clearConsole()">Очистить консоль</button>
+  <!-- Кнопка для копирования текста в буфер обмена -->
+  <button class="btn" onclick="copyToClipboard()">Скопировать в буфер обмена</button>
+  <!-- Кнопка для сохранения кода в txt файл -->
+  <button class="btn" onclick="saveCodeToFile()">Сохранить код в файл</button>
+  <!-- Кнопка для Открытия кода-->
+  <button class="btn" onclick="loadFile()">Открыть файл</button>
+  <input type="file" id="fileInput" style="display: none;" accept=".txt,.py">
+
+  <br><br>
+
+  <!-- Текстовое поле для ввода Python кода -->
+  <textarea id="codeInput" rows="10" cols="60">
+# Пример с интерактивным вводом
+name = input("Как тебя зовут? ")
+print("Привет,", name)
+  </textarea>
+
+  <h3>Консоль:</h3>
+  <!-- Консоль для вывода результатов выполнения кода -->
+  <div id="console"></div>
+
+  <!-- Поле для ввода в консоль (появляется при запросе input()) -->
+  <input type="text" id="consoleInput" placeholder="Введите значение и нажмите Enter" onkeypress="handleConsoleKeyPress(event)" style="display: none;">
+
+  <!-- Подключаем Socket.IO для общения с сервером через WebSocket -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js"></script>
+
+  <!-- Подключаем CodeMirror для подсветки синтаксиса Python -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
