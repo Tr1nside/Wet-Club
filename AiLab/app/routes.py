@@ -1,20 +1,17 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for  # Импортируем необходимые модули из Flask
+from flask import Blueprint, render_template, request  # Импортируем необходимые модули из Flask
 from flask_socketio import emit  # Импортируем emit для отправки сообщений через SocketIO
 import eventlet  # Импортируем eventlet для работы с асинхронными событиями
 import builtins  # Импортируем встроенные функции Python
 import contextlib  # Импортируем contextlib для управления контекстами
 import io  # Импортируем io для работы с потоками ввода-вывода
-from app.forms import LoginForm
+
+
 main_bp = Blueprint('main_bp', __name__) # Создаём Blueprint для организации маршрутов
 
 
 @main_bp.route('/') # Определяем маршрут для главной страницы, доступной по адресу http://127.0.0.1:5000/
 def index():
     return render_template('index.html')  # Возвращаем HTML-шаблон index.html
-
-@main_bp.route('/main') # Определяем маршрут для главной страницы, доступной по адресу http://127.0.0.1:5000/
-def main():
-    return render_template('main.html')  # Возвращаем HTML-шаблон index.html
 
 pending_inputs = {}  # Общий словарь для хранения событий ожидания ввода
 #извините, пусть оно просто тут полежит иначе все крашится) (пусть это будет дань уважения генеративному ИИ)
@@ -67,14 +64,3 @@ def register_socketio_events(socketio):
             del pending_inputs[sid]  # Удаляем событие из словаря
         else:  # Если нет ожидающего ввода
             socketio.emit('console_output', f"\n(Ввод вне запроса: {data})\n", room=sid)  # Уведомляем клиента о вводе вне запроса
-
-
-@main_bp.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        flash('Login requested for user {}, remember_me={}'.format(
-            form.username.data, form.remember_me.data))
-        return redirect(url_for('main_bp.main'))
-    return render_template('login.html', title='Sign In', form=form)
-

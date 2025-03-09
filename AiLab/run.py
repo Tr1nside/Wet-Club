@@ -1,5 +1,3 @@
-# import eventlet
-# eventlet.monkey_patch()  # Должно быть первым!
 from app.__init__ import socketio, app
 
 
