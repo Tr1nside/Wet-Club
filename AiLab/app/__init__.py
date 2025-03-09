@@ -3,6 +3,7 @@ eventlet.monkey_patch()
 from .routes import main_bp, register_socketio_events # Импортируем наш Blueprint и функцию, где регистрируются события
 from flask import Flask
 from flask_socketio import SocketIO
+from config import Config
 
 import os
 MAIN_FOLDER = os.path.dirname(os.path.abspath(__file__))
