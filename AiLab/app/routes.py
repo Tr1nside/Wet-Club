@@ -4,15 +4,14 @@ import eventlet  # Импортируем eventlet для работы с аси
 import builtins  # Импортируем встроенные функции Python
 import contextlib  # Импортируем contextlib для управления контекстами
 import io  # Импортируем io для работы с потоками ввода-вывода
-
+from flask_login import login_required
 
 main_bp = Blueprint('main_bp', __name__) # Создаём Blueprint для организации маршрутов
 
-
-@main_bp.route('/') # Определяем маршрут для главной страницы, доступной по адресу http://127.0.0.1:5000/
-def index():
-    return render_template('index.html')  # Возвращаем HTML-шаблон index.html
-
+@main_bp.route('/ide')
+@login_required
+def ide():
+    return render_template('ide.html')
 pending_inputs = {}  # Общий словарь для хранения событий ожидания ввода
 #извините, пусть оно просто тут полежит иначе все крашится) (пусть это будет дань уважения генеративному ИИ)
 
