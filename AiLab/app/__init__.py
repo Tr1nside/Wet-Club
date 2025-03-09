@@ -4,6 +4,8 @@ from .routes import main_bp, register_socketio_events # Импортируем �
 from flask import Flask
 from flask_socketio import SocketIO
 from config import Config
+from flask_sqlalchemy import SQLAlchemy
+
 
 import os
 MAIN_FOLDER = os.path.dirname(os.path.abspath(__file__))
@@ -11,6 +13,8 @@ MAIN_FOLDER = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__,
             static_folder=os.path.join(MAIN_FOLDER, '..', 'static'),
             template_folder=os.path.join(MAIN_FOLDER, '..', 'templates')) # Создаём Flask-приложение
+db = SQLAlchemy(app)
+
 
 app.config.from_object(Config)
 socketio = SocketIO(app) # Инициализируем SocketIO
