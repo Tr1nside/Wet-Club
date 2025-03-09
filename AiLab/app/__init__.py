@@ -8,6 +8,7 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from models import User
+from auth import auth_bp
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'auth_bp.login'  # маршрут для перенаправления неавторизованных пользователей
@@ -25,6 +26,7 @@ db = SQLAlchemy(app)
 
 app.config.from_object(Config)
 socketio = SocketIO(app) # Инициализируем SocketIO
+app.register_blueprint(auth_bp)
 app.register_blueprint(main_bp) # Регистрируем Blueprint
 register_socketio_events(socketio) # Регистрируем события для SocketIO (обработчики on('execute'), on('console_input'), и т.д.)
 
