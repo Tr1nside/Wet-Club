@@ -20,8 +20,29 @@
               "icon": "lucide-file",
               "title": "Описание"
             }
+          },
+          {
+            "id": "5ebbc5a5c3991abc",
+            "type": "leaf",
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "1 - Заметки/Online IDE python/Задачи.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              },
+              "icon": "lucide-trello",
+              "title": "Задачи"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -167,7 +188,7 @@
       "obsidian-kanban:Создать новую доску": false
     }
   },
-  "active": "0deebf027e01f0cb",
+  "active": "5ebbc5a5c3991abc",
   "lastOpenFiles": [
     "1 - Заметки/Online IDE python/Задачи.md",
     "AiLab/app/models.py",
