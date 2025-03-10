@@ -11,20 +11,14 @@
             "id": "5ebbc5a5c3991abc",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "1 - Заметки/Online IDE python/Задачи.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "1 - Заметки/Online IDE python/Описание.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-trello",
-              "title": "Задачи"
+              "icon": "lucide-file",
+              "title": "Описание"
             }
           }
         ]
